@@ -1,12 +1,12 @@
 {
   "name": "atomic-mini-component",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "atomic react component",
   "main": "index.js",
   "repository": "https://github.com/99mini/atomic-mini-component",
   "author": "0mini9939@gmail.com",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "devDependencies": {
     "@chromatic-com/storybook": "^1.2.19",
     "@rollup/plugin-babel": "^6.0.4",
@@ -45,6 +45,9 @@
   "dependencies": {
     "classnames": "^2.5.1",
     "style-inject": "^0.3.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0"
   },
   "scripts": {
     "storybook": "storybook dev -p 6006",
