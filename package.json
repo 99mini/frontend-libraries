@@ -1,9 +1,9 @@
 {
   "name": "@99mini/atomic-mini-component",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "atomic react component",
-  "main": "./index.js",
-  "types": "./index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/99mini/atomic-mini-component",
   "author": "0mini9939@gmail.com",
   "license": "MIT",

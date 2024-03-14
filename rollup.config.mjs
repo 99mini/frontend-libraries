@@ -18,7 +18,7 @@ export default [
     ],
   },
   {
-    input: { core: "src/core/index.ts" },
+    input: { core: "src/core/index.ts", atom: "src/atom/index.ts" },
     output: {
       dir: "./",
       format: "cjs",
