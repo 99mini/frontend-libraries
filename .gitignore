@@ -1,4 +1,9 @@
 node_modules
+
+# build rollup
 dist
 index.js
 index.d.ts
+core.js
+core
+stories
