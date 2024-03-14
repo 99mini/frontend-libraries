@@ -1,6 +1,6 @@
 {
   "name": "@99mini/atomic-mini-component",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "atomic react component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -54,6 +54,7 @@
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "postinstall": "./scripts/postinstall.sh"
   }
 }
