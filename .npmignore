@@ -1,6 +1,7 @@
 .storybook/
 src/
-dist/stoies/
-rollup.config.js
+stories/
+.eslintrc.js
+rollup.config.mjs
 tsconfig.json
 yarn.lock

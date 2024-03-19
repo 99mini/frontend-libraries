@@ -18,20 +18,6 @@ export default [
     ],
   },
   {
-    input: { core: "src/core/index.ts", atom: "src/atom/index.ts" },
-    output: {
-      dir: "./",
-      format: "cjs",
-    },
-    plugins: [
-      typescript({ tsconfig: "./tsconfig.json" }),
-      postcss({
-        inject: true,
-        extensions: [".css", ".scss"],
-      }),
-    ],
-  },
-  {
     input: "src/index.ts",
     output: {
       file: "./index.d.ts",
