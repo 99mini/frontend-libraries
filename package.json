@@ -1,6 +1,6 @@
 {
   "name": "@99mini/atomic-mini-component",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "atomic react component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
