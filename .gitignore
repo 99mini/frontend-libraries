@@ -5,4 +5,4 @@ dist
 index.js
 index.d.ts
 stories
-atom/
+./atom/
