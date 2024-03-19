@@ -10,4 +10,7 @@ fi
 
 echo 'Copying files from dist folder into root project folder...'
 cp -r dist/* ./ && rm -rf dist
+
+echo 'Copying files from dist folder into atom project folder...'
+cp -r atom/dist/* ./atom && rm -rf atom/dist
 echo 'Postinstall done!'
