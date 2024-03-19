@@ -4,6 +4,4 @@ node_modules
 dist
 index.js
 index.d.ts
-core
-atom
 stories
