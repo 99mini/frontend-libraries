@@ -1,6 +1,7 @@
 .storybook/
 src/
 stories/
+*.stories.*
 .eslintrc.js
 rollup.config.mjs
 tsconfig.json
