@@ -17,7 +17,7 @@ if [ "$extension" = "ts" ]; then
   index_file_path="src/$directory/$filename/index.ts"
   # Check if file already exists
   if [ -e "$index_file_path" ]; then
-    echo -e "[$0]\tSkip: File $index_file_path already exists in src/$directory/$filename.$extension"
+    echo -e "Skip:\tFile $index_file_path already exists in src/$directory/$filename."
     exit 1
   fi
 
@@ -25,7 +25,7 @@ if [ "$extension" = "ts" ]; then
 export { default } from "./${filename}";
 EOF
 
-  echo -e "${GREEN}  + index.ts${NC}"
+  echo -e "${GREEN}  + $index_file_path${NC}"
   exit 0
 fi
 
@@ -34,7 +34,7 @@ file_path="src/$directory/$filename/$filename.$extension"
 
 # Check if file already exists
 if [ -e "$file_path" ]; then
-  echo -e "[$0]\tSkip: File $filename.$extension already exists in src/$directory/$filename.$extension"
+  echo -e "Skip:\tFile $file_path already exists in src/$directory/$filename."
   exit 1
 fi
 
@@ -45,12 +45,9 @@ if [ "$extension" = "scss" ]; then
 
 }
 EOF
-  echo -e "${GREEN}  + $filename.$extension${NC}"
-  exit 0
-fi
 
 # Create tsx file
-if [ "$extension" = "tsx" ]; then
+elif [ "$extension" = "tsx" ]; then
 
   cat <<EOF >"$file_path"
 import React from 'react';
@@ -102,4 +99,5 @@ Default.args = {
 EOF
 fi
 
-echo -e "${GREEN}  + $filename.$extension${NC}"
+echo -e "${GREEN}  + $file_path${NC}"
+exit 0

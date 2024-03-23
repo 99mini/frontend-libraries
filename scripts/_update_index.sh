@@ -15,7 +15,7 @@ index_file="src/$directory/index.ts"
 if [ -f "$index_file" ]; then
     # Check if the export line already exists
     if grep -q "export { default as $component_name } from \"./$component_name\";" "$index_file"; then
-        echo -e "[$0]\tSkip: Export line already exists in $index_file"
+        echo -e "Skip:\tExport line already exists in $index_file"
         exit 0
     fi
 
@@ -24,6 +24,6 @@ if [ -f "$index_file" ]; then
     echo -e "src/$directory"
     echo -e "${YELLOW}  + $index_file${NC}"
 else
-    echo -e "[$0]\tError: $index_file does not exist."
+    echo -e "Error:\t[$0]\t$index_file does not exist."
     exit 1
 fi

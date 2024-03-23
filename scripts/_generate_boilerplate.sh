@@ -36,10 +36,37 @@ else
 	echo -e "src/$directory/$filename"
 fi
 
-# Call touch_file.sh script to create the file
+# Initialize arrays to store output and exit codes
+outputs=()
+exit_codes=()
 
-scripts/_touch_file.sh "$directory" "$filename" "tsx"
-scripts/_touch_file.sh "$directory" "$filename" "scss"
-scripts/_touch_file.sh "$directory" "$filename" "stories.tsx"
-scripts/_touch_file.sh "$directory" "$filename" "ts"
-scripts/_update_index.sh "$directory" "$filename"
+# Call touch_file.sh script to create each file
+extension_names=("tsx" "scss" "stories.tsx" "ts")
+for ((i = 0; i < ${#extension_names[@]}; i++)); do
+	extension="${extension_names[i]}"
+	output=$(scripts/_touch_file.sh "$directory" "$filename" "$extension")
+	exit_code=$?
+
+	outputs+=("$output")
+	exit_codes+=("$exit_code")
+done
+
+# Call update_index.sh script to update the $driectory/indes.ts file
+output=$(scripts/_update_index.sh "$directory" "$filename")
+exit_code=$?
+outputs+=("$output")
+exit_codes+=("$exit_code")
+
+# Output success codes
+for ((i = 0; i < ${#outputs[@]}; i++)); do
+	if [ "${exit_codes[i]}" -eq 0 ]; then
+		echo -e "${outputs[i]}"
+	fi
+done
+
+# Output failure codes
+for ((i = 0; i < ${#outputs[@]}; i++)); do
+	if [ "${exit_codes[i]}" -ne 0 ]; then
+		echo -e "${outputs[i]}"
+	fi
+done
