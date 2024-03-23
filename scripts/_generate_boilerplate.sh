@@ -1,7 +1,7 @@
-# generate_boilerplate.sh TARGET_DIR FILE
+# _generate_boilerplate.sh TARGET_DIR FILE
 #
 # EX.
-# scripts/generate_boilerplate.sh atom Button
+# scripts/_generate_boilerplate.sh atom Button
 # 1. Create Base File
 # /src/atom/
 #   - Button.tsx
