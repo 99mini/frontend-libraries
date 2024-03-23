@@ -1,8 +1,10 @@
 node_modules
 
+*storybook.log
 # build rollup
 dist
 index.js
 index.d.ts
-stories
+
+# sub dir
 ./atom/
