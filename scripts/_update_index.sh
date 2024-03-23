@@ -4,7 +4,7 @@ if [ "$#" -ne 2 ]; then
     exit 1
 fi
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/_constants.sh"
 
 directory="$1"
@@ -20,7 +20,7 @@ if [ -f "$index_file" ]; then
     fi
 
     # Append export line to the end of the file
-    echo "export { default as $component_name } from \"./$component_name\";" >> "$index_file"
+    echo "export { default as $component_name } from \"./$component_name\";" >>"$index_file"
     echo -e "src/$directory"
     echo -e "${YELLOW}  + $index_file${NC}"
 else

@@ -1,18 +1,15 @@
 # Check if correct number of arguments provided
 if [ "$#" -ne 3 ]; then
-    echo "Usage: $0 <directory> <filename> <extension>"
-    exit 1
+  echo "Usage: $0 <directory> <filename> <extension>"
+  exit 1
 fi
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/_constants.sh"
 
 directory="$1"
 filename="$2"
 extension="$3"
-
-# Set file path
-file_path="src/$directory/$filename/$filename.$extension"
 
 # Create index.ts file
 if [ "$extension" = "ts" ]; then
@@ -20,38 +17,42 @@ if [ "$extension" = "ts" ]; then
   index_file_path="src/$directory/$filename/index.ts"
   # Check if file already exists
   if [ -e "$index_file_path" ]; then
-    echo -e "[$0]\tSkip: File $index_file_path already exists in src/$directory/$filename."
+    echo -e "[$0]\tSkip: File $index_file_path already exists in src/$directory/$filename.$extension"
     exit 1
   fi
 
-cat << EOF > "$index_file_path"
+  cat <<EOF >"$index_file_path"
 export { default } from "./${filename}";
 EOF
-echo -e "${GREEN}  + index.ts${NC}"
-exit 0
+
+  echo -e "${GREEN}  + index.ts${NC}"
+  exit 0
 fi
+
+# Set file path
+file_path="src/$directory/$filename/$filename.$extension"
 
 # Check if file already exists
 if [ -e "$file_path" ]; then
-  echo -e "[$0]\tSkip: File $filename.$extension already exists in src/$directory/$filename."
+  echo -e "[$0]\tSkip: File $filename.$extension already exists in src/$directory/$filename.$extension"
   exit 1
 fi
 
 # Create the file with proper indentation
 if [ "$extension" = "scss" ]; then
-cat << EOF > "$file_path"
+  cat <<EOF >"$file_path"
 .Mini-${filename} {
 
 }
 EOF
-echo -e "${GREEN}  + $filename.$extension${NC}"
-exit 0
+  echo -e "${GREEN}  + $filename.$extension${NC}"
+  exit 0
 fi
 
 # Create tsx file
 if [ "$extension" = "tsx" ]; then
 
-cat << EOF > "$file_path"
+  cat <<EOF >"$file_path"
 import React from 'react';
 import classNames from "classnames";
 import './$filename.scss'
@@ -74,7 +75,7 @@ EOF
 
 # Create stories.tsx file
 elif [ "$extension" = "stories.tsx" ]; then
-  cat << EOF > "$file_path"
+  cat <<EOF >"$file_path"
 
 import React from "react";
 

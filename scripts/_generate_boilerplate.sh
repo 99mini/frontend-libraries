@@ -22,7 +22,7 @@ if [ "$#" -ne 2 ]; then
 	exit 1
 fi
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/_constants.sh"
 
 directory=$1
