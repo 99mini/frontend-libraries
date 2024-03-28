@@ -16,6 +16,6 @@
     "emitDeclarationOnly": true,
     "removeComments": true
   },
-  "include": ["../atom/**/*.*"],
+  "include": ["../core/**/*.*"],
   "exclude": ["../../dist", "../../node_modules", "../**/*.test.tsx", "../**/*.stories.tsx"]
 }
