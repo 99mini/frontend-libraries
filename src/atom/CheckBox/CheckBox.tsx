@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 import "./CheckBox.scss";
 
 export type CheckBoxProps = React.DetailedHTMLProps<
@@ -6,8 +7,14 @@ export type CheckBoxProps = React.DetailedHTMLProps<
   HTMLInputElement
 > & {};
 
-const CheckBox = () => {
-  return <input type="checkbox" />;
+const CheckBox = ({ ...props }: CheckBoxProps) => {
+  return (
+    <input
+      {...props}
+      className={classNames("Mini-CheckBox", props.className)}
+      type="checkbox"
+    />
+  );
 };
 
 export default CheckBox;

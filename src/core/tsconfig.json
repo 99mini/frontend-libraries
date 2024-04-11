@@ -14,7 +14,12 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
-    "removeComments": true
+    "removeComments": true,
+    "baseUrl": "../",
+    "paths": {
+      "@atom/*": ["atom/*"],
+      "@core/*": ["core/*"]
+    }
   },
   "include": ["../core/**/*.*"],
   "exclude": ["../../dist", "../../node_modules", "../**/*.test.tsx", "../**/*.stories.tsx"]
