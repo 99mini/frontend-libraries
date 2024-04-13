@@ -1,12 +1,5 @@
 # 프로젝트 소개
 
-## 배포
-
-```bash
-$ npm login
-$ yarn publish --access public
-```
-
 ## 설치 및 사용
 
 ### 설치
@@ -15,17 +8,42 @@ $ yarn publish --access public
 $ npm i @99mini/atomic-mini-component
 ```
 
+`or`
+
 ```bash
 $ yarn add @99mini/atomic-mini-component
 ```
 
 ### 사용
 
-```bash
+```javascript
+// import from root directory
+import { Button } from "@99mini/atomic-mini-component";
 
+// import from package (atom, molecular, core, ...)
+import { Textarea } from "@99mini/atomic-mini-component/atom";
+import { Ripple } from "@99mini/atomic-mini-component/core";
+
+/**
+ * to be update
+ * import from sub package
+ */
+// import Textarea from "@99mini/atomic-mini-component/atom/Textarea";
 ```
 
 ## 개발
+
+### install dependency
+
+```bash
+$ npm install
+```
+
+`or`
+
+```bash
+$ yarn install
+```
 
 ### 로컬
 
@@ -33,10 +51,24 @@ $ yarn add @99mini/atomic-mini-component
 $ npm run storybook
 ```
 
-### dependency
+### directory dependency
+
+```mermaid
+graph LR
+    classDef toBeUpdated fill:#EBEBE445, color: #C6C6C6
+
+    atom[📁atom] ----> molecular[📁molecular]
+
+    atom & molecular ----> organism[📁organism - to be update]:::toBeUpdated
+
+    core[📁core] ----> atom & molecular & organism
+```
+
+### 배포
 
 ```bash
-$ yarn install
+$ npm login
+$ yarn publish --access public
 ```
 
 ## 참고 블로그
