@@ -67,7 +67,7 @@ graph LR
 ### generate boilerplate
 
 ```bash
-$ scripts/_generate_boilerplate.sh atom Button
+$ scripts/_generate_boilerplate.sh <core | atom | molecular> <Filename>
 ```
 
 ### 배포
