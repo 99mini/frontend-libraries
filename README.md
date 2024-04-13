@@ -27,8 +27,16 @@ $ yarn add @99mini/atomic-mini-component
 
 ## 개발
 
+### 로컬
+
 ```bash
 $ npm run storybook
+```
+
+### dependency
+
+```bash
+$ yarn install
 ```
 
 ## 참고 블로그
