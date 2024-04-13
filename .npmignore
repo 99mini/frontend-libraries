@@ -1,7 +1,11 @@
 .storybook/
 src/
 stories/
+*.stories.*
 .eslintrc.js
 rollup.config.mjs
 tsconfig.json
 yarn.lock
+
+# private script
+/scripts/_*.sh

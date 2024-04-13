@@ -9,6 +9,37 @@ export default [
       file: "./index.js",
       format: "cjs",
     },
+    external: ["react", "classnames"],
+    plugins: [
+      typescript({ tsconfig: "./tsconfig.json" }),
+      postcss({
+        inject: true,
+        extensions: [".css", ".scss"],
+      }),
+    ],
+  },
+  {
+    input: "src/atom/index.ts",
+    output: {
+      file: "./atom/index.js",
+      format: "cjs",
+    },
+    external: ["react", "classnames"],
+    plugins: [
+      typescript({ tsconfig: "./tsconfig.json" }),
+      postcss({
+        inject: true,
+        extensions: [".css", ".scss"],
+      }),
+    ],
+  },
+  {
+    input: "src/core/index.ts",
+    output: {
+      file: "./core/index.js",
+      format: "cjs",
+    },
+    external: ["react", "classnames"],
     plugins: [
       typescript({ tsconfig: "./tsconfig.json" }),
       postcss({
@@ -23,6 +54,7 @@ export default [
       file: "./index.d.ts",
       format: "es",
     },
+    external: ["react", "classnames"],
     plugins: [
       dts(),
       postcss({

@@ -14,13 +14,13 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
-    "removeComments": true
+    "removeComments": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@atom/*": ["atom/*"],
+      "@core/*": ["core/*"]
+    }
   },
   "include": ["./src/**/*.*"],
-  "exclude": [
-    "./dist",
-    "./node_modules",
-    "./src/**/*.test.tsx",
-    "./src/**/*.stories.tsx"
-  ]
+  "exclude": ["./dist", "./node_modules", "./src/**/*.test.tsx", "./src/**/*.stories.tsx"]
 }
