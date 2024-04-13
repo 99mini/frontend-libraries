@@ -17,8 +17,9 @@
     "removeComments": true,
     "baseUrl": "./src",
     "paths": {
+      "@core/*": ["core/*"],
       "@atom/*": ["atom/*"],
-      "@core/*": ["core/*"]
+      "@molecular/*": ["molecular/*"]
     }
   },
   "include": ["./src/**/*.*"],

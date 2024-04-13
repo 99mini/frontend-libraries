@@ -19,21 +19,6 @@ export default [
     ],
   },
   {
-    input: "src/atom/index.ts",
-    output: {
-      file: "./atom/index.js",
-      format: "cjs",
-    },
-    external: ["react", "classnames"],
-    plugins: [
-      typescript({ tsconfig: "./tsconfig.json" }),
-      postcss({
-        inject: true,
-        extensions: [".css", ".scss"],
-      }),
-    ],
-  },
-  {
     input: "src/core/index.ts",
     output: {
       file: "./core/index.js",
@@ -59,6 +44,36 @@ export default [
       dts(),
       postcss({
         inject: false,
+      }),
+    ],
+  },
+  {
+    input: "src/atom/index.ts",
+    output: {
+      file: "./atom/index.js",
+      format: "cjs",
+    },
+    external: ["react", "classnames"],
+    plugins: [
+      typescript({ tsconfig: "./tsconfig.json" }),
+      postcss({
+        inject: true,
+        extensions: [".css", ".scss"],
+      }),
+    ],
+  },
+  {
+    input: "src/molecular/index.ts",
+    output: {
+      file: "./molecular/index.js",
+      format: "cjs",
+    },
+    external: ["react", "classnames"],
+    plugins: [
+      typescript({ tsconfig: "./tsconfig.json" }),
+      postcss({
+        inject: true,
+        extensions: [".css", ".scss"],
       }),
     ],
   },
