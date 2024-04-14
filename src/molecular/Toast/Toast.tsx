@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import "./Toast.scss";
 
@@ -29,7 +29,8 @@ type ToastStateType = {
 const Toast = ({ ...props }: ToastProps) => {
   const { message, type, duration, open, onClose, ...htmlProps } = { ...props };
 
-  const [toast, setToast] = useState<ToastType>({ message: message, type: type ?? "default", duration: duration ?? 3000 });
+  const toast: ToastType = { message: message, type: type ?? "default", duration: duration ?? 3000 };
+
   const [isAnimated, setIsAnimated] = useState(true);
 
   useEffect(() => {
@@ -48,23 +49,13 @@ const Toast = ({ ...props }: ToastProps) => {
   }, [open]);
 
   return (
-    <ToastContext.Provider value={{ toast, setToast }}>
-      <div className={classNames("Mini-Toast-root", open ? "open" : isAnimated ? "close" : "fade-out", props.className)}>
-        <div className={classNames("Mini-Toast")} {...htmlProps}>
-          {!props.children && (toast.message ?? "toast")}
-          {props.children}
-        </div>
+    <div className={classNames("Mini-Toast-root", open ? "open" : isAnimated ? "close" : "fade-out")}>
+      <div className={classNames("Mini-Toast", props.className)} {...htmlProps}>
+        {!props.children && (toast.message ?? "toast")}
+        {props.children}
       </div>
-    </ToastContext.Provider>
+    </div>
   );
 };
-
-const ToastContext = createContext<{
-  toast: ToastType;
-  setToast: React.Dispatch<React.SetStateAction<ToastType>>;
-}>({
-  toast: {},
-  setToast: () => {},
-});
 
 export default Toast;
