@@ -82,5 +82,23 @@
       rgba(0, 0, 0, 0.12) 0px 1px 18px 0px;
 
     color: rgb(255, 255, 255);
+
+    &.Mini-Toast-layout {
+      display: flex;
+      align-items: center;
+    }
+
+    &-icon {
+      width: 16px;
+      height: 16px;
+
+      padding: 8px;
+      margin-right: 8px;
+
+      text-align: center;
+    }
+
+    &-message {
+    }
   }
 }

@@ -26,6 +26,24 @@ type ToastStateType = {
   onClose: () => void;
 };
 
+const ToastIcon = ({ iconType }: { iconType: ToastType["type"] }) => {
+  switch (iconType) {
+    case "success":
+      return <></>;
+    case "info":
+      return <></>;
+    case "error":
+      return <></>;
+    case "warning":
+      return <></>;
+
+    case undefined || "default":
+      return <></>;
+    default:
+      return <></>;
+  }
+};
+
 const Toast = ({ ...props }: ToastProps) => {
   const { message, type, duration, open, onClose, ...htmlProps } = { ...props };
 
@@ -50,9 +68,17 @@ const Toast = ({ ...props }: ToastProps) => {
 
   return (
     <div className={classNames("Mini-Toast-root", open ? "open" : isAnimated ? "close" : "fade-out")}>
-      <div className={classNames("Mini-Toast", props.className)} {...htmlProps}>
-        {!props.children && (toast.message ?? "toast")}
-        {props.children}
+      <div className={classNames("Mini-Toast", toast.type && toast.type !== "default" ? "Mini-Toast-layout" : "", props.className)} {...htmlProps}>
+        {props.children || (
+          <>
+            {toast.type && (
+              <div className={classNames("Mini-Toast-icon")}>
+                <ToastIcon iconType={toast.type} />
+              </div>
+            )}
+            <span className={classNames("Mini-Toast-message")}>{toast.message ?? "toast"}</span>
+          </>
+        )}
       </div>
     </div>
   );

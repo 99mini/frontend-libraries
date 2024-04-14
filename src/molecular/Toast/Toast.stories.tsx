@@ -20,11 +20,11 @@ const Template = (args: ToastProps) => {
       <div style={{ height: 400, width: "100%", backgroundColor: "plum" }}>{"some contents"}</div>
 
       <Button onClick={() => setOpen(true)}>toast fire</Button>
-      <Toast {...args} open={open} onClose={() => setOpen(false)} style={{ display: "flex", justifyContent: "space-between" }}>
-        <span>{"children message"}</span>
+      <Toast {...args} open={open} onClose={() => setOpen(false)}>
+        {/* <span>{"children message"}</span>
         <Button style={{ color: "blue" }} onClick={() => setOpen(false)}>
           {"확인"}
-        </Button>
+        </Button> */}
       </Toast>
     </div>
   );
