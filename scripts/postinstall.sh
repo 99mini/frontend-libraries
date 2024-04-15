@@ -25,4 +25,8 @@ cp -r atom/dist/* ./atom && rm -rf atom/dist
 echo 'Copying files from dist folder into core project folder...'
 cp -r core/dist/* ./core && rm -rf core/dist
 
+# copy files from dist folder into molecular project folder
+echo 'Copying files from dist folder into molecular project folder...'
+cp -r molecular/dist/* ./molecular && rm -rf molecular/dist
+
 echo 'Postinstall done!'
