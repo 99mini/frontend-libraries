@@ -1,5 +1,6 @@
+# @deprecated
 #!/usr/bin/env bash
-set -e
+# set -e
 
 # skip postinstall if npm install for development
 # rollup.config.js is not included in dist
@@ -9,9 +10,9 @@ set -e
 # fi
 
 # copy files from dist folder into root project folder
-echo 'Copying files from dist/types folder into root project folder...'
-cp -r dist/types/* ./ && rm -rf dist/types
+# echo 'Copying files from dist/types folder into root project folder...'
+# cp -r dist/types/* ./ && rm -rf dist/types
 
-rm -rf dist
+# rm -rf dist
 
-echo 'Postinstall done!'
+# echo 'Postinstall done!'
