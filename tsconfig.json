@@ -7,13 +7,9 @@
     "skipLibCheck": true,
     "jsx": "react",
     "module": "ESNext",
-    "declaration": true,
-    "declarationDir": "./dist",
     "sourceMap": false,
-    "outDir": "./dist",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true,
     "removeComments": true,
     "baseUrl": "./src",
     "paths": {
@@ -21,6 +17,6 @@
       "@core/*": ["core/*"]
     }
   },
-  "include": ["./src/**/*.*"],
+  "include": ["./src/**/*.*", "./src/atom/**/*.*", "./src/core/**/*.*"],
   "exclude": ["./dist", "./node_modules", "./src/**/*.test.tsx", "./src/**/*.stories.tsx"]
 }
