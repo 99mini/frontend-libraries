@@ -7,4 +7,5 @@ index.js
 index.d.ts
 
 # sub dir
-./atom/
+atom/
+core/
