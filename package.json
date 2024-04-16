@@ -1,6 +1,6 @@
 {
   "name": "@99mini/atomic-mini-component",
-  "version": "0.1.1-alpha.0",
+  "version": "0.1.1-alpha.2",
   "description": "atomic react component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -43,6 +43,7 @@
     "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript-paths": "^1.5.0",
     "sass": "^1.72.0",
     "sass-loader": "^14.1.1",
     "storybook": "^8.0.0",
@@ -60,8 +61,8 @@
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "rollup -c",
+    "build": "sh ./scripts/_build.sh",
     "deploy": "npm run build && yarn publish --access public",
-    "postinstall": "./scripts/postinstall.sh"
+    "postinstall": "sh ./scripts/postinstall.sh"
   }
 }
