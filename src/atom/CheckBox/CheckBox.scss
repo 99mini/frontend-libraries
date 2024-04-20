@@ -1,7 +1,70 @@
-.Mini-CheckBox {
-  width: 24px;
-  height: 24px;
+.Mini-Label-root {
+  display: flex;
+  align-items: center;
 
+  cursor: pointer;
+
+  &[aria-disabled="true"] {
+    cursor: default;
+
+    color: rgba(118, 118, 118, 0.3);
+  }
+
+  &[aria-required="true"] {
+    .Mini-Label-text {
+      font-weight: 600;
+      &::after {
+        content: "*";
+
+        padding-left: 8px;
+      }
+    }
+  }
+
+  &.Mini-Label-layout {
+    &--top {
+      flex-direction: column-reverse;
+    }
+
+    &--bottom {
+      flex-direction: column;
+    }
+
+    &--right {
+      flex-direction: row;
+    }
+    &--left {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .Mini-Label-text {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.16px;
+  }
+}
+
+.Mini-CheckBox-root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
   padding: 8px;
-  margin: 0;
+
+  cursor: pointer;
+
+  &[aria-disabled="true"] {
+    cursor: default;
+  }
+
+  .Mini-CheckBox {
+    width: 16px;
+    height: 16px;
+
+    margin: 4px;
+    cursor: inherit;
+  }
 }
