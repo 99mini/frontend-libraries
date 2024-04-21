@@ -15,7 +15,7 @@ const Button = ({ href, ...props }: ButtonProps) => {
     return (
       <a href={href} {...props} className={classNames("Mini-Button Mini-Button-anchor", props.className)} ref={anchoreRef}>
         <Ripple parentRef={anchoreRef} />
-        {props.children ?? "Button"}
+        <span>{props.children ?? "Anchor Button"}</span>
       </a>
     );
   }
@@ -24,7 +24,7 @@ const Button = ({ href, ...props }: ButtonProps) => {
   return (
     <button {...props} className={classNames("Mini-Button", props.className)} ref={buttonRef}>
       <Ripple parentRef={buttonRef} />
-      {props.children ?? "Button"}
+      <span>{props.children ?? "Button"}</span>
     </button>
   );
 };

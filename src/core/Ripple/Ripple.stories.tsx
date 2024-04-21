@@ -2,6 +2,7 @@ import React from "react";
 
 import Ripple, { RippleProps } from "./Ripple";
 import styles from "./Ripple.scss";
+import button_styles from "../../atom/Button/Button.scss";
 import classNames from "classnames";
 
 import Button from "@atom/Button";
@@ -12,14 +13,10 @@ export default {
 };
 
 const cx = classNames.bind(styles);
+const button_cx = classNames.bind(button_styles);
 
 const Template = (args: RippleProps) => {
-  return (
-    <Button>
-      <Ripple {...args} />
-      <span>button</span>
-    </Button>
-  );
+  return <Button>button</Button>;
 };
 
 export const Default = Template.bind({});
