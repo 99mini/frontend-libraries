@@ -14,17 +14,24 @@ export default {
 const cx = classNames.bind(styles);
 
 const Template = (args: ToastProps) => {
-  const [open, setOpen] = React.useState(false);
+  const [openBasic, setOpenBasic] = React.useState(false);
+  const [openCustom, setOpenCustom] = React.useState(false);
+
   return (
     <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: 20 }}>
-      <div style={{ height: 400, width: "100%", backgroundColor: "plum" }}>{"some contents"}</div>
+      <div style={{ height: 200, width: "100%", backgroundColor: "plum" }}>{"some contents"}</div>
 
-      <Button onClick={() => setOpen(true)}>toast fire</Button>
-      <Toast {...args} open={open} onClose={() => setOpen(false)}>
-        {/* <span>{"children message"}</span>
-        <Button style={{ color: "blue" }} onClick={() => setOpen(false)}>
-          {"확인"}
-        </Button> */}
+      <Button onClick={() => setOpenBasic(true)}>basic toast</Button>
+      <Button onClick={() => setOpenCustom(true)}>custom toast</Button>
+      <Toast {...args} open={openBasic} onClose={() => setOpenBasic(false)} message="message"></Toast>
+      <Toast {...args} open={openCustom} onClose={() => setOpenCustom(false)}>
+        <div style={{ display: "flex", gap: "8px", alignContent: "center" }}>
+          <span>icon area</span>
+          <span>message aree</span>
+          <Button style={{ color: "white" }} onClick={() => setOpenCustom(false)}>
+            확인
+          </Button>
+        </div>
       </Toast>
     </div>
   );
@@ -32,8 +39,9 @@ const Template = (args: ToastProps) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  Toast: {
-    title: "Default Toast",
-    state: "Toast",
+  toast: {
+    message: "message",
+    duration: 3000,
+    type: "default",
   },
 };

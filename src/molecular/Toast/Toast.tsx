@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import "./Toast.scss";
 
-export type ToastProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & ToastType & ToastStateType;
+export type ToastProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & ToastPropsType;
 
 export type ToastType = {
   message?: string;
@@ -21,10 +21,10 @@ export type ToastType = {
   duration?: number;
 };
 
-type ToastStateType = {
+type ToastPropsType = {
   open: boolean;
   onClose: () => void;
-};
+} & ToastType;
 
 const ToastIcon = ({ iconType }: { iconType: ToastType["type"] }) => {
   switch (iconType) {
@@ -68,10 +68,10 @@ const Toast = ({ ...props }: ToastProps) => {
 
   return (
     <div className={classNames("Mini-Toast-root", open ? "open" : isAnimated ? "close" : "fade-out")}>
-      <div className={classNames("Mini-Toast", toast.type && toast.type !== "default" ? "Mini-Toast-layout" : "", props.className)} {...htmlProps}>
+      <div {...htmlProps} className={classNames("Mini-Toast", toast.type && toast.type !== "default" ? "Mini-Toast-layout" : "", props.className)}>
         {props.children || (
           <>
-            {toast.type && (
+            {toast.type && toast.type !== "default" && (
               <div className={classNames("Mini-Toast-icon")}>
                 <ToastIcon iconType={toast.type} />
               </div>
