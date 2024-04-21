@@ -57,7 +57,9 @@ import './$filename.scss'
 export type ${filename}Props = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
-> & {};
+> & ${filename}PropsType;
+
+type ${filename}PropsType = {};
 
 const $filename = ({...props}: ${filename}Props) => {
   return (
