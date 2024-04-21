@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import "./Ripple.scss";
 
-import { isMouseEvent } from "util/event";
+import { isMouseEvent, isTouchEvent } from "util/event";
 
 export type RippleProps = Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, keyof RipplePropsType> & RipplePropsType;
 
@@ -29,14 +29,28 @@ const Ripple = ({ ...props }: RippleProps) => {
     }
 
     const appendAnimateEl = (event: MouseEvent | TouchEvent) => {
-      const ripple = document.createElement("div");
-      const rect = rippleRootEl.getBoundingClientRect();
-      ripple.className = "animate";
-      ripple.style.left = !isTouch && isMouseEvent(event) ? `${event.clientX - rect.left}px` : `50%`;
-      ripple.style.top = !isTouch && isMouseEvent(event) ? `${event.clientY - rect.top}px` : `50%`;
-      ripple.style.setProperty("--material-scale", `${parentEl.offsetWidth}`);
+      if (isTouch && isTouchEvent(event)) {
+        const ripple = document.createElement("div");
 
-      rippleRootEl.append(ripple);
+        ripple.className = "animate";
+        ripple.style.left = `50%`;
+        ripple.style.top = `50%`;
+        ripple.style.setProperty("--material-scale", `${parentEl.offsetWidth}`);
+
+        rippleRootEl.append(ripple);
+        return;
+      }
+
+      if (isMouseEvent(event)) {
+        const ripple = document.createElement("div");
+        const rect = rippleRootEl.getBoundingClientRect();
+        ripple.className = "animate";
+        ripple.style.left = `${event.clientX - rect.left}px`;
+        ripple.style.top = `${event.clientY - rect.top}px`;
+        ripple.style.setProperty("--material-scale", `${parentEl.offsetWidth}`);
+
+        rippleRootEl.append(ripple);
+      }
     };
 
     const removeAnimateEl = (_event: MouseEvent | TouchEvent) => {
