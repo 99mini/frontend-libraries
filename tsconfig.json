@@ -13,10 +13,11 @@
     "removeComments": true,
     "baseUrl": "./src",
     "paths": {
+      "@core/*": ["core/*"],
       "@atom/*": ["atom/*"],
-      "@core/*": ["core/*"]
+      "@molecular/*": ["molecular/*"]
     }
   },
-  "include": ["./src/**/*.*", "./src/atom/**/*.*", "./src/core/**/*.*"],
+  "include": ["./src/**/*.*", "./src/atom/**/*.*", "./src/core/**/*.*", "./src/molecular/**/*.*"],
   "exclude": ["./dist", "./node_modules", "./src/**/*.test.tsx", "./src/**/*.stories.tsx"]
 }

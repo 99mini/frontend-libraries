@@ -66,6 +66,12 @@ graph LR
     core[📁core] ----> atom & molecular & organism
 ```
 
+### generate boilerplate
+
+```bash
+$ scripts/_generate_boilerplate.sh <core | atom | molecular> <Filename>
+```
+
 ### 배포
 
 ```bash
