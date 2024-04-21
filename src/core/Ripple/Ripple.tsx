@@ -29,7 +29,7 @@ const Ripple = ({ ...props }: RippleProps) => {
     }
 
     const appendAnimateEl = (event: MouseEvent | TouchEvent) => {
-      if (isTouch && isTouchEvent(event)) {
+      if (isTouch) {
         const ripple = document.createElement("div");
 
         ripple.className = "animate";
@@ -41,6 +41,7 @@ const Ripple = ({ ...props }: RippleProps) => {
         return;
       }
 
+      // TODO: 마우스로 터치할 때 두 번 실행됨
       if (isMouseEvent(event)) {
         const ripple = document.createElement("div");
         const rect = rippleRootEl.getBoundingClientRect();
@@ -50,6 +51,19 @@ const Ripple = ({ ...props }: RippleProps) => {
         ripple.style.setProperty("--material-scale", `${parentEl.offsetWidth}`);
 
         rippleRootEl.append(ripple);
+        return;
+      }
+
+      if (isTouchEvent(event)) {
+        const ripple = document.createElement("div");
+        const rect = rippleRootEl.getBoundingClientRect();
+        ripple.className = "animate";
+        ripple.style.left = `${event.touches[0].clientX - rect.left}px}`;
+        ripple.style.top = `${event.touches[0].clientX - rect.top}px}`;
+        ripple.style.setProperty("--material-scale", `${parentEl.offsetWidth}`);
+
+        rippleRootEl.append(ripple);
+        return;
       }
     };
 
