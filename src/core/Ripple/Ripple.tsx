@@ -1,12 +1,12 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import "./Ripple.scss";
 
 export type RippleProps = Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, keyof RipplePropsType> & RipplePropsType;
-type RipplePropsType = { parentRef: React.RefObject<HTMLElement> };
+type RipplePropsType = { parentRef: React.RefObject<HTMLElement>; isTouch?: boolean };
 
 const Ripple = ({ ...props }: RippleProps) => {
-  const { parentRef, ...htmlProps } = props;
+  const { parentRef, isTouch = false, ...htmlProps } = props;
 
   const [parentEl, setParentEl] = useState<HTMLElement | null>(null);
   const rippleRootRef = useRef<HTMLSpanElement | null>(null);
@@ -29,8 +29,9 @@ const Ripple = ({ ...props }: RippleProps) => {
       const ripple = document.createElement("div");
       const rect = rippleRootEl.getBoundingClientRect();
       ripple.className = "animate";
-      ripple.style.left = `${event.clientX - rect.left}px`;
-      ripple.style.top = `${event.clientY - rect.top}px`;
+
+      ripple.style.left = !isTouch ? `${event.clientX - rect.left}px` : `50%`;
+      ripple.style.top = !isTouch ? `${event.clientY - rect.top}px` : `50%`;
       ripple.style.setProperty("--material-scale", `${parentEl.offsetWidth}`);
 
       rippleRootEl.append(ripple);

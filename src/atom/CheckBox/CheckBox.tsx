@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import classNames from "classnames";
 import "./CheckBox.scss";
 
@@ -12,11 +12,16 @@ type CheckBoxPropsType = {
 };
 
 const CheckBoxRoot = ({ ...props }: Omit<CheckBoxProps, keyof CheckBoxPropsType>) => {
+  const { className, disabled, required, ...inputProps } = { ...props };
+  const checkboxRef = useRef<HTMLElement>(null);
+
   return (
-    <span className={classNames("Mini-CheckBox-root", props.className)} aria-disabled={props.disabled} aria-required={props.required}>
-      <input {...props} className={classNames("Mini-CheckBox")} type="checkbox" />
-      {/* <Ripple /> */}
-    </span>
+    <label>
+      <span className={classNames("Mini-CheckBox-root", className)} aria-disabled={disabled} aria-required={required} ref={checkboxRef}>
+        <input {...inputProps} disabled={disabled} required={required} className={classNames("Mini-CheckBox")} type="checkbox" />
+        <Ripple parentRef={checkboxRef} isTouch />
+      </span>
+    </label>
   );
 };
 
@@ -27,7 +32,7 @@ const CheckBox = ({ ...props }: CheckBoxProps) => {
     return (
       <label className={classNames("Mini-Label-root", `Mini-Label-layout--${labelPlacement}`)} aria-disabled={inputProps.disabled} aria-required={inputProps.required}>
         <CheckBoxRoot {...inputProps} />
-        <span className={classNames("Mini-Label-text")}> {label}</span>
+        <span className={classNames("Mini-Label-text")}>{label}</span>
       </label>
     );
   }
