@@ -62,8 +62,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build": "node ./scripts/build",
-    "deploy": "npm run build && npm run publish",
-    "publish": "yarn publish --access public",
+    "deploy": "npm run build && yarn publish --access public",
     "postinstall": "node ./scripts/postinstall"
   }
 }
