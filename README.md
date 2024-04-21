@@ -4,6 +4,8 @@
 
 ### 설치
 
+[npmjs](https://www.npmjs.com/) 공식 사이트 [@99mini/atomic-mini-component](https://www.npmjs.com/package/@99mini/atomic-mini-component) 를 방문하거나 터미널의 명령어를 실행합니다.
+
 ```bash
 $ npm i @99mini/atomic-mini-component
 ```
@@ -62,6 +64,12 @@ graph LR
     atom & molecular ----> organism[📁organism - to be update]:::toBeUpdated
 
     core[📁core] ----> atom & molecular & organism
+```
+
+### generate boilerplate
+
+```bash
+$ scripts/_generate_boilerplate.sh <core | atom | molecular> <Filename>
 ```
 
 ### 배포

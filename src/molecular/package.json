@@ -1,0 +1,6 @@
+{
+  "sideEffects": false,
+  "module": "./index.js",
+  "main": "../molecular/index.js",
+  "types": "./index.d.ts"
+}
