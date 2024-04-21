@@ -8,4 +8,4 @@ tsconfig.json
 yarn.lock
 
 # private script
-/scripts/_*.sh
+/scripts/_*.*
