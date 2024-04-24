@@ -1,3 +1,5 @@
+import type { Meta } from "@storybook/react";
+
 import React from "react";
 
 import Toast, { ToastProps } from "./Toast";
@@ -8,8 +10,9 @@ import Button from "@atom/Button";
 
 export default {
   component: Toast,
-  title: "Toast",
-};
+  title: "molecular/Toast",
+  tags: ["autodocs"],
+} satisfies Meta<typeof Toast>;
 
 const cx = classNames.bind(styles);
 

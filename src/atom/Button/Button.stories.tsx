@@ -1,3 +1,5 @@
+import type { Meta } from "@storybook/react";
+
 import React from "react";
 
 import Button, { ButtonProps } from "./Button";
@@ -6,8 +8,9 @@ import classNames from "classnames";
 
 export default {
   component: Button,
-  title: "Button",
-};
+  title: "Atom/Button",
+  tags: ["autodocs"],
+} satisfies Meta<typeof Button>;
 
 const cx = classNames.bind(styles);
 

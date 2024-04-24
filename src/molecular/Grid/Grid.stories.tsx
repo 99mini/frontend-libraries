@@ -1,3 +1,4 @@
+import type { Meta } from "@storybook/react";
 
 import React from "react";
 
@@ -7,17 +8,12 @@ import classNames from "classnames";
 
 export default {
   component: Grid,
-  title: "Grid",
-};
+  title: "molecular/Grid",
+  tags: ["autodocs"],
+} satisfies Meta<typeof Grid>;
 
 const cx = classNames.bind(styles);
 
 const Template = (args: GridProps) => <Grid {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  Grid: {
-    title: "Default Grid",
-    state: "Grid",
-  },
-};

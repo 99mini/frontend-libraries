@@ -75,6 +75,7 @@ EOF
 # Create stories.tsx file
 elif [ "$extension" = "stories.tsx" ]; then
   cat <<EOF >"$file_path"
+import type { Meta } from "@storybook/react";
 
 import React from "react";
 
@@ -84,8 +85,9 @@ import classNames from "classnames";
 
 export default {
   component: $filename,
-  title: "$filename",
-};
+  title: "$directory/$filename",
+  tags: ["autodocs"],
+} satisfies Meta<typeof $filename>;
 
 const cx = classNames.bind(styles);
 
