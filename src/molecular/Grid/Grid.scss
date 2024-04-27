@@ -1,2 +1,15 @@
 .Mini-Grid {
+  max-width: 800px;
+
+  &[data-regular="false"] {
+    position: relative;
+  }
+
+  &-Item {
+    transition: transform 200ms;
+  }
+
+  &-Item-Irregular {
+    position: absolute;
+  }
 }
