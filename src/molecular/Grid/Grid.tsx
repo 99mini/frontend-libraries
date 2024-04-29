@@ -127,28 +127,28 @@ const GridItemIrregular = ({ ...props }: GridItemProps) => {
     return () => {
       setGridItemMetaData((prev) => prev.filter((item) => item.uuid !== uuid));
     };
-  }, [uuid, width, column, ref, ref.current]);
+  }, [uuid, width, column, columnGap, ref, ref.current]);
 
   const translateX = useMemo(() => {
     const targetIndex = gridItemMetaData.findIndex((meta) => meta.uuid === uuid);
 
-    const translateX = gridItemMetaData.slice(column * Math.floor(targetIndex / column), targetIndex).reduce((acc, meta) => acc + meta.size.width + rowGap, 0);
+    const translateX = gridItemMetaData.slice(column * Math.floor(targetIndex / column), targetIndex).reduce((acc, meta) => acc + meta.size.width + columnGap, 0);
 
     return translateX;
-  }, [gridItemMetaData]);
+  }, [gridItemMetaData, columnGap, rowGap, uuid]);
 
   const translateY = useMemo(() => {
     const targetIndex = gridItemMetaData.findIndex((meta) => meta.uuid === uuid);
 
     const translateY = gridItemMetaData.slice(0, targetIndex).reduce((acc, meta, index) => {
       if (index % column === targetIndex % column) {
-        return acc + meta.size.height + columnGap;
+        return acc + meta.size.height + rowGap;
       }
       return acc;
     }, 0);
 
     return translateY;
-  }, [gridItemMetaData]);
+  }, [gridItemMetaData, column, rowGap, uuid]);
 
   useEffect(() => {
     setHeight((prevHeight) => Math.max(prevHeight, translateY + (rootStyle?.height || 0)));

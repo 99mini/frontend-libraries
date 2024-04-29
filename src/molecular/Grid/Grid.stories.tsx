@@ -44,13 +44,15 @@ const Box = () => {
 const Template = (args: GridProps) => (
   <div>
     <h1>Mansory Grid</h1>
-    <Grid {...args}>
-      {Array.from({ length: 10 }, (_, i) => (
-        <GridItem key={i}>
-          <Box />
-        </GridItem>
-      ))}
-    </Grid>
+    <div style={{ padding: "0 16px", maxWidth: "800px", margin: "0 auto" }}>
+      <Grid {...args}>
+        {Array.from({ length: 10 }, (_, i) => (
+          <GridItem key={i}>
+            <Box />
+          </GridItem>
+        ))}
+      </Grid>
+    </div>
   </div>
 );
 
