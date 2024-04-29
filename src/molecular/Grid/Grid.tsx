@@ -58,9 +58,9 @@ const Grid = ({ regular = true, column = 4, columnGap = 8, rowGap = 8, ...props 
     setGridItemMetaData,
     width,
     setHeight,
-    column: column ?? 4,
-    rowGap: gap ?? rowGap ?? 8,
-    columnGap: gap ?? columnGap ?? 8,
+    column,
+    rowGap: gap ?? rowGap,
+    columnGap: gap ?? columnGap,
   };
 
   useEffect(() => {
@@ -76,7 +76,12 @@ const Grid = ({ regular = true, column = 4, columnGap = 8, rowGap = 8, ...props 
   return (
     <GridContext.Provider value={rootContext}>
       <div className={classNames("Mini-Grid-root")} ref={rootRef}>
-        <div {...divProps} style={{ ...style, ...{ width, height } }} className={classNames("Mini-Grid", className)} data-regular={regular}>
+        <div
+          {...divProps}
+          style={{ ...style, ...{ width, height, ...(regular ? { height: "auto", rowGap, columnGap, gridTemplateColumns: `repeat(${column}, 1fr)` } : {}) } }}
+          className={classNames("Mini-Grid", className)}
+          data-regular={regular}
+        >
           {children ?? "Grid"}
         </div>
       </div>
@@ -110,8 +115,6 @@ const GirdItemRegular = ({ ...props }: GridItemProps) => {
   }
 
   const { className, children, style, ...divProps } = props;
-
-  const {} = context;
 
   return (
     <div {...divProps} style={{ ...style }} className={classNames("Mini-Grid-Item", "Mini-Grid-Item-Regular", className)}>
