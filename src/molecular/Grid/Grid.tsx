@@ -62,7 +62,7 @@ const Grid = ({ ...props }: GridProps) => {
   );
 };
 
-type GridItemProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+export type GridItemProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
 export const GridItem = ({ ...props }: GridItemProps) => {
   const context = useContext(GridContext);
@@ -90,8 +90,6 @@ const GirdItemRegular = ({ ...props }: GridItemProps) => {
   );
 };
 
-type GridItemIrregularRootStyleType = { width: number; height: number };
-
 const GridItemIrregular = ({ ...props }: GridItemProps) => {
   const context = useContext(GridContext);
 
@@ -107,7 +105,7 @@ const GridItemIrregular = ({ ...props }: GridItemProps) => {
 
   const [uuid] = useState(() => Math.random().toString(36).substring(7));
 
-  const [rootStyle, setRootStyle] = useState<GridItemIrregularRootStyleType | null>(null);
+  const [irregularGridItemStyle, setIrregularGridItemStyle] = useState<{ width: number; height: number } | null>(null);
 
   useEffect(() => {
     if (!ref || !ref.current) {
@@ -120,7 +118,7 @@ const GridItemIrregular = ({ ...props }: GridItemProps) => {
       height: element.offsetHeight,
     };
 
-    setRootStyle(currentRootStyle);
+    setIrregularGridItemStyle(currentRootStyle);
 
     setGridItemMetaData((prev) => [...prev, { uuid, size: currentRootStyle }]);
 
@@ -151,8 +149,8 @@ const GridItemIrregular = ({ ...props }: GridItemProps) => {
   }, [gridItemMetaData, column, rowGap, uuid]);
 
   useEffect(() => {
-    setHeight((prevHeight) => Math.max(prevHeight, translateY + (rootStyle?.height || 0)));
-  }, [translateY, rootStyle?.height]);
+    setHeight((prevHeight) => Math.max(prevHeight, translateY + (irregularGridItemStyle?.height || 0)));
+  }, [translateY, irregularGridItemStyle?.height]);
 
   return (
     <div
@@ -163,8 +161,8 @@ const GridItemIrregular = ({ ...props }: GridItemProps) => {
         ...{
           top: 0,
           left: 0,
-          width: rootStyle?.width || "auto",
-          height: rootStyle?.height || "auto",
+          width: irregularGridItemStyle?.width || "auto",
+          height: irregularGridItemStyle?.height || "auto",
           transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
         },
       }}
