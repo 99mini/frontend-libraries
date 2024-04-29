@@ -6,8 +6,8 @@ export type GridProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElem
 
 type GridPropsType = {
   /**
-   * If true, the grid will be regular, otherwise it will be irregular.
-   * Irrgular grid is masnory layout.
+   * If true, the grid will be `regular`, otherwise it will be `irregular`.
+   * `Irrgular` grid is `masnory` layout.
    */
   regular?: boolean;
   /**
