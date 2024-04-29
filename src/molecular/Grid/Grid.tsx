@@ -8,6 +8,8 @@ type GridPropsType = { regular?: boolean; column?: number; rowGap?: number; colu
 
 type GirdContextType = {
   regular: boolean;
+  width: number;
+  setHeight: React.Dispatch<React.SetStateAction<number>>;
   column: number;
   rowGap: number;
   columnGap: number;
@@ -23,13 +25,38 @@ const Grid = ({ ...props }: GridProps) => {
   const { regular = true, column, rowGap, columnGap, gap, className, style, children, ...divProps } = props;
 
   const [gridItemMetaData, setGridItemMetaData] = useState<GridItemMetaDataType[]>([]);
+  const [width, setWidth] = useState<number>(0);
+  const [height, setHeight] = useState<number>(0);
 
-  const rootContext: GirdContextType = { regular, gridItemMetaData, setGridItemMetaData, column: column ?? 4, rowGap: gap ?? rowGap ?? 8, columnGap: gap ?? columnGap ?? 8 };
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  const rootContext: GirdContextType = {
+    regular,
+    gridItemMetaData,
+    setGridItemMetaData,
+    width,
+    setHeight,
+    column: column ?? 4,
+    rowGap: gap ?? rowGap ?? 8,
+    columnGap: gap ?? columnGap ?? 8,
+  };
+
+  useEffect(() => {
+    if (!rootRef || !rootRef.current) {
+      return;
+    }
+
+    const element = rootRef.current;
+
+    setWidth(element.offsetWidth);
+  }, [rootRef, rootRef.current]);
 
   return (
     <GridContext.Provider value={rootContext}>
-      <div {...divProps} style={{ ...style }} className={classNames("Mini-Grid", className)} data-regular={regular}>
-        {children ?? "Grid"}
+      <div className={classNames("Mini-Grid-root")} ref={rootRef}>
+        <div {...divProps} style={{ ...style, ...{ width, height } }} className={classNames("Mini-Grid", className)} data-regular={regular}>
+          {children ?? "Grid"}
+        </div>
       </div>
     </GridContext.Provider>
   );
@@ -74,20 +101,12 @@ const GridItemIrregular = ({ ...props }: GridItemProps) => {
 
   const { className = {}, style, children, ...divProps } = props;
 
-  const { gridItemMetaData, setGridItemMetaData, column, rowGap, columnGap } = context;
+  const { gridItemMetaData, setGridItemMetaData, width, setHeight, column, rowGap, columnGap } = context;
 
   const ref = useRef<HTMLDivElement>(null);
 
   const [uuid] = useState(() => Math.random().toString(36).substring(7));
 
-  /**
-   * @description
-   * calculate the position of the grid item
-   * - `translateX`: calculate relative translateX based on prevent grid item
-   * - `translateY`: calculate relative translateY based on prevent grid item
-   * - `width`: calculate component width useing useRef
-   * - `height`: calculate component height useing useRef
-   */
   const [rootStyle, setRootStyle] = useState<GridItemIrregularRootStyleType | null>(null);
 
   useEffect(() => {
@@ -97,7 +116,7 @@ const GridItemIrregular = ({ ...props }: GridItemProps) => {
     const element = ref.current;
 
     const currentRootStyle = {
-      width: 200,
+      width: width / column - columnGap * (1 - 1 / column),
       height: element.offsetHeight,
     };
 
@@ -105,12 +124,10 @@ const GridItemIrregular = ({ ...props }: GridItemProps) => {
 
     setGridItemMetaData((prev) => [...prev, { uuid, size: currentRootStyle }]);
 
-    console.count(`${uuid}: ${currentRootStyle.width}, ${currentRootStyle.height}`);
-
     return () => {
       setGridItemMetaData((prev) => prev.filter((item) => item.uuid !== uuid));
     };
-  }, [uuid]);
+  }, [uuid, width, column, ref, ref.current]);
 
   const translateX = useMemo(() => {
     const targetIndex = gridItemMetaData.findIndex((meta) => meta.uuid === uuid);
@@ -132,6 +149,10 @@ const GridItemIrregular = ({ ...props }: GridItemProps) => {
 
     return translateY;
   }, [gridItemMetaData]);
+
+  useEffect(() => {
+    setHeight((prevHeight) => Math.max(prevHeight, translateY + (rootStyle?.height || 0)));
+  }, [translateY, rootStyle?.height]);
 
   return (
     <div

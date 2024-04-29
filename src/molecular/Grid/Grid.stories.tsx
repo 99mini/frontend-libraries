@@ -33,22 +33,25 @@ const Box = () => {
   };
 
   return (
-    <GridItem>
-      <div style={style}>
-        {Object.entries(style).map(([key, value], i) => (
-          <div key={i}>{`${key}: ${value}`}</div>
-        ))}
-      </div>
-    </GridItem>
+    <div style={style}>
+      {Object.entries(style).map(([key, value], i) => (
+        <div key={i}>{`${key}: ${value}`}</div>
+      ))}
+    </div>
   );
 };
 
 const Template = (args: GridProps) => (
-  <Grid {...args}>
-    {Array.from({ length: 10 }, (_, i) => (
-      <Box key={i} />
-    ))}
-  </Grid>
+  <div>
+    <h1>Mansory Grid</h1>
+    <Grid {...args}>
+      {Array.from({ length: 10 }, (_, i) => (
+        <GridItem key={i}>
+          <Box />
+        </GridItem>
+      ))}
+    </Grid>
+  </div>
 );
 
 /**
