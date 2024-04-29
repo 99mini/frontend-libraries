@@ -1,5 +1,5 @@
 .storybook/
-src/
+packages/
 stories/
 *.stories.*
 .eslintrc.js

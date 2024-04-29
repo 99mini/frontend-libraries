@@ -14,10 +14,10 @@ extension="$3"
 # Create index.ts file
 if [ "$extension" = "ts" ]; then
 
-  index_file_path="src/$directory/$filename/index.ts"
+  index_file_path="packages/$directory/$filename/index.ts"
   # Check if file already exists
   if [ -e "$index_file_path" ]; then
-    echo -e "Skip:\tFile $index_file_path already exists in src/$directory/$filename."
+    echo -e "Skip:\tFile $index_file_path already exists in packages/$directory/$filename."
     exit 1
   fi
 
@@ -30,11 +30,11 @@ EOF
 fi
 
 # Set file path
-file_path="src/$directory/$filename/$filename.$extension"
+file_path="packages/$directory/$filename/$filename.$extension"
 
 # Check if file already exists
 if [ -e "$file_path" ]; then
-  echo -e "Skip:\tFile $file_path already exists in src/$directory/$filename."
+  echo -e "Skip:\tFile $file_path already exists in packages/$directory/$filename."
   exit 1
 fi
 
