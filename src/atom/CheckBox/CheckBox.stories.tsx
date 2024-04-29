@@ -1,3 +1,5 @@
+import type { Meta } from "@storybook/react";
+
 import React from "react";
 
 import CheckBox, { CheckBoxProps } from "./CheckBox";
@@ -6,8 +8,9 @@ import classNames from "classnames";
 
 export default {
   component: CheckBox,
-  title: "CheckBox",
-};
+  title: "Atom/CheckBox",
+  tags: ["autodocs"],
+} satisfies Meta<typeof CheckBox>;
 
 const cx = classNames.bind(styles);
 

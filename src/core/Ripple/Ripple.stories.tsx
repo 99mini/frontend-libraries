@@ -1,3 +1,5 @@
+import type { Meta } from "@storybook/react";
+
 import React from "react";
 
 import Ripple, { RippleProps } from "./Ripple";
@@ -9,8 +11,9 @@ import Button from "@atom/Button";
 
 export default {
   component: Ripple,
-  title: "Ripple",
-};
+  title: "Core/Ripple",
+  tags: ["autodocs"],
+} satisfies Meta<typeof Ripple>;
 
 const cx = classNames.bind(styles);
 const button_cx = classNames.bind(button_styles);
