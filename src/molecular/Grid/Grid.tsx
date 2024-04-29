@@ -4,7 +4,29 @@ import "./Grid.scss";
 
 export type GridProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & GridPropsType;
 
-type GridPropsType = { regular?: boolean; column?: number; rowGap?: number; columnGap?: number; gap?: number };
+type GridPropsType = {
+  /**
+   * If true, the grid will be regular, otherwise it will be irregular.
+   * Irrgular grid is masnory layout.
+   */
+  regular?: boolean;
+  /**
+   * count of column
+   */
+  column?: number;
+  /**
+   * row gap
+   */
+  rowGap?: number;
+  /**
+   * column gap
+   */
+  columnGap?: number;
+  /**
+   * force `columnGap` and `rowGap` to be the same value
+   */
+  gap?: number;
+};
 
 type GirdContextType = {
   regular: boolean;
@@ -21,8 +43,8 @@ type GridItemMetaDataType = { uuid: string; size: { width: number; height: numbe
 
 const GridContext = createContext<GirdContextType | null>(null);
 
-const Grid = ({ ...props }: GridProps) => {
-  const { regular = true, column, rowGap, columnGap, gap, className, style, children, ...divProps } = props;
+const Grid = ({ regular = true, column = 4, columnGap = 8, rowGap = 8, ...props }: GridProps) => {
+  const { gap, className, style, children, ...divProps } = props;
 
   const [gridItemMetaData, setGridItemMetaData] = useState<GridItemMetaDataType[]>([]);
   const [width, setWidth] = useState<number>(0);
@@ -81,10 +103,18 @@ export const GridItem = ({ ...props }: GridItemProps) => {
 };
 
 const GirdItemRegular = ({ ...props }: GridItemProps) => {
-  const { className, children, ...divProps } = props;
+  const context = useContext(GridContext);
+
+  if (!context) {
+    throw new Error("GridItem must be used within a Grid");
+  }
+
+  const { className, children, style, ...divProps } = props;
+
+  const {} = context;
 
   return (
-    <div {...divProps} className={classNames("Mini-Grid-Item", "Mini-Grid-Item-Regular", className)}>
+    <div {...divProps} style={{ ...style }} className={classNames("Mini-Grid-Item", "Mini-Grid-Item-Regular", className)}>
       {children ?? "GridItem"}
     </div>
   );

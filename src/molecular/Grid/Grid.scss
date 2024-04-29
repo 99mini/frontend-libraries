@@ -6,6 +6,10 @@
       position: relative;
     }
 
+    &[data-regular="true"] {
+      display: grid;
+    }
+
     &-Item {
       transition: transform 200ms;
     }
