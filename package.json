@@ -2,15 +2,15 @@
   "name": "frontend-libraries",
   "description": "frontend-libraries",
   "workspaces": [
-    "packages/*",
-    "configs/*"
+    "configs/*",
+    "packages/*"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/99mini/atomic-mini-component/tree/chore/export-packages"
   },
   "license": "MIT",
-  "private": false,
+  "private": "true",
   "devDependencies": {
     "@chromatic-com/storybook": "^1.2.19",
     "@rollup/plugin-babel": "^6.0.4",
