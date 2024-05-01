@@ -16,11 +16,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/99mini/atomic-mini-component.git",
+    "url": "https://github.com/99mini/atomic-mini-component/tree/chore/export-packages",
     "directory": "packages/utils"
   },
   "scripts": {
-    "build": "rm -rf dist esm && tsc -p tsconfig.build.json --declaration --emitDeclarationOnly --declarationDir dist && rollup -c rollup.config.js",
+    "build": "rm -rf dist && rollup -c rollup.config.js",
     "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@99mini/rollup-config": "workspace:^0.1.0",
+    "tsconfig-paths-webpack-plugin": "^4.1.0",
+    "typescript": "^5.4.2"
   }
 }

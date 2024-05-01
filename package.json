@@ -1,16 +1,14 @@
 {
-  "name": "@99mini/atomic-mini-component",
-  "version": "0.2.0-alpha.1",
-  "description": "atomic react component",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "repository": "https://github.com/99mini/atomic-mini-component",
-  "author": "0mini9939@gmail.com",
-  "keywords": [
-    "react",
-    "typescript",
-    "atomic design"
+  "name": "frontend-libraries",
+  "description": "frontend-libraries",
+  "workspaces": [
+    "packages/*",
+    "configs/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/99mini/atomic-mini-component"
+  },
   "license": "MIT",
   "private": false,
   "devDependencies": {
