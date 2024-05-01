@@ -2,26 +2,27 @@
   "name": "@99mini/rollup-config",
   "version": "0.1.0",
   "main": "./src/index.js",
-  "dependencies": {
-    "@babel/core": "^7.19.3",
-    "@rollup/plugin-babel": "^5.3.1",
-    "@rollup/plugin-commonjs": "^22.0.2",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^14.1.0",
-    "builtin-modules": "^3.3.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "rollup": "^2.79.1"
+    "rollup": "^4.13.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript-paths": "^1.5.0"
   },
   "peerDependencies": {
-    "rollup": "^2"
+    "rollup": "^4"
   },
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/99mini/atomic-mini-component.git",
+    "url": "https://github.com/99mini/atomic-mini-component.git#chore/export-packages",
     "directory": "configs/rollup"
   }
 }
