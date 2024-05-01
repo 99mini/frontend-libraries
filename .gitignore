@@ -3,10 +3,10 @@ node_modules
 *storybook.log
 # build rollup
 dist
-index.js
-index.d.ts
+/index.js
+/index.d.ts
 
 # sub dir
-./core/
-./atom/
-./molecular/
+core/*
+atom/*
+molecular/*

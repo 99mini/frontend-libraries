@@ -1,5 +1,5 @@
 {
-  "name": "@99mini/atom",
+  "name": "@99mini/event",
   "version": "0.1.0",
   "sideEffects": false,
   "exports": {
@@ -17,7 +17,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/99mini/atomic-mini-component.git",
-    "directory": "packages/atom"
+    "directory": "packages/util/event"
   },
   "scripts": {
     "build": "rm -rf dist esm && tsc -p tsconfig.build.json --declaration --emitDeclarationOnly --declarationDir dist && rollup -c rollup.config.js",
