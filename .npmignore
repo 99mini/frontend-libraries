@@ -3,9 +3,6 @@ packages/
 stories/
 *.stories.*
 .eslintrc.js
-rollup.config.mjs
+rollup.config.js
 tsconfig.json
 yarn.lock
-
-# private script
-/scripts/_*.*

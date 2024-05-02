@@ -2,13 +2,23 @@ import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import "./Ripple.scss";
 
-import { isMouseEvent, isTouchEvent } from "util/event";
+import { isMouseEvent, isTouchEvent } from "@99mini/utils";
 
-export type RippleProps = Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, keyof RipplePropsType> & RipplePropsType;
+export type RippleProps = Omit<
+  React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLSpanElement>,
+    HTMLSpanElement
+  >,
+  keyof RipplePropsType
+> &
+  RipplePropsType;
 
-type RipplePropsType = { parentRef: React.RefObject<HTMLElement>; isTouch?: boolean };
+type RipplePropsType = {
+  parentRef: React.RefObject<HTMLElement>;
+  isTouch?: boolean;
+};
 
-const Ripple = ({ ...props }: RippleProps) => {
+export const Ripple = ({ ...props }: RippleProps) => {
   const { parentRef, isTouch = false, ...htmlProps } = props;
 
   const [parentEl, setParentEl] = useState<HTMLElement | null>(null);
@@ -99,7 +109,11 @@ const Ripple = ({ ...props }: RippleProps) => {
     };
   }, [parentEl, rippleRootRef]);
 
-  return <span {...htmlProps} className={classNames("Mini-Ripple-root", htmlProps.className)} ref={rippleRootRef} />;
+  return (
+    <span
+      {...htmlProps}
+      className={classNames("Mini-Ripple-root", htmlProps.className)}
+      ref={rippleRootRef}
+    />
+  );
 };
-
-export default Ripple;

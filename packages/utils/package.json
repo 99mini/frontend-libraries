@@ -1,30 +1,29 @@
 {
   "name": "@99mini/utils",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.24",
   "sideEffects": false,
-  "exports": {
-    ".": {
-      "require": "./src/index.ts",
-      "import": "./src/index.ts"
-    },
-    "./package.json": "./package.json"
-  },
   "main": "./src/index.ts",
   "files": [
     "dist",
-    "esm"
+    "scripts"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/99mini/atomic-mini-component/tree/chore/export-packages",
+    "url": "https://github.com/99mini/atomic-mini-component",
     "directory": "packages/utils"
   },
   "scripts": {
+    "cp:postinstall": "rm -rf scripts && mkdir scripts && cp ../../scripts/postinstall.sh scripts/postinstall.sh && chmod +x scripts/postinstall.sh",
+    "prebuild": "npm run cp:postinstall",
     "build": "rm -rf dist && rollup -c rollup.config.js",
+    "deploy:only": "npm publish --access public",
+    "deploy": "npm run build && npm run deploy:only",
+    "postinstall": "./scripts/postinstall.sh",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@99mini/rollup-config": "workspace:^0.1.0",
+    "rollup": "^4.17.2",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "^5.4.2"
   }

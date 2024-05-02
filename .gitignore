@@ -2,11 +2,12 @@ node_modules
 
 *storybook.log
 # build rollup
+# exclude configs/**/index.js
 dist
 /index.js
 /index.d.ts
+packages/*/index.js
+packages/*/index.d.ts
 
-# sub dir
-core/*
-atom/*
-molecular/*
+# packages/<package-name>/scripts/*
+packages/*/scripts

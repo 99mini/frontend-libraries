@@ -1,44 +1,65 @@
-import typescript from "@rollup/plugin-typescript";
-import { dts } from "rollup-plugin-dts";
-import postcss from "rollup-plugin-postcss";
-import { typescriptPaths } from "rollup-plugin-typescript-paths";
+const typescript = require("@rollup/plugin-typescript");
+const { dts } = require("rollup-plugin-dts");
+const postcss = require("rollup-plugin-postcss");
+const { typescriptPaths } = require("rollup-plugin-typescript-paths");
+const fs = require("fs");
+const path = require("path");
 
 /**
  * @param {{packageDir: string, react?: boolean}} option
  */
-export const generateRollupConfig = ({ option }) => {
-  const indexConfig = {
-    input: `${option.packageDir}/src/index.ts`,
-    output: {
-      file: "./index.js",
-      format: "cjs",
-    },
-    external: option.react ? ["react", "classnames"] : [],
-    plugins: [
-      typescript({ tsconfig: "./tsconfig.json" }),
-      option.react &&
-        postcss({
-          inject: true,
-          extensions: [".css", ".scss"],
-        }),
-    ],
-  };
-  const typeConfig = {
-    input: `${option.packageDir}/src/index.ts`,
-    output: {
-      file: "./index.d.ts",
-      format: "es",
-    },
-    external: option.react ? ["react", "classnames"] : [],
-    plugins: [
-      typescriptPaths({ preserveExtensions: true }),
-      dts(),
-      option.react &&
-        postcss({
-          inject: false,
-        }),
-    ],
-  };
+exports.generateRollupConfig = function generateRollupConfig(option) {
+  function generateIndexConfig(subPackageDir) {
+    return {
+      input: `${option.packageDir}/src/${subPackageDir ? `${subPackageDir}/` : ""}index.ts`,
+      output: {
+        file: `dist/${subPackageDir ? `${subPackageDir}/` : ""}index.js`,
+        format: "cjs",
+      },
+      external: option.react ? ["react", "classnames"] : [],
+      plugins: [
+        typescript({ tsconfig: "./tsconfig.json" }),
+        option.react &&
+          postcss({
+            inject: true,
+            extensions: [".css", ".scss"],
+          }),
+      ],
+    };
+  }
 
-  return [indexConfig, typeConfig];
+  function generateTypeConfig(subPackageDir) {
+    return {
+      input: `${option.packageDir}/src/${subPackageDir ? `${subPackageDir}/` : ""}index.ts`,
+      output: {
+        file: `dist/${subPackageDir ? `${subPackageDir}/` : ""}index.d.ts`,
+        format: "es",
+      },
+      external: option.react ? ["react", "classnames"] : [],
+      plugins: [
+        typescriptPaths({ preserveExtensions: true }),
+        dts(),
+        option.react &&
+          postcss({
+            inject: false,
+          }),
+      ],
+    };
+  }
+
+  const subDirectories = fs
+    .readdirSync(path.join(option.packageDir, "src"), {
+      withFileTypes: true,
+    })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
+
+  const subDirecotoryConfigs = subDirectories
+    .map((subDirectory) => [
+      generateIndexConfig(subDirectory),
+      generateTypeConfig(subDirectory),
+    ])
+    .flat();
+
+  return [generateIndexConfig(), generateTypeConfig(), ...subDirecotoryConfigs];
 };

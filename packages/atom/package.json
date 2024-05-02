@@ -2,21 +2,10 @@
   "name": "@99mini/atom",
   "version": "0.1.0",
   "sideEffects": false,
-  "exports": {
-    ".": {
-      "require": "./src/index.ts",
-      "import": "./src/index.ts"
-    },
-    "./package.json": "./package.json"
-  },
   "main": "./src/index.ts",
-  "files": [
-    "dist",
-    "esm"
-  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/99mini/atomic-mini-component/tree/chore/export-packages",
+    "url": "https://github.com/99mini/atomic-mini-component",
     "directory": "packages/atom"
   },
   "scripts": {
@@ -24,8 +13,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "classnames": "^2.5.1",
-    "@99mini/utils": "workspace:^0.1.0"
+    "@99mini/core": "workspace:^",
+    "@99mini/utils": "workspace:^",
+    "classnames": "^2.5.1"
   },
   "devDependencies": {
     "@99mini/rollup-config": "workspace:^0.1.0",
@@ -59,6 +49,7 @@
     "postcss": "^8.4.38",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rollup": "^4.17.2",
     "sass": "^1.72.0",
     "sass-loader": "^14.1.1",
     "storybook": "^8.0.0",

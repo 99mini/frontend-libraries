@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import "./Toast.scss";
 
-export type ToastProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & ToastPropsType;
+export type ToastProps = React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+> &
+  ToastPropsType;
 
 export type ToastType = {
   message?: string;
@@ -44,10 +48,14 @@ const ToastIcon = ({ iconType }: { iconType: ToastType["type"] }) => {
   }
 };
 
-const Toast = ({ ...props }: ToastProps) => {
+export const Toast = ({ ...props }: ToastProps) => {
   const { message, type, duration, open, onClose, ...htmlProps } = { ...props };
 
-  const toast: ToastType = { message: message, type: type ?? "default", duration: duration ?? 3000 };
+  const toast: ToastType = {
+    message: message,
+    type: type ?? "default",
+    duration: duration ?? 3000,
+  };
 
   const [isAnimated, setIsAnimated] = useState(true);
 
@@ -67,8 +75,20 @@ const Toast = ({ ...props }: ToastProps) => {
   }, [open]);
 
   return (
-    <div className={classNames("Mini-Toast-root", open ? "open" : isAnimated ? "close" : "fade-out")}>
-      <div {...htmlProps} className={classNames("Mini-Toast", toast.type && toast.type !== "default" ? "Mini-Toast-layout" : "", props.className)}>
+    <div
+      className={classNames(
+        "Mini-Toast-root",
+        open ? "open" : isAnimated ? "close" : "fade-out",
+      )}
+    >
+      <div
+        {...htmlProps}
+        className={classNames(
+          "Mini-Toast",
+          toast.type && toast.type !== "default" ? "Mini-Toast-layout" : "",
+          props.className,
+        )}
+      >
         {props.children || (
           <>
             {toast.type && toast.type !== "default" && (
@@ -76,12 +96,12 @@ const Toast = ({ ...props }: ToastProps) => {
                 <ToastIcon iconType={toast.type} />
               </div>
             )}
-            <span className={classNames("Mini-Toast-message")}>{toast.message ?? "toast"}</span>
+            <span className={classNames("Mini-Toast-message")}>
+              {toast.message ?? "toast"}
+            </span>
           </>
         )}
       </div>
     </div>
   );
 };
-
-export default Toast;
