@@ -9,7 +9,7 @@ source "$SCRIPT_DIR/_constants.sh"
 
 directory="$1"
 component_name="$2"
-index_file="src/$directory/index.ts"
+index_file="packages/$directory/index.ts"
 
 # Check if index.ts file exists
 if [ -f "$index_file" ]; then
@@ -21,7 +21,7 @@ if [ -f "$index_file" ]; then
 
   # Append export line to the end of the file
   echo "export { default as $component_name } from \"./$component_name\";" >>"$index_file"
-  echo -e "src/$directory"
+  echo -e "packages/$directory"
   echo -e "${YELLOW}  + $index_file${NC}"
 else
   echo -e "Error:\t[$0]\t$index_file does not exist."

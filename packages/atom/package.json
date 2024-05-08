@@ -1,17 +1,33 @@
 {
-  "name": "frontend-libraries",
-  "description": "frontend-libraries",
-  "packageManager": "yarn@4.1.1",
-  "workspaces": [
-    "configs/*",
-    "packages/*"
+  "name": "@99mini/atom",
+  "version": "0.1.1",
+  "sideEffects": false,
+  "main": "./src/index.ts",
+  "files": [
+    "dist",
+    "scripts"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/99mini/atomic-mini-component"
+    "url": "https://github.com/99mini/atomic-mini-component",
+    "directory": "packages/atom"
   },
-  "license": "MIT",
+  "scripts": {
+    "cp:postinstall": "rm -rf scripts && mkdir scripts && cp ../../scripts/postinstall.sh scripts/postinstall.sh && chmod +x scripts/postinstall.sh",
+    "prebuild": "npm run cp:postinstall",
+    "build": "rm -rf dist && rollup -c rollup.config.js",
+    "deploy:only": "npm publish --access public",
+    "deploy": "npm run build && npm run deploy:only",
+    "postinstall": "./scripts/postinstall.sh",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@99mini/core": "^0.1.1",
+    "@99mini/utils": "^0.1.1",
+    "classnames": "^2.5.1"
+  },
   "devDependencies": {
+    "@99mini/rollup-config": "workspace:^0.1.0",
     "@chromatic-com/storybook": "^1.2.19",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
@@ -42,11 +58,7 @@
     "postcss": "^8.4.38",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rollup": "^4.13.0",
-    "rollup-plugin-dts": "^6.1.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-typescript-paths": "^1.5.0",
+    "rollup": "^4.17.2",
     "sass": "^1.72.0",
     "sass-loader": "^14.1.1",
     "storybook": "^8.0.0",
@@ -54,18 +66,7 @@
     "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "^5.4.2"
   },
-  "dependencies": {
-    "classnames": "^2.5.1",
-    "style-inject": "^0.3.0"
-  },
   "peerDependencies": {
-    "react": "^18.0.0"
-  },
-  "scripts": {
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "build": "node ./scripts/_build",
-    "deploy": "npm run build && yarn publish --access public",
-    "postinstall": "node ./scripts/postinstall"
+    "react": "^18"
   }
 }

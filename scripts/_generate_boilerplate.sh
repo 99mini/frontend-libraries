@@ -3,15 +3,15 @@
 # EX.
 # scripts/_generate_boilerplate.sh atom Button
 # 1. Create Base File
-# /src/atom/
+# /packages/atom/
 #   - Button.tsx
 #   - Button.scss
 #   - Button.stories.tsx
 #   - index.ts
 #
-# Update src/atom/index.ts file
+# Update packages/atom/index.ts file
 # ```
-# // src/atom/index.ts
+# // packages/atom/index.ts
 # ...
 # export { default as Button } from "./Button";
 # ```
@@ -29,11 +29,11 @@ directory=$1
 filename=$2
 
 # Create directory if it doesn't exist
-if [ ! -d "src/$directory/$filename" ]; then
-	mkdir -p "src/$directory/$filename"
-	echo -e "${GREEN}+ src/$directory/$filename${NC}"
+if [ ! -d "packages/$directory/$filename" ]; then
+	mkdir -p "packages/$directory/$filename"
+	echo -e "${GREEN}+ packages/$directory/$filename${NC}"
 else
-	echo -e "src/$directory/$filename"
+	echo -e "packages/$directory/$filename"
 fi
 
 # Initialize arrays to store output and exit codes
