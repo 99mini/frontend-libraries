@@ -5,7 +5,7 @@ import { typescriptPaths } from "rollup-plugin-typescript-paths";
 
 export default [
   {
-    input: "src/index.ts",
+    input: "packages/index.ts",
     output: {
       file: "./index.js",
       format: "cjs",
@@ -20,7 +20,7 @@ export default [
     ],
   },
   {
-    input: "src/core/index.ts",
+    input: "packages/core/index.ts",
     output: {
       file: "./core/index.js",
       format: "cjs",
@@ -36,7 +36,7 @@ export default [
     ],
   },
   {
-    input: "src/atom/index.ts",
+    input: "packages/atom/index.ts",
     output: {
       file: "./atom/index.js",
       format: "cjs",
@@ -52,7 +52,7 @@ export default [
     ],
   },
   {
-    input: "src/molecular/index.ts",
+    input: "packages/molecular/index.ts",
     output: {
       file: "./molecular/index.js",
       format: "cjs",
@@ -68,7 +68,7 @@ export default [
     ],
   },
   {
-    input: "src/index.ts",
+    input: "packages/index.ts",
     output: {
       file: "./index.d.ts",
       format: "es",
@@ -83,7 +83,7 @@ export default [
     ],
   },
   {
-    input: "src/core/index.ts",
+    input: "packages/core/index.ts",
     output: {
       file: "./core/index.d.ts",
       format: "es",
@@ -98,7 +98,7 @@ export default [
     ],
   },
   {
-    input: "src/atom/index.ts",
+    input: "packages/atom/index.ts",
     output: {
       file: "./atom/index.d.ts",
       format: "es",
@@ -113,7 +113,7 @@ export default [
     ],
   },
   {
-    input: "src/molecular/index.ts",
+    input: "packages/molecular/index.ts",
     output: {
       file: "./molecular/index.d.ts",
       format: "es",

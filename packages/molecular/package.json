@@ -1,0 +1,27 @@
+{
+  "name": "@99mini/molecular",
+  "version": "0.1.1",
+  "sideEffects": false,
+  "main": "./src/index.ts",
+  "files": [
+    "dist",
+    "scripts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/99mini/atomic-mini-component",
+    "directory": "packages/molecular"
+  },
+  "scripts": {
+    "cp:postinstall": "rm -rf scripts && mkdir scripts && cp ../../scripts/postinstall.sh scripts/postinstall.sh && chmod +x scripts/postinstall.sh",
+    "prebuild": "npm run cp:postinstall",
+    "build": "rm -rf dist && rollup -c rollup.config.js",
+    "deploy:only": "npm publish --access public",
+    "deploy": "npm run build && npm run deploy:only",
+    "postinstall": "./scripts/postinstall.sh",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "rollup": "^4.17.2"
+  }
+}
