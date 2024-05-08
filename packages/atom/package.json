@@ -1,6 +1,6 @@
 {
   "name": "@99mini/atom",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.1",
   "sideEffects": false,
   "main": "./src/index.ts",
   "files": [
@@ -22,8 +22,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@99mini/core": "^0.1.0-alpha.2",
-    "@99mini/utils": "^0.1.0-alpha.24",
+    "@99mini/core": "^0.1.1",
+    "@99mini/utils": "^0.1.1",
     "classnames": "^2.5.1"
   },
   "devDependencies": {
