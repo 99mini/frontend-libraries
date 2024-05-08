@@ -1,20 +1,29 @@
 {
   "name": "@99mini/atom",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.1",
   "sideEffects": false,
   "main": "./src/index.ts",
+  "files": [
+    "dist",
+    "scripts"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/99mini/atomic-mini-component",
     "directory": "packages/atom"
   },
   "scripts": {
+    "cp:postinstall": "rm -rf scripts && mkdir scripts && cp ../../scripts/postinstall.sh scripts/postinstall.sh && chmod +x scripts/postinstall.sh",
+    "prebuild": "npm run cp:postinstall",
     "build": "rm -rf dist && rollup -c rollup.config.js",
+    "deploy:only": "npm publish --access public",
+    "deploy": "npm run build && npm run deploy:only",
+    "postinstall": "./scripts/postinstall.sh",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@99mini/core": "workspace:^",
-    "@99mini/utils": "workspace:^",
+    "@99mini/core": "^0.1.0-alpha.2",
+    "@99mini/utils": "^0.1.0-alpha.24",
     "classnames": "^2.5.1"
   },
   "devDependencies": {
