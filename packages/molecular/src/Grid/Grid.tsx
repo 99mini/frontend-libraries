@@ -279,3 +279,5 @@ const GridItemIrregular = ({ ...props }: GridItemProps) => {
     </div>
   );
 };
+
+export default Grid;

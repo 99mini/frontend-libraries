@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -12,10 +12,5 @@
     "allowSyntheticDefaultImports": true,
     "removeComments": true
   },
-  "exclude": [
-    "./dist",
-    "./node_modules",
-    "./packages/**/*.test.tsx",
-    "./packages/**/*.stories.tsx"
-  ]
+  "exclude": ["dist", "node_modules", "**/*.stories.*", "**/*.mdx"]
 }
