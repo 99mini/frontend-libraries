@@ -6,9 +6,9 @@ $ yarn add @99mini/yni-ui
 
 # Usage
 
-[@99mini/atom](https://github.com/99mini/atomic-mini-component/blob/main/packages/atom/README.md)
-[@99mini/molecular](https://github.com/99mini/atomic-mini-component/blob/main/packages/molecular/README.md)
-[@99mini/core](https://github.com/99mini/atomic-mini-component/blob/main/packages/core/README.md)
+[@99mini/atom](https://github.com/99mini/frontend-libraries/blob/main/packages/atom/README.md)
+[@99mini/molecular](https://github.com/99mini/frontend-libraries/blob/main/packages/molecular/README.md)
+[@99mini/core](https://github.com/99mini/frontend-libraries/blob/main/packages/core/README.md)
 
 # Dependency
 
