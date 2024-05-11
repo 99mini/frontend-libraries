@@ -51,7 +51,7 @@ graph LR
 ### generate boilerplate
 
 ```bash
-$ scripts/_generate_boilerplate.sh <core | atom | molecular | yni-ui | utils > <Filename>
+$ scripts/_generate_boilerplate.sh <core | atom | molecular | yni-ui | utils> <Filename>
 ```
 
 ### 배포
