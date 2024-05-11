@@ -5,13 +5,13 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@99mini/atom@workspace:packages/atom":
+"@99mini/atom@npm:0.1.1, @99mini/atom@workspace:packages/atom":
   version: 0.0.0-use.local
   resolution: "@99mini/atom@workspace:packages/atom"
   dependencies:
-    "@99mini/core": "workspace:^"
+    "@99mini/core": "npm:^0.1.1"
     "@99mini/rollup-config": "workspace:^0.1.0"
-    "@99mini/utils": "workspace:^"
+    "@99mini/utils": "npm:^0.1.1"
     "@chromatic-com/storybook": "npm:^1.2.19"
     "@rollup/plugin-babel": "npm:^6.0.4"
     "@rollup/plugin-commonjs": "npm:^25.0.7"
@@ -55,16 +55,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@99mini/core@workspace:^, @99mini/core@workspace:packages/core":
+"@99mini/core@npm:0.1.1, @99mini/core@npm:^0.1.1, @99mini/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@99mini/core@workspace:packages/core"
   dependencies:
-    "@99mini/utils": "workspace:^"
+    "@99mini/utils": "npm:^0.1.1"
     rollup: "npm:^4.17.2"
   languageName: unknown
   linkType: soft
 
-"@99mini/molecular@workspace:packages/molecular":
+"@99mini/molecular@npm:0.1.1, @99mini/molecular@workspace:packages/molecular":
   version: 0.0.0-use.local
   resolution: "@99mini/molecular@workspace:packages/molecular"
   dependencies:
@@ -90,7 +90,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@99mini/utils@workspace:^, @99mini/utils@workspace:packages/utils":
+"@99mini/utils@npm:^0.1.1, @99mini/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@99mini/utils@workspace:packages/utils"
   dependencies:
@@ -98,6 +98,17 @@ __metadata:
     rollup: "npm:^4.17.2"
     tsconfig-paths-webpack-plugin: "npm:^4.1.0"
     typescript: "npm:^5.4.2"
+  languageName: unknown
+  linkType: soft
+
+"@99mini/yni-ui@workspace:packages/yni-ui":
+  version: 0.0.0-use.local
+  resolution: "@99mini/yni-ui@workspace:packages/yni-ui"
+  dependencies:
+    "@99mini/atom": "npm:0.1.1"
+    "@99mini/core": "npm:0.1.1"
+    "@99mini/molecular": "npm:0.1.1"
+    rollup: "npm:^4.17.2"
   languageName: unknown
   linkType: soft
 
