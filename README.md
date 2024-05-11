@@ -2,36 +2,11 @@
 
 ## 설치 및 사용
 
-### 설치
-
-[npmjs](https://www.npmjs.com/) 공식 사이트 [@99mini/atomic-mini-component](https://www.npmjs.com/package/@99mini/atomic-mini-component) 를 방문하거나 터미널의 명령어를 실행합니다.
-
-```bash
-$ npm i @99mini/atomic-mini-component
-```
-
-`or`
-
-```bash
-$ yarn add @99mini/atomic-mini-component
-```
-
-### 사용
-
-```javascript
-// import from root directory
-import { Button } from "@99mini/atomic-mini-component";
-
-// import from package (atom, molecular, core, ...)
-import { Textarea } from "@99mini/atomic-mini-component/atom";
-import { Ripple } from "@99mini/atomic-mini-component/core";
-
-/**
- * to be update
- * import from sub package
- */
-// import Textarea from "@99mini/atomic-mini-component/atom/Textarea";
-```
+1. [@99mini/utils](https://github.com/99mini/frontend-libraries/blob/main/packages/utils/README.md)
+2. [@99mini/core](https://github.com/99mini/frontend-libraries/blob/main/packages/core/README.md)
+3. [@99mini/atom](https://github.com/99mini/frontend-libraries/blob/main/packages/atom/README.md)
+4. [@99mini/molecular](https://github.com/99mini/frontend-libraries/blob/main/packages/molecular/README.md)
+5. [@99mini/yni-ui](https://github.com/99mini/frontend-libraries/blob/main/packages/yni-ui/README.md)
 
 ## 개발
 
@@ -59,17 +34,24 @@ $ npm run storybook
 graph LR
     classDef toBeUpdated fill:#EBEBE445, color: #C6C6C6
 
+
     atom[📁atom] ----> molecular[📁molecular]
+
+    core[📁core] ----> atom & molecular & organism
+
+    utils[📁utils] ----> atom & core
+
+    atom & molecular & core ----> yni-ui[📁yni-ui]
 
     atom & molecular ----> organism[📁organism - to be update]:::toBeUpdated
 
-    core[📁core] ----> atom & molecular & organism
+
 ```
 
 ### generate boilerplate
 
 ```bash
-$ scripts/_generate_boilerplate.sh <core | atom | molecular> <Filename>
+$ scripts/_generate_boilerplate.sh <core | atom | molecular | yni-ui | utils > <Filename>
 ```
 
 ### 배포
@@ -78,7 +60,3 @@ $ scripts/_generate_boilerplate.sh <core | atom | molecular> <Filename>
 $ npm login
 $ yarn publish --access public
 ```
-
-## 참고 블로그
-
-1. [Rollup.js를 이용한 React 컴포넌트 라이브러리](https://blog.itcode.dev/projects/2022/06/10/react-components-library-starter#6.-storybook-%EC%84%A4%EC%B9%98)
