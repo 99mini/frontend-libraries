@@ -117,3 +117,5 @@ export const Ripple = ({ ...props }: RippleProps) => {
     />
   );
 };
+
+export default Ripple;

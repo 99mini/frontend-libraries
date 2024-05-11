@@ -1,16 +1,20 @@
-import type { Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import React from "react";
 
 import Toast, { ToastProps } from "./Toast";
+import classNames from "classnames/bind";
 import styles from "./Toast.scss";
-import classNames from "classnames";
 
-export default {
+const meta = {
   component: Toast,
   title: "molecular/Toast",
   tags: ["autodocs"],
 } satisfies Meta<typeof Toast>;
+
+export default meta;
+
+type Story = StoryObj<typeof Toast>;
 
 const cx = classNames.bind(styles);
 

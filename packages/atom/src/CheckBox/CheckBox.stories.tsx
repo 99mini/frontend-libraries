@@ -1,16 +1,20 @@
-import type { Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import React from "react";
 
 import CheckBox, { CheckBoxProps } from "./CheckBox";
+import classNames from "classnames/bind";
 import styles from "./CheckBox.scss";
-import classNames from "classnames";
 
-export default {
+const meta = {
   component: CheckBox,
   title: "Atom/CheckBox",
   tags: ["autodocs"],
 } satisfies Meta<typeof CheckBox>;
+
+export default meta;
+
+type Story = StoryObj<typeof CheckBox>;
 
 const cx = classNames.bind(styles);
 

@@ -46,3 +46,5 @@ export const Button = ({ href, ...props }: ButtonProps) => {
     </button>
   );
 };
+
+export default Button;

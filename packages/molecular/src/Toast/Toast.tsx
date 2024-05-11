@@ -105,3 +105,5 @@ export const Toast = ({ ...props }: ToastProps) => {
     </div>
   );
 };
+
+export default Toast;

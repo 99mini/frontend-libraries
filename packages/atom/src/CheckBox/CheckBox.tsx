@@ -63,3 +63,5 @@ export const CheckBox = ({ ...props }: CheckBoxProps) => {
 
   return <CheckBoxRoot {...inputProps} />;
 };
+
+export default CheckBox;

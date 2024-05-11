@@ -1,19 +1,22 @@
-import type { Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import React, { CSSProperties } from "react";
 
 import Grid, { GridItem, GridProps } from "./Grid";
+import classNames from "classnames/bind";
 import styles from "./Grid.scss";
-import classNames from "classnames";
 
-export default {
+const meta = {
   component: Grid,
   title: "molecular/Grid",
   tags: ["autodocs"],
 } satisfies Meta<typeof Grid>;
 
-const cx = classNames.bind(styles);
+export default meta;
 
+type Story = StoryObj<typeof Grid>;
+
+const cx = classNames.bind(styles);
 /**
  *
  * @description generate random width(range: 200px ~ 600px), height(range:300px ~ 500px)
