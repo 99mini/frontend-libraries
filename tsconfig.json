@@ -12,12 +12,6 @@
     "allowSyntheticDefaultImports": true,
     "removeComments": true
   },
-  "include": [
-    "./packages/**/*.*",
-    "./packages/atom/**/*.*",
-    "./packages/core/**/*.*",
-    "./packages/molecular/**/*.*"
-  ],
   "exclude": [
     "./dist",
     "./node_modules",
