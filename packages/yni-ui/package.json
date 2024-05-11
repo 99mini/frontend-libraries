@@ -1,0 +1,32 @@
+{
+  "name": "@99mini/yni-ui",
+  "version": "0.1.0",
+  "sideEffects": false,
+  "main": "./src/index.ts",
+  "files": [
+    "dist",
+    "scripts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/99mini/atomic-mini-component",
+    "directory": "packages/yni-ui"
+  },
+  "scripts": {
+    "cp:postinstall": "rm -rf scripts && mkdir scripts && cp ../../scripts/postinstall.sh scripts/postinstall.sh && chmod +x scripts/postinstall.sh",
+    "prebuild": "npm run cp:postinstall",
+    "build": "rm -rf dist && rollup -c rollup.config.js",
+    "deploy:only": "npm publish --access public",
+    "deploy": "npm run build && npm run deploy:only",
+    "postinstall": "./scripts/postinstall.sh",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "rollup": "^4.17.2"
+  },
+  "dependencies": {
+    "@99mini/atom": "0.1.1",
+    "@99mini/core": "0.1.1",
+    "@99mini/molecular": "0.1.1"
+  }
+}
