@@ -10,6 +10,11 @@
 
 ## 개발
 
+### 개발 환경
+
+- node v18
+- ubuntu v20
+
 ### install dependency
 
 ```bash
@@ -19,7 +24,7 @@ $ npm install
 `or`
 
 ```bash
-$ yarn install
+$ yarn
 ```
 
 ### 로컬

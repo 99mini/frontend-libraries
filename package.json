@@ -1,7 +1,7 @@
 {
   "name": "frontend-libraries",
   "description": "frontend-libraries",
-  "packageManager": "yarn@4.1.1",
+  "packageManager": "yarn@4.2.2",
   "workspaces": [
     "configs/*",
     "packages/*"
