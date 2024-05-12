@@ -1,0 +1,18 @@
+.Mini-Tabs {
+  display: flex;
+  width: fit-content;
+
+  border-bottom: 1px solid gray;
+
+  .Mini-Tab {
+    .Mini-Tab-Button {
+      border: none;
+      border-radius: unset;
+      box-sizing: unset;
+
+      &.active {
+        border-bottom: 2px solid black;
+      }
+    }
+  }
+}
