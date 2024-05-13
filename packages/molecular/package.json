@@ -1,6 +1,6 @@
 {
   "name": "@99mini/molecular",
-  "version": "0.1.1",
+  "version": "0.1.2-alpha.0",
   "sideEffects": false,
   "main": "./src/index.ts",
   "files": [
@@ -14,8 +14,6 @@
   },
   "scripts": {
     "cp:postinstall": "rm -rf scripts && mkdir scripts && cp ../../scripts/postinstall.sh scripts/postinstall.sh && chmod +x scripts/postinstall.sh",
-    "prebuild": "npm run cp:postinstall",
-    "preinstall": "npm run prebuild",
     "build": "rm -rf dist && rollup -c rollup.config.js",
     "deploy:only": "npm publish --access public",
     "deploy": "npm run build && npm run deploy:only",
