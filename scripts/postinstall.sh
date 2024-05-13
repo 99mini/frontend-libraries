@@ -12,6 +12,6 @@ fi
 # copy files from dist folder into root project folder
 # echo 'Copying files from dist/types folder into root project folder...'
 
-cp -r dist/ . && rm -rf dist
+cp -r dist/* . && rm -rf dist
 
 echo 'Postinstall done!'
