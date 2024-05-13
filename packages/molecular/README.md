@@ -11,11 +11,17 @@ $ yarn add @99mini/molecular
 - [Grid](#Grid)
   - [GridItem](#GridItem)
 - [Toast](#Toast)
+- [Tabs](#Tabs)
+  - [Tab](#Tab)
 
 ## Grid
 
 ### GridItem
 
 ## Toast
+
+## Tabs
+
+### Tab
 
 # Dependency
