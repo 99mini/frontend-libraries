@@ -67,6 +67,7 @@
     "build-storybook": "storybook build",
     "build": "node ./scripts/_build",
     "deploy": "npm run build && yarn publish --access public",
-    "postinstall": "node ./scripts/postinstall"
+    "postinstall": "node ./scripts/postinstall",
+    "installDeps": "sh ./scripts/installDeps.sh"
   }
 }
