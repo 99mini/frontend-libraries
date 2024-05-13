@@ -64,7 +64,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@99mini/molecular@npm:0.1.1, @99mini/molecular@workspace:packages/molecular":
+"@99mini/molecular@npm:0.1.1":
+  version: 0.1.1
+  resolution: "@99mini/molecular@npm:0.1.1"
+  checksum: 10c0/7167d1fb2356625bfcd7830417163a5d465713ba348b9f2c5e076c056f7827dafa5c9eb811a186a906a313844519fd0fc034b49b97c0c00d751694ba964dac39
+  languageName: node
+  linkType: hard
+
+"@99mini/molecular@workspace:packages/molecular":
   version: 0.0.0-use.local
   resolution: "@99mini/molecular@workspace:packages/molecular"
   dependencies:
