@@ -5,53 +5,26 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@99mini/atom@npm:0.1.1, @99mini/atom@workspace:packages/atom":
+"@99mini/atom@npm:0.1.1":
+  version: 0.1.1
+  resolution: "@99mini/atom@npm:0.1.1"
+  dependencies:
+    "@99mini/core": "npm:^0.1.1"
+    "@99mini/utils": "npm:^0.1.1"
+    classnames: "npm:^2.5.1"
+  peerDependencies:
+    react: ^18
+  checksum: 10c0/5eb0e349ec3ee892d45f0f86b11ebaf0847a7274f7db8dfdd5183356804377384234451f9c9034529aff74496dbc9099a80d493ef29949f33dd2ba9a696c4d44
+  languageName: node
+  linkType: hard
+
+"@99mini/atom@workspace:packages/atom":
   version: 0.0.0-use.local
   resolution: "@99mini/atom@workspace:packages/atom"
   dependencies:
     "@99mini/core": "npm:^0.1.1"
-    "@99mini/rollup-config": "workspace:^0.1.0"
     "@99mini/utils": "npm:^0.1.1"
-    "@chromatic-com/storybook": "npm:^1.2.19"
-    "@rollup/plugin-babel": "npm:^6.0.4"
-    "@rollup/plugin-commonjs": "npm:^25.0.7"
-    "@rollup/plugin-node-resolve": "npm:^15.2.3"
-    "@rollup/plugin-typescript": "npm:^11.1.6"
-    "@storybook/addon-essentials": "npm:^8.0.0"
-    "@storybook/addon-interactions": "npm:^8.0.0"
-    "@storybook/addon-links": "npm:^8.0.0"
-    "@storybook/addon-onboarding": "npm:^8.0.0"
-    "@storybook/addon-webpack5-compiler-swc": "npm:^1.0.2"
-    "@storybook/blocks": "npm:^8.0.0"
-    "@storybook/preset-scss": "npm:^1.0.3"
-    "@storybook/react": "npm:^8.0.0"
-    "@storybook/react-webpack5": "npm:^8.0.0"
-    "@storybook/test": "npm:^8.0.0"
-    "@types/react": "npm:^18.2.65"
-    "@typescript-eslint/eslint-plugin": "npm:^7.2.0"
-    "@typescript-eslint/parser": "npm:^7.2.0"
     classnames: "npm:^2.5.1"
-    css-loader: "npm:^6.10.0"
-    eslint: "npm:^8.57.0"
-    eslint-config-airbnb: "npm:^19.0.4"
-    eslint-plugin-import: "npm:^2.29.1"
-    eslint-plugin-jsx-a11y: "npm:^6.8.0"
-    eslint-plugin-react: "npm:^7.34.0"
-    eslint-plugin-react-hooks: "npm:^4.6.0"
-    eslint-plugin-sort-keys-fix: "npm:^1.1.2"
-    eslint-plugin-storybook: "npm:^0.8.0"
-    postcss: "npm:^8.4.38"
-    react: "npm:^18.2.0"
-    react-dom: "npm:^18.2.0"
-    rollup: "npm:^4.17.2"
-    sass: "npm:^1.72.0"
-    sass-loader: "npm:^14.1.1"
-    storybook: "npm:^8.0.0"
-    style-loader: "npm:^3.3.4"
-    tsconfig-paths-webpack-plugin: "npm:^4.1.0"
-    typescript: "npm:^5.4.2"
-  peerDependencies:
-    react: ^18
   languageName: unknown
   linkType: soft
 
@@ -3671,6 +3644,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-dom@npm:^18.3.0":
+  version: 18.3.0
+  resolution: "@types/react-dom@npm:18.3.0"
+  dependencies:
+    "@types/react": "npm:*"
+  checksum: 10c0/6c90d2ed72c5a0e440d2c75d99287e4b5df3e7b011838cdc03ae5cd518ab52164d86990e73246b9d812eaf02ec351d74e3b4f5bd325bf341e13bf980392fd53b
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:*":
+  version: 18.3.2
+  resolution: "@types/react@npm:18.3.2"
+  dependencies:
+    "@types/prop-types": "npm:*"
+    csstype: "npm:^3.0.2"
+  checksum: 10c0/9fb2f1fcf7e889ee4ea7c3c5978df595c66e770e5fd3a245dbdd2589b9b911524c11dab25a6275d8af4e336e4cb5fa850d447884b84c335a187a338c89df99ba
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:^16.8.0 || ^17.0.0 || ^18.0.0, @types/react@npm:^18.2.65":
   version: 18.3.1
   resolution: "@types/react@npm:18.3.1"
@@ -7204,6 +7196,7 @@ __metadata:
     "@storybook/react-webpack5": "npm:^8.0.0"
     "@storybook/test": "npm:^8.0.0"
     "@types/react": "npm:^18.2.65"
+    "@types/react-dom": "npm:^18.3.0"
     "@typescript-eslint/eslint-plugin": "npm:^7.2.0"
     "@typescript-eslint/parser": "npm:^7.2.0"
     classnames: "npm:^2.5.1"
