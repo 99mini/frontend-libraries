@@ -95,9 +95,13 @@ type Story = StoryObj<typeof $filename>;
 
 const cx = classNames.bind(styles);
 
-const Template = (args: ${filename}Props) => { return (<$filename {...args} />)};
+const Template = (args: ${filename}Props) => { 
+  return (
+    <$filename {...args} ></$filename>
+  )
+};
 
-export const Default = Template.bind({});
+export const Default: Story = Template.bind({});
 EOF
 fi
 

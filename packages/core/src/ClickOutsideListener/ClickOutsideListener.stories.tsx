@@ -50,4 +50,4 @@ const Template = (args: ClickOutsideListenerProps) => {
   );
 };
 
-export const Default = Template.bind({});
+export const Default: Story = Template.bind({});
