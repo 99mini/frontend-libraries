@@ -1,2 +1,13 @@
-export const isMouseEvent = (event: TouchEvent | MouseEvent): event is MouseEvent => event && "screenX" in event;
-export const isTouchEvent = (event: TouchEvent | MouseEvent): event is TouchEvent => event && "touches" in event;
+export const isMouseEvent = (
+  event: TouchEvent | MouseEvent,
+): event is MouseEvent => event && "screenX" in event;
+export const isTouchEvent = (
+  event: TouchEvent | MouseEvent,
+): event is TouchEvent => event && "touches" in event;
+
+const Event = {
+  isMouseEvent,
+  isTouchEvent,
+};
+
+export default Event;

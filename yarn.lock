@@ -5,50 +5,31 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@99mini/atom@npm:0.1.1":
-  version: 0.1.1
-  resolution: "@99mini/atom@npm:0.1.1"
-  dependencies:
-    "@99mini/core": "npm:^0.1.1"
-    "@99mini/utils": "npm:^0.1.1"
-    classnames: "npm:^2.5.1"
-  peerDependencies:
-    react: ^18
-  checksum: 10c0/5eb0e349ec3ee892d45f0f86b11ebaf0847a7274f7db8dfdd5183356804377384234451f9c9034529aff74496dbc9099a80d493ef29949f33dd2ba9a696c4d44
-  languageName: node
-  linkType: hard
-
-"@99mini/atom@workspace:packages/atom":
+"@99mini/atom@npm:0.2.1-alpha.0, @99mini/atom@npm:^0.2.1-alpha.0, @99mini/atom@workspace:packages/atom":
   version: 0.0.0-use.local
   resolution: "@99mini/atom@workspace:packages/atom"
   dependencies:
-    "@99mini/core": "npm:^0.1.1"
-    "@99mini/utils": "npm:^0.1.1"
+    "@99mini/core": "npm:^0.2.1-alpha.0"
+    "@99mini/utils": "npm:^0.1.1-alpha.0"
     classnames: "npm:^2.5.1"
-  languageName: unknown
-  linkType: soft
-
-"@99mini/core@npm:0.1.1, @99mini/core@npm:^0.1.1, @99mini/core@workspace:packages/core":
-  version: 0.0.0-use.local
-  resolution: "@99mini/core@workspace:packages/core"
-  dependencies:
-    "@99mini/utils": "npm:^0.1.1"
     rollup: "npm:^4.17.2"
   languageName: unknown
   linkType: soft
 
-"@99mini/molecular@npm:0.1.1":
-  version: 0.1.1
-  resolution: "@99mini/molecular@npm:0.1.1"
-  checksum: 10c0/7167d1fb2356625bfcd7830417163a5d465713ba348b9f2c5e076c056f7827dafa5c9eb811a186a906a313844519fd0fc034b49b97c0c00d751694ba964dac39
-  languageName: node
-  linkType: hard
+"@99mini/core@npm:^0.2.1-alpha.0, @99mini/core@workspace:packages/core":
+  version: 0.0.0-use.local
+  resolution: "@99mini/core@workspace:packages/core"
+  dependencies:
+    "@99mini/utils": "npm:^0.1.1-alpha.0"
+    rollup: "npm:^4.17.2"
+  languageName: unknown
+  linkType: soft
 
-"@99mini/molecular@workspace:packages/molecular":
+"@99mini/molecular@npm:^0.1.4-alpha.0, @99mini/molecular@workspace:packages/molecular":
   version: 0.0.0-use.local
   resolution: "@99mini/molecular@workspace:packages/molecular"
   dependencies:
-    "@99mini/atom": "npm:0.1.1"
+    "@99mini/atom": "npm:0.2.1-alpha.0"
     rollup: "npm:^4.17.2"
   languageName: unknown
   linkType: soft
@@ -71,7 +52,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@99mini/utils@npm:^0.1.1, @99mini/utils@workspace:packages/utils":
+"@99mini/utils@npm:^0.1.1-alpha.0, @99mini/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@99mini/utils@workspace:packages/utils"
   dependencies:
@@ -86,9 +67,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@99mini/yni-ui@workspace:packages/yni-ui"
   dependencies:
-    "@99mini/atom": "npm:0.1.1"
-    "@99mini/core": "npm:0.1.1"
-    "@99mini/molecular": "npm:0.1.1"
+    "@99mini/atom": "npm:^0.2.1-alpha.0"
+    "@99mini/core": "npm:^0.2.1-alpha.0"
+    "@99mini/molecular": "npm:^0.1.4-alpha.0"
+    "@99mini/utils": "npm:^0.1.1-alpha.0"
     rollup: "npm:^4.17.2"
   languageName: unknown
   linkType: soft

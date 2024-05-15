@@ -1,11 +1,11 @@
 {
   "name": "@99mini/utils",
-  "version": "0.1.1",
+  "version": "0.1.1-alpha.0",
   "sideEffects": false,
   "main": "./src/index.ts",
   "files": [
     "dist",
-    "scripts"
+    "scripts/postinstall.sh"
   ],
   "repository": {
     "type": "git",

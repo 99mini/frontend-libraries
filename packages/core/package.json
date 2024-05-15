@@ -5,7 +5,7 @@
   "main": "./src/index.ts",
   "files": [
     "dist",
-    "scripts"
+    "scripts/postinstall.sh"
   ],
   "repository": {
     "type": "git",
@@ -24,6 +24,6 @@
     "rollup": "^4.17.2"
   },
   "dependencies": {
-    "@99mini/utils": "^0.1.1"
+    "@99mini/utils": "^0.1.1-alpha.0"
   }
 }

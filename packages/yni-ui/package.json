@@ -1,11 +1,11 @@
 {
   "name": "@99mini/yni-ui",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.0",
   "sideEffects": false,
   "main": "./src/index.ts",
   "files": [
     "dist",
-    "scripts"
+    "scripts/postinstall.sh"
   ],
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "cp:postinstall": "rm -rf scripts && mkdir scripts && cp ../../scripts/postinstall.sh scripts/postinstall.sh && chmod +x scripts/postinstall.sh",
-    "build": "rm -rf dist && rollup -c rollup.config.js",
+    "build": "./scripts/build.sh",
     "deploy:only": "npm publish --access public",
     "deploy": "npm run build && npm run deploy:only",
     "postinstall": "./scripts/postinstall.sh",
@@ -24,8 +24,9 @@
     "rollup": "^4.17.2"
   },
   "dependencies": {
-    "@99mini/atom": "0.1.1",
-    "@99mini/core": "0.1.1",
-    "@99mini/molecular": "0.1.1"
+    "@99mini/atom": "^0.2.1-alpha.0",
+    "@99mini/core": "^0.2.1-alpha.0",
+    "@99mini/molecular": "^0.1.4-alpha.0",
+    "@99mini/utils": "^0.1.1-alpha.0"
   }
 }
