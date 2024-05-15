@@ -18,7 +18,7 @@ type BadgePropsType = {
   };
 };
 
-const Badge = ({
+export const Badge = ({
   badgeContent,
   color,
   max,
