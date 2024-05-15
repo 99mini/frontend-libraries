@@ -41,7 +41,7 @@ const Badge = ({
           `Mini-Badge-${position.vertical}-${position.horizontal}`,
         )}
       >
-        {badgeContent}
+        {badgeContent && Math.min(badgeContent, max || badgeContent)}
       </span>
     </span>
   );
