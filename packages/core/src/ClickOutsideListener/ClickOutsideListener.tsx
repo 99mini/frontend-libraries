@@ -9,12 +9,14 @@ export type ClickOutsideListenerProps = React.DetailedHTMLProps<
 
 type ClickOutsideListenerPropsType = {
   onClickOutside: () => void;
+  children: React.ReactNode;
 };
 
 export const ClickOutsideListener = ({
+  onClickOutside,
+  children,
   ...props
 }: ClickOutsideListenerProps) => {
-  const { onClickOutside } = props;
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -46,7 +48,7 @@ export const ClickOutsideListener = ({
       className={classNames("Mini-ClickOutsideListener", props.className)}
       ref={ref}
     >
-      {props.children}
+      {children}
     </div>
   );
 };
