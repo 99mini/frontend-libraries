@@ -4,17 +4,17 @@
 # EX.
 # scripts/gcb.sh atom Button
 # 1. Create Base File
-# /packages/atom/
+# /packages/atom/Button/src
 #   - Button.tsx
 #   - Button.scss
 #   - Button.stories.tsx
 #   - index.ts
 #
-# Update packages/atom/index.ts file
+# Update packages/atom/src/index.ts file
 # ```
-# // packages/atom/index.ts
+# // packages/atom/src/index.ts
 # ...
-# export { default as Button } from "./Button";
+# export * from "./Button";
 # ```
 
 # Check if correct number of arguments provided
