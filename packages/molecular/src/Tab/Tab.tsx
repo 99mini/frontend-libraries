@@ -152,7 +152,7 @@ export const Tab = ({ ...props }: TabProps) => {
 
     setTabWidth(tabRect.width);
     setTabLeft(tabRect.left - tabsLeft);
-  }, [animation, isActive]);
+  }, [animation, isActive, tabsLeft]);
 
   return (
     <div
