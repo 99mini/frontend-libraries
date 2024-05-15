@@ -9,21 +9,25 @@ source "$SCRIPT_DIR/_constants.sh"
 
 directory="$1"
 component_name="$2"
-index_file="packages/$directory/index.ts"
+index_file="packages/$directory/src/index.ts"
 
 # Check if index.ts file exists
 if [ -f "$index_file" ]; then
   # Check if the export line already exists
-  if grep -q "export { default as $component_name } from \"./$component_name\";" "$index_file"; then
+  if grep -q "export \* from \"./$component_name\";" "$index_file"; then
     echo -e "Skip:\tExport line already exists in $index_file"
-    exit 0
+    exit 1
   fi
 
   # Append export line to the end of the file
-  echo "export { default as $component_name } from \"./$component_name\";" >>"$index_file"
+  echo "export * from \"./$component_name\";" >>"$index_file"
   echo -e "packages/$directory"
   echo -e "${YELLOW}  + $index_file${NC}"
-else
-  echo -e "Error:\t[$0]\t$index_file does not exist."
-  exit 1
+
+  exit 0
 fi
+
+echo -e "${GREEN}+ packages/$directory/src/index.ts"
+
+touch "$index_file"
+echo "export * from \"./$component_name\";" >>"$index_file${NC}"

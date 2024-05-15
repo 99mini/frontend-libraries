@@ -1,19 +1,20 @@
-# _generate_boilerplate.sh TARGET_DIR FILE
+# gcb.sh TARGET_DIR FILE
+# gcb is an abbreviation for generate component boilerplate
 #
 # EX.
-# scripts/_generate_boilerplate.sh atom Button
+# scripts/gcb.sh atom Button
 # 1. Create Base File
-# /packages/atom/
+# /packages/atom/Button/src
 #   - Button.tsx
 #   - Button.scss
 #   - Button.stories.tsx
 #   - index.ts
 #
-# Update packages/atom/index.ts file
+# Update packages/atom/src/index.ts file
 # ```
-# // packages/atom/index.ts
+# // packages/atom/src/index.ts
 # ...
-# export { default as Button } from "./Button";
+# export * from "./Button";
 # ```
 
 # Check if correct number of arguments provided
@@ -29,11 +30,11 @@ directory=$1
 filename=$2
 
 # Create directory if it doesn't exist
-if [ ! -d "packages/$directory/$filename" ]; then
-	mkdir -p "packages/$directory/$filename"
-	echo -e "${GREEN}+ packages/$directory/$filename${NC}"
+if [ ! -d "packages/$directory/src/$filename" ]; then
+	mkdir -p "packages/$directory/src/$filename"
+	echo -e "${GREEN}+ packages/$directory/src/$filename${NC}"
 else
-	echo -e "packages/$directory/$filename"
+	echo -e "packages/$directory/src/$filename"
 fi
 
 # Initialize arrays to store output and exit codes

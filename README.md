@@ -53,10 +53,12 @@ graph LR
 
 ```
 
-### generate boilerplate
+### generate component boilerplate
+
+`gcb` is an abbreviation for generate component boilerplate
 
 ```bash
-$ scripts/_generate_boilerplate.sh <core | atom | molecular | yni-ui | utils> <Filename>
+$ scripts/gcb.sh <core | atom | molecular | yni-ui | utils> <Filename>
 ```
 
 ### 배포
