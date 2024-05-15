@@ -23,6 +23,7 @@ if [ "$extension" = "ts" ]; then
 
   cat <<EOF >"$index_file_path"
 export * from "./${filename}";
+export { default } from "./${filename}";
 EOF
 
   echo -e "${GREEN}  + $index_file_path${NC}"
