@@ -5,8 +5,6 @@ import React from "react";
 import ClickOutsideListener, {
   ClickOutsideListenerProps,
 } from "./ClickOutsideListener";
-import styles from "./ClickOutsideListener.scss";
-import classNames from "classnames";
 
 const meta = {
   component: ClickOutsideListener,
@@ -17,8 +15,6 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof ClickOutsideListener>;
-
-const cx = classNames.bind(styles);
 
 const Modal = () => {
   return (

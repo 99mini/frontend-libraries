@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import classNames from "classnames";
-import "./ClickOutsideListener.scss";
 
 export type ClickOutsideListenerProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
