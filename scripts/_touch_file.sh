@@ -61,7 +61,7 @@ export type ${filename}Props = React.DetailedHTMLProps<
 
 type ${filename}PropsType = {};
 
-const $filename = ({...props}: ${filename}Props) => {
+export const $filename = ({...props}: ${filename}Props) => {
   return (
     <div {...props} className={classNames("Mini-${filename}", props.className)}>
       {props.children ?? "$filename"}
@@ -75,7 +75,7 @@ EOF
 # Create stories.tsx file
 elif [ "$extension" = "stories.tsx" ]; then
   cat <<EOF >"$file_path"
-import type { Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import React from "react";
 
@@ -83,11 +83,15 @@ import $filename, { ${filename}Props } from "./$filename";
 import styles from "./$filename.scss";
 import classNames from "classnames";
 
-export default {
+const meta = {
   component: $filename,
   title: "$directory/$filename",
   tags: ["autodocs"],
 } satisfies Meta<typeof $filename>;
+
+export default meta;
+
+type Story = StoryObj<typeof $filename>;
 
 const cx = classNames.bind(styles);
 
