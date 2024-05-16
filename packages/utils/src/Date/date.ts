@@ -51,6 +51,8 @@ export const WEEKDAYS_KOR = ["일", "월", "화", "수", "목", "금", "토"] as
 
 export type WeekdayNameKorType = (typeof WEEKDAYS_KOR)[number];
 
+export type LocaleType = "en" | "kor";
+
 /**
  * @description get end of number of days in the month
  * @override endOfYaerMonth: (date: Date) => number
@@ -58,7 +60,6 @@ export type WeekdayNameKorType = (typeof WEEKDAYS_KOR)[number];
  * @param month
  * @returns {number} end of number of days in the month
  */
-
 export const endOfYaerMonth = (year: number, month: MonthType): number => {
   if (month === 2) {
     return year % 4 === 0 ? 29 : 28;
@@ -68,21 +69,13 @@ export const endOfYaerMonth = (year: number, month: MonthType): number => {
 };
 
 /**
- * @description get month name English
+ * @description get month name
  * @param month
+ * @param locale default "kor"
  * @returns
  */
-export const getMonthNameEng = (month: MonthType) => {
-  return MONTHS_ENG[month - 1];
-};
-
-/**
- * @description get month name Korean
- * @param month
- * @returns
- */
-export const getMonthNameKor = (month: MonthType) => {
-  return `${month}월`;
+export const getMonthName = (month: MonthType, locale: LocaleType = "kor") => {
+  return locale === "kor" ? `${month}월` : MONTHS_ENG[month - 1];
 };
 
 /**
@@ -95,34 +88,29 @@ export const getWeekdayIndex = (
   year: number,
   month: MonthType,
   day: number,
-): WeekdayType => {
-  const date = new Date(year, month - 1, day);
-
-  if (!date) {
-    throw new Error("Invalid date");
+): WeekdayType | undefined => {
+  if (year < 0) {
+    return undefined;
   }
 
-  const index = date.getDay();
+  if (endOfYaerMonth(year, month) < day || day < 1) {
+    return undefined;
+  }
 
-  return index as WeekdayType;
+  return new Date(year, month - 1, day).getDay() as WeekdayType;
 };
 
 /**
- * @description get weekday name English
+ * @description get weekday name
  * @param weekday
+ * @param locale default "kor"
  * @returns
  */
-export const getWeekdayNameEng = (weekday: WeekdayType) => {
-  return WEEKDAYS_ENG[weekday];
-};
-
-/**
- * @description get weekday name Korean
- * @param weekday
- * @returns
- */
-export const getWeekdayNameKor = (weekday: WeekdayType) => {
-  return WEEKDAYS_KOR[weekday];
+export const getWeekdayName = (
+  weekday: WeekdayType,
+  locale: LocaleType = "kor",
+) => {
+  return locale === "kor" ? WEEKDAYS_KOR[weekday] : WEEKDAYS_ENG[weekday];
 };
 
 /**
@@ -163,38 +151,43 @@ export const addDays = (date: Date, days: number): Date => {
  * @param year
  * @returns
  */
-export const aliasBeforeDate = (before: Date, current: Date): string => {
+export const aliasBeforeDate = (
+  before: Date,
+  current: Date,
+  locale: LocaleType = "kor",
+): string => {
+  const isKor = locale === "kor";
+
+  const aliasEng = (unit: string, count: number) =>
+    `${unit}${count > 1 ? "s" : ""} ago`;
+
   const diff = diffDays(before, current);
 
-  if (diff < 1) {
-    const diffHour = Math.floor(
-      (current.getTime() - before.getTime()) / 1000 / 60 / 60,
-    );
-
-    if (diffHour < 1) {
-      const diffMin = Math.floor(
-        (current.getTime() - before.getTime()) / 1000 / 60,
-      );
-
-      if (diffMin < 1) {
-        return "방금 전";
-      }
-
-      return `${diffMin}분 전`;
-    }
-
-    if (diffHour < 24) {
-      return `${diffHour}시간 전`;
-    }
+  if (diff >= 365) {
+    const year = Math.floor(diff / 365);
+    return `${year}${isKor ? "년 전" : aliasEng("year", year)}`;
   }
 
-  if (diff < 30) {
-    return `${diff}일 전`;
+  if (diff < 365 && diff >= 30) {
+    const month = Math.floor(diff / 30);
+    return `${month}${isKor ? "달 전" : aliasEng("month", month)}`;
   }
 
-  if (diff < 365) {
-    return `${Math.floor(diff / 30)}달 전`;
+  if (diff < 30 && diff >= 1) {
+    const day = Math.floor(diff);
+    return `${day}${isKor ? "일 전" : aliasEng("day", day)}`;
   }
 
-  return `${Math.floor(diff / 365)}년 전`;
+  const minute = Math.floor((current.getTime() - before.getTime()) / 1000 / 60);
+
+  if (minute >= 60) {
+    const hour = Math.floor(minute / 60);
+    return `${hour}${isKor ? "시간 전" : aliasEng("hour", hour)}`;
+  }
+
+  if (minute >= 1) {
+    return `${minute}${isKor ? "분 전" : aliasEng("minute", minute)}`;
+  }
+
+  return isKor ? "방금 전" : "just now";
 };
