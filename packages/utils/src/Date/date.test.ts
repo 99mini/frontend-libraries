@@ -62,10 +62,6 @@ describe("getMonthName", () => {
   });
 });
 
-describe("getMonthNameEng", () => {});
-
-describe("getMonthNameKor", () => {});
-
 describe("getWeekdayIndex", () => {
   test("요일 인덱스", () => {
     expect(getWeekdayIndex(2024, 5, 12)).toBe(0);
