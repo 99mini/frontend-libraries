@@ -23,7 +23,7 @@ __metadata:
   resolution: "@99mini/atom@workspace:packages/atom"
   dependencies:
     "@99mini/core": "npm:^0.1.1"
-    "@99mini/utils": "npm:^0.1.1"
+    "@99mini/utils": "npm:^0.2.0"
     classnames: "npm:^2.5.1"
   languageName: unknown
   linkType: soft
@@ -35,7 +35,7 @@ __metadata:
     "@99mini/atom": "npm:0.1.1"
     "@99mini/core": "npm:0.1.1"
     "@99mini/molecular": "npm:0.1.1"
-    "@99mini/utils": "npm:0.1.1"
+    "@99mini/utils": "npm:0.2.0"
     rollup: "npm:^4.17.2"
   languageName: unknown
   linkType: soft
@@ -53,7 +53,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@99mini/core@workspace:packages/core"
   dependencies:
-    "@99mini/utils": "npm:^0.1.1"
+    "@99mini/utils": "npm:^0.2.0"
     rollup: "npm:^4.17.2"
   languageName: unknown
   linkType: soft
@@ -92,7 +92,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@99mini/utils@npm:0.1.1, @99mini/utils@npm:^0.1.1, @99mini/utils@workspace:packages/utils":
+"@99mini/utils@npm:0.2.0, @99mini/utils@npm:^0.2.0, @99mini/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@99mini/utils@workspace:packages/utils"
   dependencies:
@@ -109,6 +109,13 @@ __metadata:
     typescript: "npm:^5.4.2"
   languageName: unknown
   linkType: soft
+
+"@99mini/utils@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@99mini/utils@npm:0.1.1"
+  checksum: 10c0/4bda5b0a53165878d5e89a4f3f942f24f50c6a9914ceffc6751ac207d2cda0dd8d91abbbce7820a309ef5a24295c3ac895b2f10a491ce601472177e58b47f3a2
+  languageName: node
+  linkType: hard
 
 "@99mini/yni-ui@workspace:packages/yni-ui":
   version: 0.0.0-use.local

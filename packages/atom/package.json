@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@99mini/core": "^0.1.1",
-    "@99mini/utils": "^0.1.1"
+    "@99mini/utils": "^0.2.0"
   },
   "devDependencies": {
     "classnames": "^2.5.1"

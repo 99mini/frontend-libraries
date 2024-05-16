@@ -18,10 +18,12 @@ type Story = StoryObj<typeof Calendar>;
 
 const cx = classNames.bind(styles);
 
-const Template = (args: CalendarProps) => { 
-  return (
-    <Calendar {...args} ></Calendar>
-  )
+const Template = (args: CalendarProps) => {
+  return <Calendar {...args}></Calendar>;
 };
 
 export const Default: Story = Template.bind({});
+Default.args = {
+  year: 2024,
+  month: 5,
+};

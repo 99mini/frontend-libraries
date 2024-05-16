@@ -1,3 +1,73 @@
 .Mini-Calendar {
+  width: fit-content;
 
+  .Mini-Calendar-Header {
+  }
+
+  .Mini-Calendar-Cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 4px;
+
+    transition: background-color 300ms;
+
+    .Mini-Calender-Cell-Button {
+      min-width: unset;
+
+      width: inherit;
+      height: inherit;
+
+      border: none;
+      border-radius: inherit;
+
+      padding: 8px;
+    }
+
+    &.selected {
+      background-color: #f0f0f0;
+    }
+  }
+
+  .Mini-Calendar-Weekdays {
+    display: flex;
+    flex-wrap: wrap;
+
+    padding: 0;
+    margin: 0;
+
+    list-style-type: none;
+
+    .Mini-Calendar-Weekday {
+    }
+  }
+
+  .Mini-Calendar-Days {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    padding: 0;
+    margin: 0;
+
+    list-style-type: none;
+
+    .Mini-Calendar-Row {
+      display: flex;
+
+      padding: 0;
+      margin: 0;
+
+      list-style-type: none;
+
+      .Mini-Calendar-Day {
+        &.empty {
+        }
+      }
+    }
+  }
 }
