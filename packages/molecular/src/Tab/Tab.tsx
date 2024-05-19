@@ -85,7 +85,7 @@ export const Tabs = ({ animation = true, ...props }: TabsProps) => {
       <div
         {...rest}
         className={classNames(
-          "Mini-Tabs",
+          "YnI-Tabs",
           className,
           animation ? "animation" : "",
         )}
@@ -94,7 +94,7 @@ export const Tabs = ({ animation = true, ...props }: TabsProps) => {
         {children}
         {animation && (
           <div
-            className={classNames("Mini-Tabs-Indicator")}
+            className={classNames("YnI-Tabs-Indicator")}
             style={{
               width: tabWidth,
               left: tabLeft,
@@ -157,13 +157,13 @@ export const Tab = ({ ...props }: TabProps) => {
   return (
     <div
       {...divProps}
-      className={classNames("Mini-Tab", isActive ? "active" : "", className)}
+      className={classNames("YnI-Tab", isActive ? "active" : "", className)}
       ref={tabRef}
     >
       <Button
         href={href}
         onClick={handleClick}
-        className={classNames("Mini-Tab-Button")}
+        className={classNames("YnI-Tab-Button")}
       >
         {props.children}
       </Button>

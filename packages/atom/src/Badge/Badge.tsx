@@ -27,18 +27,18 @@ export const Badge = ({
 }: BadgeProps) => {
   const { className, children, ...rest } = props;
   return (
-    <span {...rest} className={classNames("Mini-Badge-root", className)}>
+    <span {...rest} className={classNames("YnI-Badge-root", className)}>
       {children}
       <span
         style={{ backgroundColor: color }}
         className={classNames(
-          "Mini-Badge",
-          badgeContent === undefined && "Mini-Badge-dot",
+          "YnI-Badge",
+          badgeContent === undefined && "YnI-Badge-dot",
           max &&
             badgeContent !== undefined &&
             badgeContent > max &&
-            "Mini-Badge-max",
-          `Mini-Badge-${position.vertical}-${position.horizontal}`,
+            "YnI-Badge-max",
+          `YnI-Badge-${position.vertical}-${position.horizontal}`,
         )}
       >
         {badgeContent && Math.min(badgeContent, max || badgeContent)}

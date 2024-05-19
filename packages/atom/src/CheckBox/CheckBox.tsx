@@ -24,7 +24,7 @@ const CheckBoxRoot = ({
   return (
     <label>
       <span
-        className={classNames("Mini-CheckBox-root", className)}
+        className={classNames("YnI-CheckBox-root", className)}
         aria-disabled={disabled}
         aria-required={required}
         ref={checkboxRef}
@@ -33,7 +33,7 @@ const CheckBoxRoot = ({
           {...inputProps}
           disabled={disabled}
           required={required}
-          className={classNames("Mini-CheckBox")}
+          className={classNames("YnI-CheckBox")}
           type="checkbox"
         />
         <Ripple parentRef={checkboxRef} isTouch />
@@ -49,14 +49,14 @@ export const CheckBox = ({ ...props }: CheckBoxProps) => {
     return (
       <label
         className={classNames(
-          "Mini-Label-root",
-          `Mini-Label-layout--${labelPlacement}`,
+          "YnI-Label-root",
+          `YnI-Label-layout--${labelPlacement}`,
         )}
         aria-disabled={inputProps.disabled}
         aria-required={inputProps.required}
       >
         <CheckBoxRoot {...inputProps} />
-        <span className={classNames("Mini-Label-text")}>{label}</span>
+        <span className={classNames("YnI-Label-text")}>{label}</span>
       </label>
     );
   }

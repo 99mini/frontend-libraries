@@ -51,78 +51,53 @@ export const Calendar = ({
   const handleSelectDate = (date: number) => setSelectedDate(date);
 
   return (
-    <div {...props} className={classNames("Mini-Calendar", props.className)}>
-      <header className={classNames("Mini-Calendar-Header")}>
+    <div {...props} className={classNames("YnI-Calendar", props.className)}>
+      <header className={classNames("YnI-Calendar-Header")}>
         {`${year}${isKor ? "년" : ""}, ${monthName}`}
       </header>
-      <ol className={classNames("Mini-Calendar-Weekdays")}>
+      <ol className={classNames("YnI-Calendar-Weekdays")}>
         {weekdays.map((weekday) => (
           <li
             key={weekday}
-            className={classNames(
-              "Mini-Calendar-Weekday",
-              "Mini-Calendar-Cell",
-            )}
+            className={classNames("YnI-Calendar-Weekday", "YnI-Calendar-Cell")}
           >
             {weekday}
           </li>
         ))}
       </ol>
-      <ol className={classNames("Mini-Calendar-Days")}>
-        {Array.from({ length: weeksCount }).map((_, week) => {
-          return (
-            <ol key={week} className={classNames("Mini-Calendar-Row")}>
-              {Array.from({ length: 7 }).map((_, index) => {
-                const day = week * 7 + index + 1 - startWeekdayIndex;
-                if (week === 0 && index < startWeekdayIndex) {
-                  return (
-                    <li
-                      key={day}
-                      className={classNames(
-                        "Mini-Calendar-Day",
-                        "Mini-Calendar-Cell",
-                        "empty",
-                      )}
-                    />
-                  );
-                }
+      <ol className={classNames("YnI-Calendar-Days")}>
+        {Array.from({ length: weeksCount }).map((_, week) => (
+          <ol key={week} className={classNames("YnI-Calendar-Row")}>
+            {Array.from({ length: 7 }).map((_, index) => {
+              const day = week * 7 + index + 1 - startWeekdayIndex;
+              const emptyCondition =
+                (week === 0 && index < startWeekdayIndex) || day > endOfMonth;
 
-                if (day > endOfMonth) {
-                  return (
-                    <li
-                      key={day}
-                      className={classNames(
-                        "Mini-Calendar-Day",
-                        "Mini-Calendar-Cell",
-                        "empty",
-                      )}
-                    />
-                  );
-                }
-
-                return (
-                  <li
-                    key={day}
-                    className={classNames(
-                      "Mini-Calendar-Day",
-                      "Mini-Calendar-Cell",
-                      {
-                        selected: selectedDate === day,
-                      },
-                    )}
-                  >
+              return (
+                <li
+                  key={day}
+                  className={classNames(
+                    "YnI-Calendar-Day",
+                    "YnI-Calendar-Cell",
+                    {
+                      selected: selectedDate === day,
+                      empty: emptyCondition,
+                    },
+                  )}
+                >
+                  {!emptyCondition && (
                     <Button
-                      className={classNames("Mini-Calender-Cell-Button")}
+                      className={classNames("YnI-Calender-Cell-Button")}
                       onClick={() => handleSelectDate(day)}
                     >
                       {day}
                     </Button>
-                  </li>
-                );
-              })}
-            </ol>
-          );
-        })}
+                  )}
+                </li>
+              );
+            })}
+          </ol>
+        ))}
       </ol>
     </div>
   );

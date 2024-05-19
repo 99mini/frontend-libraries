@@ -112,7 +112,7 @@ export const Ripple = ({ ...props }: RippleProps) => {
   return (
     <span
       {...htmlProps}
-      className={classNames("Mini-Ripple-root", htmlProps.className)}
+      className={classNames("YnI-Ripple-root", htmlProps.className)}
       ref={rippleRootRef}
     />
   );

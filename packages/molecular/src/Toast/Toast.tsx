@@ -77,26 +77,26 @@ export const Toast = ({ ...props }: ToastProps) => {
   return (
     <div
       className={classNames(
-        "Mini-Toast-root",
+        "YnI-Toast-root",
         open ? "open" : isAnimated ? "close" : "fade-out",
       )}
     >
       <div
         {...htmlProps}
         className={classNames(
-          "Mini-Toast",
-          toast.type && toast.type !== "default" ? "Mini-Toast-layout" : "",
+          "YnI-Toast",
+          toast.type && toast.type !== "default" ? "YnI-Toast-layout" : "",
           props.className,
         )}
       >
         {props.children || (
           <>
             {toast.type && toast.type !== "default" && (
-              <div className={classNames("Mini-Toast-icon")}>
+              <div className={classNames("YnI-Toast-icon")}>
                 <ToastIcon iconType={toast.type} />
               </div>
             )}
-            <span className={classNames("Mini-Toast-message")}>
+            <span className={classNames("YnI-Toast-message")}>
               {toast.message ?? "toast"}
             </span>
           </>

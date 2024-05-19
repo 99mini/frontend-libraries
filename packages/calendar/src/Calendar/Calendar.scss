@@ -1,10 +1,10 @@
-.Mini-Calendar {
+.YnI-Calendar {
   width: fit-content;
 
-  .Mini-Calendar-Header {
+  .YnI-Calendar-Header {
   }
 
-  .Mini-Calendar-Cell {
+  .YnI-Calendar-Cell {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,11 +12,13 @@
     width: 40px;
     height: 40px;
 
+    margin: 4px;
+
     border-radius: 4px;
 
     transition: background-color 300ms;
 
-    .Mini-Calender-Cell-Button {
+    .YnI-Calender-Cell-Button {
       min-width: unset;
 
       width: inherit;
@@ -33,7 +35,7 @@
     }
   }
 
-  .Mini-Calendar-Weekdays {
+  .YnI-Calendar-Weekdays {
     display: flex;
     flex-wrap: wrap;
 
@@ -42,11 +44,11 @@
 
     list-style-type: none;
 
-    .Mini-Calendar-Weekday {
+    .YnI-Calendar-Weekday {
     }
   }
 
-  .Mini-Calendar-Days {
+  .YnI-Calendar-Days {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -56,7 +58,7 @@
 
     list-style-type: none;
 
-    .Mini-Calendar-Row {
+    .YnI-Calendar-Row {
       display: flex;
 
       padding: 0;
@@ -64,7 +66,7 @@
 
       list-style-type: none;
 
-      .Mini-Calendar-Day {
+      .YnI-Calendar-Day {
         &.empty {
         }
       }

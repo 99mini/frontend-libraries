@@ -42,7 +42,7 @@ fi
 # Create the file with proper indentation
 if [ "$extension" = "scss" ]; then
   cat <<EOF >"$file_path"
-.Mini-${filename} {
+.YnI-${filename} {
 
 }
 EOF
@@ -64,7 +64,7 @@ type ${filename}PropsType = {};
 
 export const $filename = ({...props}: ${filename}Props) => {
   return (
-    <div {...props} className={classNames("Mini-${filename}", props.className)}>
+    <div {...props} className={classNames("YnI-${filename}", props.className)}>
       {props.children ?? "$filename"}
     </div>
   );
