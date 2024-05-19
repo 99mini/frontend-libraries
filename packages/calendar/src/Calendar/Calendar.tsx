@@ -42,6 +42,8 @@ export const Calendar = ({
     throw new Error("invalid date");
   }
 
+  const today = new Date().getDate();
+
   const weeksCount = Math.ceil((startWeekdayIndex + endOfMonth) / 7);
 
   const [selectedDate, setSelectedDate] = useState<number | undefined>(
@@ -82,6 +84,7 @@ export const Calendar = ({
                     {
                       selected: selectedDate === day,
                       empty: emptyCondition,
+                      today: today === day,
                     },
                   )}
                 >

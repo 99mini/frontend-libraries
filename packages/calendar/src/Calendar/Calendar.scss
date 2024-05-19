@@ -2,6 +2,12 @@
   width: fit-content;
 
   .YnI-Calendar-Header {
+    display: flex;
+    justify-content: center;
+
+    font-size: 1.125rem;
+    line-height: 26px;
+    font-weight: 600;
   }
 
   .YnI-Calendar-Cell {
@@ -29,10 +35,6 @@
 
       padding: 8px;
     }
-
-    &.selected {
-      background-color: #f0f0f0;
-    }
   }
 
   .YnI-Calendar-Weekdays {
@@ -45,6 +47,8 @@
     list-style-type: none;
 
     .YnI-Calendar-Weekday {
+      text-transform: uppercase;
+      font-weight: 500;
     }
   }
 
@@ -67,7 +71,22 @@
       list-style-type: none;
 
       .YnI-Calendar-Day {
+        transition: background-color 300ms;
+
         &.empty {
+        }
+
+        &.selected:not(.today) {
+          background-color: rgb(240, 240, 240);
+        }
+
+        &.today {
+          background-color: rgb(87, 87, 233);
+
+          .YnI-Calender-Cell-Button > span {
+            color: rgb(240, 240, 240);
+            font-weight: 600;
+          }
         }
       }
     }
