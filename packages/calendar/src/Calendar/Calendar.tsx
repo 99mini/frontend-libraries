@@ -21,12 +21,14 @@ export type CalendarProps = React.DetailedHTMLProps<
 
 type CalendarPropsType = {
   locale?: LocaleType;
+  range?: boolean;
   year: number;
   month: MonthType;
 };
 
 export const Calendar = ({
   locale = "kor",
+  range = false,
   year,
   month,
   ...props
@@ -46,11 +48,23 @@ export const Calendar = ({
 
   const weeksCount = Math.ceil((startWeekdayIndex + endOfMonth) / 7);
 
-  const [selectedDate, setSelectedDate] = useState<number | undefined>(
-    undefined,
-  );
+  const [selectedDateList, setSelectedDateList] = useState<
+    number[] | undefined
+  >(undefined);
 
-  const handleSelectDate = (date: number) => setSelectedDate(date);
+  const handleSelectDate = (date: number) => {
+    setSelectedDateList((prevDateList) => {
+      if (prevDateList === undefined) {
+        return [date];
+      }
+
+      if (prevDateList.length > 0 && prevDateList[0] < date) {
+        return [prevDateList[0], date];
+      }
+
+      return [date];
+    });
+  };
 
   return (
     <div {...props} className={classNames("YnI-Calendar", props.className)}>
@@ -82,9 +96,22 @@ export const Calendar = ({
                     "YnI-Calendar-Day",
                     "YnI-Calendar-Cell",
                     {
-                      selected: selectedDate === day,
+                      selected: selectedDateList?.includes(day),
                       empty: emptyCondition,
                       today: today === day,
+                      range:
+                        range &&
+                        selectedDateList?.length === 2 &&
+                        selectedDateList[0] <= day &&
+                        selectedDateList[1] >= day,
+                      "range-start":
+                        range &&
+                        selectedDateList?.length === 2 &&
+                        selectedDateList?.[0] === day,
+                      "range-end":
+                        range &&
+                        selectedDateList?.length === 2 &&
+                        selectedDateList?.[1] === day,
                     },
                   )}
                 >
@@ -93,7 +120,8 @@ export const Calendar = ({
                       className={classNames("YnI-Calender-Cell-Button")}
                       onClick={() => handleSelectDate(day)}
                     >
-                      {day}
+                      <span className={classNames("background")} />
+                      <span className={classNames("day")}>{day}</span>
                     </Button>
                   )}
                 </li>

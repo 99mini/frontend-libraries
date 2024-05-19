@@ -18,11 +18,9 @@
     width: 40px;
     height: 40px;
 
-    margin: 4px;
+    margin: 4px 0;
 
-    border-radius: 4px;
-
-    transition: background-color 300ms;
+    border-radius: 50%;
 
     .YnI-Calender-Cell-Button {
       min-width: unset;
@@ -71,22 +69,43 @@
       list-style-type: none;
 
       .YnI-Calendar-Day {
-        transition: background-color 300ms;
+        .YnI-Calender-Cell-Button .background {
+          position: absolute;
+          overflow: hidden;
+          z-index: -1;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          border-radius: 50%;
+        }
 
         &.empty {
         }
 
-        &.selected:not(.today) {
+        &.selected .YnI-Calender-Cell-Button .background {
           background-color: rgb(240, 240, 240);
         }
 
-        &.today {
-          background-color: rgb(87, 87, 233);
-
-          .YnI-Calender-Cell-Button > span {
-            color: rgb(240, 240, 240);
-            font-weight: 600;
+        &.selected {
+          &.range-start .YnI-Calender-Cell-Button .background {
+            background-color: rgb(240, 240, 240);
+            border-radius: 50% 0 0 50%;
           }
+          &.range-end .YnI-Calender-Cell-Button .background {
+            background-color: rgb(240, 240, 240);
+            border-radius: 0 50% 50% 0;
+          }
+        }
+
+        &.range .YnI-Calender-Cell-Button .background {
+          border-radius: 0;
+          background-color: rgb(240, 240, 240);
+        }
+
+        &.today .YnI-Calender-Cell-Button {
+          color: rgb(87, 87, 233);
+          font-weight: 600;
         }
       }
     }
