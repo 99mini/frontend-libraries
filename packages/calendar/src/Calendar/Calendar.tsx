@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import classNames from "classnames";
+
+import { Button } from "@99mini/atom";
 import {
   LocaleType,
   MonthType,
@@ -11,7 +13,6 @@ import {
 } from "@99mini/utils";
 
 import "./Calendar.scss";
-import { Button } from "@99mini/atom";
 
 export type CalendarProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
@@ -22,17 +23,39 @@ export type CalendarProps = React.DetailedHTMLProps<
 type CalendarPropsType = {
   locale?: LocaleType;
   range?: boolean;
+  pagenation?: boolean;
+
   year: number;
   month: MonthType;
+};
+
+const today = new Date();
+
+/**
+ * TODO: utils로 빼기
+ */
+const equalDate = (date1: Date, date2: Date) => {
+  return (
+    date1.getFullYear() === date2.getFullYear() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getDate() === date2.getDate()
+  );
 };
 
 export const Calendar = ({
   locale = "kor",
   range = false,
-  year,
-  month,
+  pagenation = false,
+  year: initialYear,
+  month: initialMonth,
   ...props
 }: CalendarProps) => {
+  const [year, setYear] = useState(initialYear);
+  const [month, setMonth] = useState(initialMonth);
+  const [selectedDateList, setSelectedDateList] = useState<Date[] | undefined>(
+    undefined,
+  );
+
   const isKor = locale === "kor";
   const monthName = getMonthName(month, locale);
   const weekdays = isKor ? WEEKDAYS_KOR : WEEKDAYS_ENG;
@@ -44,15 +67,9 @@ export const Calendar = ({
     throw new Error("invalid date");
   }
 
-  const today = new Date().getDate();
-
   const weeksCount = Math.ceil((startWeekdayIndex + endOfMonth) / 7);
 
-  const [selectedDateList, setSelectedDateList] = useState<
-    number[] | undefined
-  >(undefined);
-
-  const handleSelectDate = (date: number) => {
+  const handleSelectDate = (date: Date) => {
     setSelectedDateList((prevDateList) => {
       if (prevDateList === undefined) {
         return [date];
@@ -66,10 +83,48 @@ export const Calendar = ({
     });
   };
 
+  const handlePrevMonth = () => {
+    if (month === 1) {
+      setYear(year - 1);
+      setMonth(12);
+      return;
+    }
+
+    setMonth((month - 1) as MonthType);
+  };
+
+  const handleNextMonth = () => {
+    if (month === 12) {
+      setYear(year + 1);
+      setMonth(1);
+      return;
+    }
+
+    setMonth((month + 1) as MonthType);
+  };
+
   return (
     <div {...props} className={classNames("YnI-Calendar", props.className)}>
       <header className={classNames("YnI-Calendar-Header")}>
-        {`${year}${isKor ? "년" : ""}, ${monthName}`}
+        {pagenation && (
+          <Button
+            className={classNames("pagenation")}
+            onClick={handlePrevMonth}
+          >
+            prev
+          </Button>
+        )}
+        <div
+          className={classNames("year-month")}
+        >{`${year}${isKor ? "년" : ""}, ${monthName}`}</div>
+        {pagenation && (
+          <Button
+            className={classNames("pagenation")}
+            onClick={handleNextMonth}
+          >
+            next
+          </Button>
+        )}
       </header>
       <ol className={classNames("YnI-Calendar-Weekdays")}>
         {weekdays.map((weekday) => (
@@ -86,6 +141,7 @@ export const Calendar = ({
           <ol key={week} className={classNames("YnI-Calendar-Row")}>
             {Array.from({ length: 7 }).map((_, index) => {
               const day = week * 7 + index + 1 - startWeekdayIndex;
+              const dayDate = new Date(year, month - 1, day);
               const emptyCondition =
                 (week === 0 && index < startWeekdayIndex) || day > endOfMonth;
 
@@ -96,29 +152,33 @@ export const Calendar = ({
                     "YnI-Calendar-Day",
                     "YnI-Calendar-Cell",
                     {
-                      selected: selectedDateList?.includes(day),
+                      selected:
+                        selectedDateList &&
+                        selectedDateList.some((selected) => {
+                          return equalDate(selected, dayDate);
+                        }),
                       empty: emptyCondition,
-                      today: today === day,
+                      today: equalDate(today, dayDate),
                       range:
                         range &&
                         selectedDateList?.length === 2 &&
-                        selectedDateList[0] <= day &&
-                        selectedDateList[1] >= day,
+                        selectedDateList[0] <= dayDate &&
+                        selectedDateList[1] >= dayDate,
                       "range-start":
                         range &&
                         selectedDateList?.length === 2 &&
-                        selectedDateList?.[0] === day,
+                        equalDate(selectedDateList?.[0], dayDate),
                       "range-end":
                         range &&
                         selectedDateList?.length === 2 &&
-                        selectedDateList?.[1] === day,
+                        equalDate(selectedDateList?.[1], dayDate),
                     },
                   )}
                 >
                   {!emptyCondition && (
                     <Button
                       className={classNames("YnI-Calender-Cell-Button")}
-                      onClick={() => handleSelectDate(day)}
+                      onClick={() => handleSelectDate(dayDate)}
                     >
                       <span className={classNames("background")} />
                       <span className={classNames("day")}>{day}</span>
