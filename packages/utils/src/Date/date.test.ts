@@ -7,6 +7,7 @@ import {
   diffDays,
   addDays,
   aliasBeforeDate,
+  equalDate,
 } from "./date";
 
 describe("endOfYaerMonth", () => {
@@ -212,5 +213,12 @@ describe("aliasBeforeDate", () => {
     expect(
       aliasBeforeDate(new Date(2024, 5, 12), new Date(2026, 6, 14), "en"),
     ).toEqual("2years ago");
+  });
+});
+
+describe("equalDate", () => {
+  test("날짜 비교", () => {
+    expect(equalDate(new Date(2024, 5, 12), new Date(2024, 5, 12))).toBe(true);
+    expect(equalDate(new Date(2024, 5, 12), new Date(2024, 5, 13))).toBe(false);
   });
 });

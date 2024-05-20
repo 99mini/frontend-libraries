@@ -191,3 +191,17 @@ export const aliasBeforeDate = (
 
   return isKor ? "방금 전" : "just now";
 };
+
+/**
+ * @description equal date
+ * @param date1
+ * @param date2
+ * @returns
+ */
+export const equalDate = (date1: Date, date2: Date) => {
+  return (
+    date1.getFullYear() === date2.getFullYear() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getDate() === date2.getDate()
+  );
+};
