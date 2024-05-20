@@ -10,6 +10,7 @@ import {
   endOfYaerMonth,
   getMonthName,
   getWeekdayIndex,
+  compareDate,
 } from "@99mini/utils";
 
 import "./Calendar.scss";
@@ -57,18 +58,7 @@ type CalendarPropsType = {
   month: MonthType;
 };
 
-const today = new Date();
-
-/**
- * TODO: utils로 빼기
- */
-const equalDate = (date1: Date, date2: Date) => {
-  return (
-    date1.getFullYear() === date2.getFullYear() &&
-    date1.getMonth() === date2.getMonth() &&
-    date1.getDate() === date2.getDate()
-  );
-};
+const today = new Date(new Date().setHours(0, 0, 0, 0));
 
 export const Calendar = ({
   locale = "kor",
@@ -181,7 +171,6 @@ export const Calendar = ({
               const dayDate = new Date(year, month - 1, day);
               const emptyCondition =
                 (week === 0 && index < startWeekdayIndex) || day > endOfMonth;
-
               return (
                 <li
                   key={day}
@@ -191,21 +180,21 @@ export const Calendar = ({
                     {
                       selected:
                         selectedDateList &&
-                        selectedDateList.some((selected) => {
-                          return equalDate(selected, dayDate);
-                        }),
+                        selectedDateList.some(
+                          (selected) => compareDate(selected, dayDate) === 0,
+                        ),
                       empty: emptyCondition,
-                      today: equalDate(today, dayDate),
+                      today: compareDate(today, dayDate) === 0,
                       range:
                         isSelectedRange &&
-                        selectedDateList[0] <= dayDate &&
-                        selectedDateList[1] >= dayDate,
+                        compareDate(selectedDateList[0], dayDate) <= 0 &&
+                        compareDate(selectedDateList[1], dayDate) >= 0,
                       "range-start":
                         isSelectedRange &&
-                        equalDate(selectedDateList[0], dayDate),
+                        compareDate(selectedDateList[0], dayDate) === 0,
                       "range-end":
                         isSelectedRange &&
-                        equalDate(selectedDateList[1], dayDate),
+                        compareDate(selectedDateList[1], dayDate) === 0,
                     },
                   )}
                 >
