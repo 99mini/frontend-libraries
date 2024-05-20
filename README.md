@@ -7,6 +7,7 @@
 3. [@99mini/atom](https://github.com/99mini/frontend-libraries/blob/main/packages/atom/README.md)
 4. [@99mini/molecular](https://github.com/99mini/frontend-libraries/blob/main/packages/molecular/README.md)
 5. [@99mini/yni-ui](https://github.com/99mini/frontend-libraries/blob/main/packages/yni-ui/README.md)
+6. [@99mini/calendar](https://github.com/99mini/frontend-libraries/blob/main/packages/calendar/README.md)
 
 ## 개발
 
@@ -50,6 +51,8 @@ graph LR
 
     atom & molecular ----> organism[📁organism - to be update]:::toBeUpdated
 
+    utils & atom & molecular & core ----> calendar[📁calendar]
+
 
 ```
 
@@ -58,7 +61,7 @@ graph LR
 `gcb` is an abbreviation for generate component boilerplate
 
 ```bash
-$ scripts/gcb.sh <core | atom | molecular | yni-ui | utils> <Filename>
+$ scripts/gcb.sh <package-name> <FileName>
 ```
 
 ### 배포
