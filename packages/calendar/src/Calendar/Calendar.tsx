@@ -21,11 +21,39 @@ export type CalendarProps = React.DetailedHTMLProps<
   CalendarPropsType;
 
 type CalendarPropsType = {
+  /**
+   * @description 언어 설정 'kor' | 'eng'
+   * @default 'kor'
+   */
   locale?: LocaleType;
+  /**
+   * @description 날짜 선택 범위 설정 여부
+   * `true`: 범위 선택 가능
+   * `false`: 단일 선택
+   * @default false
+   */
   range?: boolean;
+  /**
+   * @description 페이지네이션 설정 여부
+   * `true`: 이전, 다음 버튼 표시
+   * `false`: 이전, 다음 버튼 미표시
+   * @default false
+   */
   pagenation?: boolean;
+  /**
+   * @description 날짜 선택 이벤트
+   */
+  onDateChange?: (date: Date) => void;
 
+  /**
+   * @description 초기 년도 설정
+   * @default today.getFullYear()
+   */
   year: number;
+  /**
+   * @description 초기 월 설정
+   * @default today.getMonth() + 1
+   */
   month: MonthType;
 };
 
@@ -46,8 +74,9 @@ export const Calendar = ({
   locale = "kor",
   range = false,
   pagenation = false,
-  year: initialYear,
-  month: initialMonth,
+  onDateChange,
+  year: initialYear = today.getFullYear(),
+  month: initialMonth = (today.getMonth() + 1) as MonthType,
   ...props
 }: CalendarProps) => {
   const [year, setYear] = useState(initialYear);
@@ -69,18 +98,26 @@ export const Calendar = ({
 
   const weeksCount = Math.ceil((startWeekdayIndex + endOfMonth) / 7);
 
+  const isSelectedRange =
+    range && selectedDateList && selectedDateList.length === 2;
+
   const handleSelectDate = (date: Date) => {
-    setSelectedDateList((prevDateList) => {
-      if (prevDateList === undefined) {
+    if (!range) {
+      setSelectedDateList([date]);
+    } else {
+      setSelectedDateList((prevDateList) => {
+        if (prevDateList === undefined) {
+          return [date];
+        }
+
+        if (prevDateList.length > 0 && prevDateList[0] < date) {
+          return [prevDateList[0], date];
+        }
+
         return [date];
-      }
-
-      if (prevDateList.length > 0 && prevDateList[0] < date) {
-        return [prevDateList[0], date];
-      }
-
-      return [date];
-    });
+      });
+    }
+    onDateChange && onDateChange(date);
   };
 
   const handlePrevMonth = () => {
@@ -160,18 +197,15 @@ export const Calendar = ({
                       empty: emptyCondition,
                       today: equalDate(today, dayDate),
                       range:
-                        range &&
-                        selectedDateList?.length === 2 &&
+                        isSelectedRange &&
                         selectedDateList[0] <= dayDate &&
                         selectedDateList[1] >= dayDate,
                       "range-start":
-                        range &&
-                        selectedDateList?.length === 2 &&
-                        equalDate(selectedDateList?.[0], dayDate),
+                        isSelectedRange &&
+                        equalDate(selectedDateList[0], dayDate),
                       "range-end":
-                        range &&
-                        selectedDateList?.length === 2 &&
-                        equalDate(selectedDateList?.[1], dayDate),
+                        isSelectedRange &&
+                        equalDate(selectedDateList[1], dayDate),
                     },
                   )}
                 >
