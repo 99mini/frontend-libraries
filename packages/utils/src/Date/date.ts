@@ -193,15 +193,25 @@ export const aliasBeforeDate = (
 };
 
 /**
- * @description equal date
+ * @description compare date
  * @param date1
  * @param date2
- * @returns
+ * @returns Returns 1 if date1 is greater than date2, -1 if date1 is less than date2, and 0 if date1 is equal to date2.
  */
-export const equalDate = (date1: Date, date2: Date) => {
-  return (
+export const compareDate = (date1: Date, date2: Date) => {
+  if (date1 > date2) {
+    return 1;
+  }
+  if (date1 < date2) {
+    return -1;
+  }
+  if (
     date1.getFullYear() === date2.getFullYear() &&
     date1.getMonth() === date2.getMonth() &&
     date1.getDate() === date2.getDate()
-  );
+  ) {
+    return 0;
+  }
+
+  throw new Error("Invalid Date");
 };
