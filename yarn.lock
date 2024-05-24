@@ -28,6 +28,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@99mini/babel-config@workspace:^0.1.0, @99mini/babel-config@workspace:configs/babel":
+  version: 0.0.0-use.local
+  resolution: "@99mini/babel-config@workspace:configs/babel"
+  dependencies:
+    "@babel/core": "npm:^7.24.5"
+    "@babel/preset-env": "npm:^7.24.5"
+    "@babel/preset-typescript": "npm:^7.24.1"
+  languageName: unknown
+  linkType: soft
+
 "@99mini/calendar@workspace:packages/calendar":
   version: 0.0.0-use.local
   resolution: "@99mini/calendar@workspace:packages/calendar"
@@ -55,6 +65,14 @@ __metadata:
   dependencies:
     "@99mini/utils": "npm:^0.2.0"
     rollup: "npm:^4.17.2"
+  languageName: unknown
+  linkType: soft
+
+"@99mini/jest-config@workspace:^0.1.0, @99mini/jest-config@workspace:configs/jest":
+  version: 0.0.0-use.local
+  resolution: "@99mini/jest-config@workspace:configs/jest"
+  dependencies:
+    jest: "npm:^29.7.0"
   languageName: unknown
   linkType: soft
 
@@ -96,6 +114,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@99mini/utils@workspace:packages/utils"
   dependencies:
+    "@99mini/jest-config": "workspace:^0.1.0"
     "@99mini/rollup-config": "workspace:^0.1.0"
     "@babel/core": "npm:^7.24.5"
     "@babel/preset-env": "npm:^7.24.5"
@@ -104,6 +123,7 @@ __metadata:
     "@types/babel__preset-env": "npm:^7"
     babel-jest: "npm:^29.7.0"
     jest: "npm:^29.7.0"
+    jest-coverage-badges: "npm:^1.1.2"
     rollup: "npm:^4.17.2"
     tsconfig-paths-webpack-plugin: "npm:^4.1.0"
     typescript: "npm:^5.4.2"
@@ -7780,9 +7800,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "frontend-libraries@workspace:."
   dependencies:
+    "@99mini/babel-config": "workspace:^0.1.0"
+    "@99mini/jest-config": "workspace:^0.1.0"
     "@babel/core": "npm:^7.24.5"
-    "@babel/preset-env": "npm:^7.24.5"
-    "@babel/preset-typescript": "npm:^7.24.1"
     "@chromatic-com/storybook": "npm:^1.2.19"
     "@rollup/plugin-babel": "npm:^6.0.4"
     "@rollup/plugin-commonjs": "npm:^25.0.7"
@@ -7816,6 +7836,7 @@ __metadata:
     eslint-plugin-sort-keys-fix: "npm:^1.1.2"
     eslint-plugin-storybook: "npm:^0.8.0"
     jest: "npm:^29.7.0"
+    jest-coverage-badges: "npm:^1.1.2"
     node-sass: "npm:^9.0.0"
     postcss: "npm:^8.4.38"
     react: "npm:^18.2.0"
@@ -9388,6 +9409,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jest-coverage-badges@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "jest-coverage-badges@npm:1.1.2"
+  dependencies:
+    mkdirp: "npm:0.5.1"
+  bin:
+    jest-coverage-badges: cli.js
+  checksum: 10c0/16937f00622079e35fd5cbaeb96c8f40750982e7d9803682fd7bfdb791c9728aa2a5e7889a9bec9007b3a3f6888c2b01b0f86ffadfa12326fef4b5603ed7db98
+  languageName: node
+  linkType: hard
+
 "jest-diff@npm:^29.7.0":
   version: 29.7.0
   resolution: "jest-diff@npm:29.7.0"
@@ -10484,6 +10516,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"minimist@npm:0.0.8":
+  version: 0.0.8
+  resolution: "minimist@npm:0.0.8"
+  checksum: 10c0/d0a998c3042922dbcd5f23566b52811d6977649ad089fd75dd89e8a9bff27634194900818b2dfb1b873f204edb902d0c8cdea9cb8dca8488b301f69bd522d5dc
+  languageName: node
+  linkType: hard
+
 "minimist@npm:^1.2.0, minimist@npm:^1.2.5, minimist@npm:^1.2.6":
   version: 1.2.8
   resolution: "minimist@npm:1.2.8"
@@ -10618,6 +10657,17 @@ __metadata:
   version: 0.5.3
   resolution: "mkdirp-classic@npm:0.5.3"
   checksum: 10c0/95371d831d196960ddc3833cc6907e6b8f67ac5501a6582f47dfae5eb0f092e9f8ce88e0d83afcae95d6e2b61a01741ba03714eeafb6f7a6e9dcc158ac85b168
+  languageName: node
+  linkType: hard
+
+"mkdirp@npm:0.5.1":
+  version: 0.5.1
+  resolution: "mkdirp@npm:0.5.1"
+  dependencies:
+    minimist: "npm:0.0.8"
+  bin:
+    mkdirp: bin/cmd.js
+  checksum: 10c0/e5ff572d761240a06dbfc69e1ea303d5482815a1f66033b999bd9d78583fcdc9ef63e99e61d396bbd57eca45b388af80a7f7f35f63510619c991c9d44c75341c
   languageName: node
   linkType: hard
 

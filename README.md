@@ -1,4 +1,25 @@
+<div style="text-align: center;">
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+&nbsp;
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+&nbsp;
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+&nbsp;
+![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
+&nbsp;
+![Storybook](https://img.shields.io/badge/-Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)
+
+<img src="./.badges/badge-branches.svg" />
+<img src="./.badges/badge-functions.svg" />
+<img src="./.badges/badge-lines.svg" />
+<img src="./.badges/badge-statements.svg" />
+
+</div>
+
 # 프로젝트 소개
+
+`React`, `Typescript`, `Scss`, `Jest`, `Storybook`을 이용한 프론트엔드 UI 라이브러리 + 유틸 라이브러리입니다.
 
 ## 설치 및 사용
 
