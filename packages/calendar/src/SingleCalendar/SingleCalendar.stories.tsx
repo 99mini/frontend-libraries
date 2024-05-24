@@ -2,24 +2,24 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import React from "react";
 
-import Calendar, { CalendarProps } from "./Calendar";
-import styles from "./Calendar.scss";
+import SingleCalendar, { CalendarProps } from "./SingleCalendar";
+import styles from "./SingleCalendar.scss";
 import classNames from "classnames";
 
 const meta = {
-  component: Calendar,
-  title: "calendar/Calendar",
+  component: SingleCalendar,
+  title: "calendar/SingleCalendar",
   tags: ["autodocs"],
-} satisfies Meta<typeof Calendar>;
+} satisfies Meta<typeof SingleCalendar>;
 
 export default meta;
 
-type Story = StoryObj<typeof Calendar>;
+type Story = StoryObj<typeof SingleCalendar>;
 
 const cx = classNames.bind(styles);
 
 const Template = (args: CalendarProps) => {
-  return <Calendar {...args}></Calendar>;
+  return <SingleCalendar {...args}></SingleCalendar>;
 };
 
 export const Default: Story = Template.bind({});

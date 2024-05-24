@@ -6,6 +6,8 @@ $ yarn add @99mini/calendar
 
 # Usage
 
+## SingleCalendar
+
 # Dependency
 
 [@99mini/atom](https://www.npmjs.com/package/@99mini/atom)
