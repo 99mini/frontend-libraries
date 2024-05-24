@@ -28,6 +28,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@99mini/babel-config@workspace:^0.1.0, @99mini/babel-config@workspace:configs/babel":
+  version: 0.0.0-use.local
+  resolution: "@99mini/babel-config@workspace:configs/babel"
+  dependencies:
+    "@babel/core": "npm:^7.24.5"
+    "@babel/preset-env": "npm:^7.24.5"
+    "@babel/preset-typescript": "npm:^7.24.1"
+  languageName: unknown
+  linkType: soft
+
 "@99mini/calendar@workspace:packages/calendar":
   version: 0.0.0-use.local
   resolution: "@99mini/calendar@workspace:packages/calendar"
@@ -55,6 +65,14 @@ __metadata:
   dependencies:
     "@99mini/utils": "npm:^0.2.0"
     rollup: "npm:^4.17.2"
+  languageName: unknown
+  linkType: soft
+
+"@99mini/jest-config@workspace:^0.1.0, @99mini/jest-config@workspace:configs/jest":
+  version: 0.0.0-use.local
+  resolution: "@99mini/jest-config@workspace:configs/jest"
+  dependencies:
+    jest: "npm:^29.7.0"
   languageName: unknown
   linkType: soft
 
@@ -96,6 +114,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@99mini/utils@workspace:packages/utils"
   dependencies:
+    "@99mini/jest-config": "workspace:^0.1.0"
     "@99mini/rollup-config": "workspace:^0.1.0"
     "@babel/core": "npm:^7.24.5"
     "@babel/preset-env": "npm:^7.24.5"
@@ -104,6 +123,7 @@ __metadata:
     "@types/babel__preset-env": "npm:^7"
     babel-jest: "npm:^29.7.0"
     jest: "npm:^29.7.0"
+    jest-coverage-badges: "npm:^1.1.2"
     rollup: "npm:^4.17.2"
     tsconfig-paths-webpack-plugin: "npm:^4.1.0"
     typescript: "npm:^5.4.2"
@@ -7780,9 +7800,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "frontend-libraries@workspace:."
   dependencies:
+    "@99mini/babel-config": "workspace:^0.1.0"
+    "@99mini/jest-config": "workspace:^0.1.0"
     "@babel/core": "npm:^7.24.5"
-    "@babel/preset-env": "npm:^7.24.5"
-    "@babel/preset-typescript": "npm:^7.24.1"
     "@chromatic-com/storybook": "npm:^1.2.19"
     "@rollup/plugin-babel": "npm:^6.0.4"
     "@rollup/plugin-commonjs": "npm:^25.0.7"

@@ -1,0 +1,16 @@
+{
+  "name": "@99mini/jest-config",
+  "version": "0.1.0",
+  "main": "./src/index.js",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/99mini/frontend-libraries",
+    "directory": "configs/jest"
+  }
+}

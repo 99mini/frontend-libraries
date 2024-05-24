@@ -1,3 +1,1 @@
-module.exports = {
-  extends: "../../babel.config.js",
-};
+module.exports = require("@99mini/babel-config");

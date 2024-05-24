@@ -12,9 +12,9 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@99mini/babel-config": "workspace:^0.1.0",
+    "@99mini/jest-config": "workspace:^0.1.0",
     "@babel/core": "^7.24.5",
-    "@babel/preset-env": "^7.24.5",
-    "@babel/preset-typescript": "^7.24.1",
     "@chromatic-com/storybook": "^1.2.19",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
@@ -78,12 +78,5 @@
     "test": "jest",
     "test:badges": "yarn test --ci --coverage && jest-coverage-badges --output './.badges'",
     "ci": "yarn && yarn test:badges"
-  },
-  "jest": {
-    "coverageReporters": [
-      "json-summary",
-      "text",
-      "lcov"
-    ]
   }
 }
