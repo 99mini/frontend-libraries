@@ -45,7 +45,7 @@ export const ClickOutsideListener = ({
   return (
     <div
       {...props}
-      className={classNames("Mini-ClickOutsideListener", props.className)}
+      className={classNames("YnI-ClickOutsideListener", props.className)}
       ref={ref}
     >
       {children}

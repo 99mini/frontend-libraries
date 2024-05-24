@@ -1,4 +1,4 @@
-.Mini-Tabs {
+.YnI-Tabs {
   display: flex;
   width: fit-content;
 
@@ -7,7 +7,7 @@
   &.animation {
     position: relative;
 
-    .Mini-Tabs-Indicator {
+    .YnI-Tabs-Indicator {
       display: block;
       position: absolute;
       bottom: 0;
@@ -20,15 +20,15 @@
   }
 
   &:not(.animation) {
-    .Mini-Tab.active {
+    .YnI-Tab.active {
       border-bottom: 2px solid black;
     }
   }
 
-  .Mini-Tab {
+  .YnI-Tab {
     box-sizing: border-box;
 
-    .Mini-Tab-Button {
+    .YnI-Tab-Button {
       border: none;
       border-radius: unset;
       box-sizing: unset;

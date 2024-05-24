@@ -1,3 +1,117 @@
-.Mini-Calendar {
+.YnI-Calendar {
+  width: fit-content;
 
+  .YnI-Calendar-Header {
+    display: flex;
+
+    .year-month {
+      flex: 1;
+
+      text-align: center;
+      font-size: 1.125rem;
+      line-height: 26px;
+      font-weight: 600;
+    }
+  }
+
+  .YnI-Calendar-Cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    margin: 4px 0;
+
+    border-radius: 50%;
+
+    .YnI-Calender-Cell-Button {
+      min-width: unset;
+
+      width: inherit;
+      height: inherit;
+
+      border: none;
+      border-radius: inherit;
+
+      padding: 8px;
+    }
+  }
+
+  .YnI-Calendar-Weekdays {
+    display: flex;
+    flex-wrap: wrap;
+
+    padding: 0;
+    margin: 0;
+
+    list-style-type: none;
+
+    .YnI-Calendar-Weekday {
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  }
+
+  .YnI-Calendar-Days {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    padding: 0;
+    margin: 0;
+
+    list-style-type: none;
+
+    .YnI-Calendar-Row {
+      display: flex;
+
+      padding: 0;
+      margin: 0;
+
+      list-style-type: none;
+
+      .YnI-Calendar-Day {
+        .YnI-Calender-Cell-Button .background {
+          position: absolute;
+          overflow: hidden;
+          z-index: -1;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          border-radius: 50%;
+        }
+
+        &.empty {
+        }
+
+        &.selected .YnI-Calender-Cell-Button .background {
+          background-color: rgb(240, 240, 240);
+        }
+
+        &.selected {
+          &.range-start .YnI-Calender-Cell-Button .background {
+            background-color: rgb(240, 240, 240);
+            border-radius: 50% 0 0 50%;
+          }
+          &.range-end .YnI-Calender-Cell-Button .background {
+            background-color: rgb(240, 240, 240);
+            border-radius: 0 50% 50% 0;
+          }
+        }
+
+        &.range .YnI-Calender-Cell-Button .background {
+          border-radius: 0;
+          background-color: rgb(240, 240, 240);
+        }
+
+        &.today .YnI-Calender-Cell-Button {
+          color: rgb(87, 87, 233);
+          font-weight: 600;
+        }
+      }
+    }
+  }
 }

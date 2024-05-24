@@ -1,4 +1,4 @@
-.Mini-Toast-root {
+.YnI-Toast-root {
   @keyframes toast-in {
     0% {
       transform: translateY(-1%);
@@ -51,11 +51,11 @@
     display: none;
   }
 
-  &.open .Mini-Toast {
+  &.open .YnI-Toast {
     animation: toast-in 150ms linear forwards;
   }
 
-  &.fade-out .Mini-Toast {
+  &.fade-out .YnI-Toast {
     animation: toast-out 150ms linear forwards;
   }
 
@@ -66,7 +66,7 @@
     transform: translateX(-50%);
   }
 
-  .Mini-Toast {
+  .YnI-Toast {
     border-radius: 4px;
 
     padding: 8px 12px;
@@ -83,7 +83,7 @@
 
     color: rgb(255, 255, 255);
 
-    &.Mini-Toast-layout {
+    &.YnI-Toast-layout {
       display: flex;
       align-items: center;
     }

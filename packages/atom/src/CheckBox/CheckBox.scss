@@ -1,4 +1,4 @@
-.Mini-Label-root {
+.YnI-Label-root {
   display: flex;
   align-items: center;
 
@@ -11,7 +11,7 @@
   }
 
   &[aria-required="true"] {
-    .Mini-Label-text {
+    .YnI-Label-text {
       font-weight: 600;
       &::after {
         content: "*";
@@ -21,7 +21,7 @@
     }
   }
 
-  &.Mini-Label-layout {
+  &.YnI-Label-layout {
     &--top {
       flex-direction: column-reverse;
     }
@@ -38,7 +38,7 @@
     }
   }
 
-  .Mini-Label-text {
+  .YnI-Label-text {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -46,7 +46,7 @@
   }
 }
 
-.Mini-CheckBox-root {
+.YnI-CheckBox-root {
   position: relative;
 
   display: inline-flex;
@@ -62,7 +62,7 @@
     cursor: default;
   }
 
-  .Mini-CheckBox {
+  .YnI-CheckBox {
     width: 16px;
     height: 16px;
 

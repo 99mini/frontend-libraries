@@ -99,7 +99,7 @@ export const Grid = ({
 
   return (
     <GridContext.Provider value={rootContext}>
-      <div className={classNames("Mini-Grid-root")} ref={rootRef}>
+      <div className={classNames("YnI-Grid-root")} ref={rootRef}>
         <div
           {...divProps}
           style={{
@@ -117,7 +117,7 @@ export const Grid = ({
                 : {}),
             },
           }}
-          className={classNames("Mini-Grid", className)}
+          className={classNames("YnI-Grid", className)}
           data-regular={regular}
         >
           {children ?? "Grid"}
@@ -162,8 +162,8 @@ const GirdItemRegular = ({ ...props }: GridItemProps) => {
       {...divProps}
       style={{ ...style }}
       className={classNames(
-        "Mini-Grid-Item",
-        "Mini-Grid-Item-Regular",
+        "YnI-Grid-Item",
+        "YnI-Grid-Item-Regular",
         className,
       )}
     >
@@ -259,8 +259,8 @@ const GridItemIrregular = ({ ...props }: GridItemProps) => {
     <div
       {...divProps}
       className={classNames(
-        "Mini-Grid-Item",
-        "Mini-Grid-Item-Irregular",
+        "YnI-Grid-Item",
+        "YnI-Grid-Item-Irregular",
         className,
       )}
       style={{
