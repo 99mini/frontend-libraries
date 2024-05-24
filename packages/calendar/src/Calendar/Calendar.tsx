@@ -23,39 +23,45 @@ export type CalendarProps = React.DetailedHTMLProps<
 
 type CalendarPropsType = {
   /**
-   * @description 언어 설정 'kor' | 'eng'
+   * 언어 설정 `'kor'` | `'eng'`
+   *
    * @default 'kor'
    */
   locale?: LocaleType;
   /**
-   * @description 날짜 선택 범위 설정 여부
+   * 날짜 선택 범위 설정 여부
+   *
    * `true`: 범위 선택 가능
    * `false`: 단일 선택
    * @default false
    */
   range?: boolean;
   /**
-   * @description 페이지네이션 설정 여부
+   * 페이지네이션 설정 여부
+   *
    * `true`: 이전, 다음 버튼 표시
    * `false`: 이전, 다음 버튼 미표시
    * @default false
    */
   pagenation?: boolean;
   /**
-   * @description 날짜 선택 이벤트
+   * 날짜 선택 이벤트
    */
   onDateChange?: (date: Date) => void;
 
   /**
-   * @description 초기 년도 설정
+   * 초기 년도 설정
    * @default today.getFullYear()
    */
-  year: number;
+  year?: number;
   /**
-   * @description 초기 월 설정
+   * 초기 월 설정
+   *
+   * `1` ~ `12`
+   *
    * @default today.getMonth() + 1
    */
-  month: MonthType;
+  month?: MonthType;
 };
 
 const today = new Date(new Date().setHours(0, 0, 0, 0));
