@@ -13,7 +13,7 @@ import {
   compareDate,
 } from "@99mini/utils";
 
-import "./Calendar.scss";
+import "./SingleCalendar.scss";
 
 export type CalendarProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
@@ -66,7 +66,7 @@ type CalendarPropsType = {
 
 const today = new Date(new Date().setHours(0, 0, 0, 0));
 
-export const Calendar = ({
+export const SingleCalendar = ({
   locale = "kor",
   range = false,
   pagenation = false,
@@ -223,4 +223,4 @@ export const Calendar = ({
   );
 };
 
-export default Calendar;
+export default SingleCalendar;
