@@ -14,7 +14,7 @@ export type RippleProps = Omit<
   RipplePropsType;
 
 type RipplePropsType = {
-  parentRef: React.RefObject<HTMLElement>;
+  parentRef: React.RefObject<HTMLElement | null>;
   isTouch?: boolean;
 };
 
@@ -28,7 +28,7 @@ export const Ripple = ({ ...props }: RippleProps) => {
     if (parentRef && parentRef.current) {
       setParentEl(parentRef.current);
     }
-  }, []);
+  }, [parentRef]);
 
   useEffect(() => {
     const rippleRootEl = rippleRootRef.current;

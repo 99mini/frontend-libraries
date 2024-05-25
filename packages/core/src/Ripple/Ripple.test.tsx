@@ -1,14 +1,22 @@
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 
 import React from "react";
 import Ripple from "./Ripple";
 
 describe("Ripple", () => {
-  it("should render without crashing", () => {
-    const elem = document.createElement("div");
-    const ref = { current: elem };
+  const ref = React.createRef<HTMLButtonElement>();
+  ref.current?.setAttribute("data-testid", "ripple-button");
 
-    const result = render(<Ripple parentRef={ref} />);
+  const RippleTemplete = (isTouch: boolean = false) => (
+    <button data-testid="ripple-button">
+      Click me
+      <Ripple isTouch={isTouch} parentRef={ref} data-testid={"ripple-root"} />
+    </button>
+  );
+
+  it("should render without crashing", () => {
+    const result = render(RippleTemplete());
+
     expect(result).toBeTruthy();
   });
 });
