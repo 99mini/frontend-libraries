@@ -74,7 +74,7 @@
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "installDeps": "sh ./scripts/installDeps.sh",
+    "all-packages": "sh ./scripts/script_all_packages.sh",
     "test": "jest",
     "test:badges": "yarn test --ci --coverage && jest-coverage-badges --output './.badges'",
     "ci": "yarn && yarn test:badges"
