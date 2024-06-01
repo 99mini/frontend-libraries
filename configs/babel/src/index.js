@@ -10,5 +10,15 @@ exports.generateBabelConfig = function generateBabelConfig(options) {
   if (options === "react") {
     presets.push(["@babel/preset-react", { runtime: "automatic" }]);
   }
-  return { presets };
+
+  const rules =
+    options === "react"
+      ? [
+          {
+            test: /\.scss$/,
+            use: ["style-loader", "css-loader", "sass-loader"],
+          },
+        ]
+      : [];
+  return { presets, rules };
 };

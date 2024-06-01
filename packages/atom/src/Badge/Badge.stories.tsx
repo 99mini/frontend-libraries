@@ -3,8 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 import Badge, { BadgeProps } from "./Badge";
-import styles from "./Badge.scss";
-import classNames from "classnames";
 
 export default {
   component: Badge,
@@ -13,8 +11,6 @@ export default {
 } satisfies Meta<typeof Badge>;
 
 type Story = StoryObj<typeof Badge>;
-
-const cx = classNames.bind(styles);
 
 const DefaultTemplate = (args: BadgeProps) => (
   <Badge {...args}>
@@ -183,31 +179,42 @@ const DotTemplate = (args: BadgeProps) => {
     </div>
   );
 };
-export const Default: Story = DefaultTemplate.bind({});
-
-export const Content = DefaultTemplate.bind({});
-Content.args = {
-  badgeContent: 1,
+export const Default: Story = {
+  render: DefaultTemplate,
+};
+export const Content: Story = {
+  render: DefaultTemplate,
+  args: {
+    badgeContent: 1,
+  },
 };
 
-export const Max = MaxTemplate.bind({});
-Max.args = {
-  badgeContent: 100,
-  max: 99,
+export const Max: Story = {
+  render: MaxTemplate,
+  args: {
+    badgeContent: 100,
+    max: 99,
+  },
 };
 
-export const Color = DefaultTemplate.bind({});
-Color.args = {
-  badgeContent: 1,
-  color: "blue",
+export const Color: Story = {
+  render: DefaultTemplate,
+  args: {
+    badgeContent: 1,
+    color: "blue",
+  },
 };
 
-export const Position = PositionTemplate.bind({});
-Position.args = {
-  badgeContent: 1,
+export const Position: Story = {
+  render: PositionTemplate,
+  args: {
+    badgeContent: 1,
+  },
 };
 
-export const Dot = DotTemplate.bind({});
-Dot.args = {
-  badgeContent: undefined,
+export const Dot: Story = {
+  render: DotTemplate,
+  args: {
+    badgeContent: undefined,
+  },
 };

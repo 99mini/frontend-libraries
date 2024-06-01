@@ -22,7 +22,7 @@ exports.generateRollupConfig = function generateRollupConfig(option) {
         option.react &&
           postcss({
             inject: true,
-            extensions: [".css", ".scss"],
+            extensions: [".css"],
           }),
       ],
     };

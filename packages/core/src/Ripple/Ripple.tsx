@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
-import "./Ripple.scss";
+import "./Ripple.css";
 
 import { isMouseEvent, isTouchEvent } from "@99mini/utils";
 
@@ -25,10 +25,10 @@ export const Ripple = ({ ...props }: RippleProps) => {
   const rippleRootRef = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
-    if (parentRef && parentRef.current) {
-      setParentEl(parentRef.current);
-    }
-  }, [parentRef]);
+    const parentEl = parentRef.current;
+    parentEl?.style.setProperty("position", "relative");
+    setParentEl(parentEl);
+  }, []);
 
   useEffect(() => {
     const rippleRootEl = rippleRootRef.current;

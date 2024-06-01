@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "./Badge.scss";
+import "./Badge.css";
 
 export type BadgeProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLSpanElement>,

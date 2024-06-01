@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
-import "./Toast.scss";
+import "./Toast.css";
 
 export type ToastProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,

@@ -19,4 +19,19 @@ describe("Ripple", () => {
 
     expect(result).toBeTruthy();
   });
+
+  // click ripple-button, Node Child is exist in parent with className animate
+  it("should render without crashing with mouse event", () => {
+    const result = render(RippleTemplete());
+
+    fireEvent.click(result.getByTestId("ripple-button"));
+
+    expect(result.getByTestId("ripple-root").childNodes.length).toBe(1);
+  });
+
+  it("should render without crashing with touch event", () => {
+    const result = render(RippleTemplete(true));
+
+    expect(result).toBeTruthy();
+  });
 });
