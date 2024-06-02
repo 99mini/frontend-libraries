@@ -23,11 +23,21 @@ export type CalendarProps = React.DetailedHTMLProps<
 
 type CalendarPropsType = {
   /**
+   * 읽기 전용 설정
+   * @default false
+   */
+  readonly?: boolean;
+  /**
    * 언어 설정 `'kor'` | `'eng'`
    *
    * @default 'kor'
    */
   locale?: LocaleType;
+  /**
+   * 오늘 날짜 체크 설정 여부
+   * @default true
+   */
+  isCheckToday?: boolean;
   /**
    * 날짜 선택 범위 설정 여부
    *
@@ -67,7 +77,9 @@ type CalendarPropsType = {
 const today = new Date(new Date().setHours(0, 0, 0, 0));
 
 export const SingleCalendar = ({
+  readonly = false,
   locale = "kor",
+  isCheckToday = true,
   range = false,
   pagenation = false,
   onDateChange,
@@ -190,7 +202,7 @@ export const SingleCalendar = ({
                           (selected) => compareDate(selected, dayDate) === 0,
                         ),
                       empty: emptyCondition,
-                      today: compareDate(today, dayDate) === 0,
+                      today: isCheckToday && compareDate(today, dayDate) === 0,
                       range:
                         isSelectedRange &&
                         compareDate(selectedDateList[0], dayDate) <= 0 &&
@@ -204,15 +216,21 @@ export const SingleCalendar = ({
                     },
                   )}
                 >
-                  {!emptyCondition && (
-                    <Button
-                      className={classNames("YnI-Calender-Cell-Button")}
-                      onClick={() => handleSelectDate(dayDate)}
-                    >
-                      <span className={classNames("background")} />
-                      <span className={classNames("day")}>{day}</span>
-                    </Button>
-                  )}
+                  {!emptyCondition &&
+                    (!readonly ? (
+                      <Button
+                        className={classNames("YnI-Calender-Cell-Button")}
+                        onClick={() => !readonly && handleSelectDate(dayDate)}
+                      >
+                        <span className={classNames("background")} />
+                        <span className={classNames("day")}>{day}</span>
+                      </Button>
+                    ) : (
+                      <>
+                        <span className={classNames("background")} />
+                        <span className={classNames("day")}>{day}</span>
+                      </>
+                    ))}
                 </li>
               );
             })}

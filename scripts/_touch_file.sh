@@ -40,7 +40,7 @@ if [ -e "$file_path" ]; then
 fi
 
 # Create the file with proper indentation
-if [ "$extension" = "scss" ]; then
+if [ "$extension" = "css" ]; then
   cat <<EOF >"$file_path"
 .YnI-${filename} {
 
@@ -53,7 +53,7 @@ elif [ "$extension" = "tsx" ]; then
   cat <<EOF >"$file_path"
 import React from 'react';
 import classNames from "classnames";
-import './$filename.scss'
+import './$filename.css'
 
 export type ${filename}Props = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,

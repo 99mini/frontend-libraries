@@ -104,7 +104,7 @@
           background-color: rgb(240, 240, 240);
         }
 
-        &.today .YnI-Calender-Cell-Button {
+        &.today .day {
           color: rgb(87, 87, 233);
           font-weight: 600;
         }

@@ -6,7 +6,7 @@
 # 1. Create Base File
 # /packages/atom/Button/src
 #   - Button.tsx
-#   - Button.scss
+#   - Button.css
 #   - Button.stories.tsx
 #   - index.ts
 #
@@ -42,7 +42,7 @@ outputs=()
 exit_codes=()
 
 # Call touch_file.sh script to create each file
-extension_names=("tsx" "scss" "stories.tsx" "ts")
+extension_names=("tsx" "css" "stories.tsx" "ts")
 for ((i = 0; i < ${#extension_names[@]}; i++)); do
 	extension="${extension_names[i]}"
 	output=$(scripts/_touch_file.sh "$directory" "$filename" "$extension")
