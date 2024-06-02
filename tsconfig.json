@@ -12,5 +12,5 @@
     "allowSyntheticDefaultImports": true,
     "removeComments": true
   },
-  "exclude": ["dist", "node_modules", "**/*.stories.*", "**/*.mdx"]
+  "exclude": ["dist", "node_modules"]
 }

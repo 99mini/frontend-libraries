@@ -13,7 +13,7 @@ import {
   compareDate,
 } from "@99mini/utils";
 
-import "./SingleCalendar.scss";
+import "./SingleCalendar.css";
 
 export type CalendarProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,

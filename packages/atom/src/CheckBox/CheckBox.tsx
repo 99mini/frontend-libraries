@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import classNames from "classnames";
-import "./CheckBox.scss";
+import "./CheckBox.css";
 
 import { Ripple } from "@99mini/core";
 

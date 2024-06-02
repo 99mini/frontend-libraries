@@ -88,7 +88,7 @@
       align-items: center;
     }
 
-    &-icon {
+    &.YnI-Toast-icon {
       width: 16px;
       height: 16px;
 
@@ -98,7 +98,7 @@
       text-align: center;
     }
 
-    &-message {
+    &.YnI-Toast-message {
     }
   }
 }

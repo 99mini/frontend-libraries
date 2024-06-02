@@ -10,5 +10,6 @@ exports.generateBabelConfig = function generateBabelConfig(options) {
   if (options === "react") {
     presets.push(["@babel/preset-react", { runtime: "automatic" }]);
   }
+
   return { presets };
 };

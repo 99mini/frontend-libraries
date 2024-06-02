@@ -2,9 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import React from "react";
 
-import Toast, { ToastProps } from "./Toast";
-import classNames from "classnames/bind";
-import styles from "./Toast.scss";
+import Toast from "./Toast";
 
 const meta = {
   component: Toast,
@@ -16,9 +14,7 @@ export default meta;
 
 type Story = StoryObj<typeof Toast>;
 
-const cx = classNames.bind(styles);
-
-const Template = (args: ToastProps) => {
+const Template = () => {
   const [openBasic, setOpenBasic] = React.useState(false);
   const [openCustom, setOpenCustom] = React.useState(false);
 
@@ -39,12 +35,11 @@ const Template = (args: ToastProps) => {
       <button onClick={() => setOpenBasic(true)}>basic toast</button>
       <button onClick={() => setOpenCustom(true)}>custom toast</button>
       <Toast
-        {...args}
         open={openBasic}
         onClose={() => setOpenBasic(false)}
         message="message"
       ></Toast>
-      <Toast {...args} open={openCustom} onClose={() => setOpenCustom(false)}>
+      <Toast open={openCustom} onClose={() => setOpenCustom(false)}>
         <div style={{ display: "flex", gap: "8px", alignContent: "center" }}>
           <span>icon area</span>
           <span>message aree</span>
@@ -60,11 +55,6 @@ const Template = (args: ToastProps) => {
   );
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  toast: {
-    message: "message",
-    duration: 3000,
-    type: "default",
-  },
+export const Default: Story = {
+  render: Template,
 };

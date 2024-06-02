@@ -81,7 +81,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 import $filename, { ${filename}Props } from "./$filename";
-import styles from "./$filename.scss";
+import styles from "./$filename.css";
 import classNames from "classnames";
 
 const meta = {

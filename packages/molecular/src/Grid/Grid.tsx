@@ -7,7 +7,7 @@ import React, {
   useState,
 } from "react";
 import classNames from "classnames";
-import "./Grid.scss";
+import "./Grid.css";
 
 export type GridProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
