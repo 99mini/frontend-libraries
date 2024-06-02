@@ -1,1 +1,5 @@
-module.exports = require("@99mini/babel-config");
+const { generateBabelConfig } = require("@99mini/babel-config");
+
+module.exports = {
+  ...generateBabelConfig("react"),
+};

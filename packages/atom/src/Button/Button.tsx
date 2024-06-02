@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import classNames from "classnames";
-import "./Button.scss";
+import "./Button.css";
 
 import { Ripple } from "@99mini/core";
 

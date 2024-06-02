@@ -3,8 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 import CheckBox, { CheckBoxProps } from "./CheckBox";
-import classNames from "classnames/bind";
-import styles from "./CheckBox.scss";
 
 const meta = {
   component: CheckBox,
@@ -16,11 +14,9 @@ export default meta;
 
 type Story = StoryObj<typeof CheckBox>;
 
-const cx = classNames.bind(styles);
+const Template = ({ ...args }) => <CheckBox {...args} />;
 
-const Template = (args: CheckBoxProps) => <CheckBox {...args} />;
-
-const BasicTemplate = (args: CheckBoxProps) => {
+const BasicTemplate = ({ ...args }) => {
   return (
     <div style={{ display: "flex", gap: 8 }}>
       <CheckBox />
@@ -31,7 +27,7 @@ const BasicTemplate = (args: CheckBoxProps) => {
   );
 };
 
-const LabelTemplate = (args: CheckBoxProps) => {
+const LabelTemplate = ({ ...args }) => {
   return (
     <div style={{ display: "flex", gap: 8 }}>
       <CheckBox label="default" {...args} />
@@ -42,46 +38,28 @@ const LabelTemplate = (args: CheckBoxProps) => {
   );
 };
 
-export const Basic = BasicTemplate.bind({});
-export const Label = LabelTemplate.bind({});
-
-export const Default = Template.bind({});
-export const Required = Template.bind({});
-export const Disabled = Template.bind({});
-export const DisabledWithChecked = Template.bind({});
-export const WithLabel = Template.bind({ lable: "label" });
-
-Required.args = {
-  CheckBox: {
-    title: "Required CheckBox",
-    state: "CheckBox",
-  },
-  required: true,
+export const Basic: Story = {
+  render: Template,
+};
+export const Label: Story = {
+  render: LabelTemplate,
 };
 
-Disabled.args = {
-  CheckBox: {
-    title: "Disable CheckBox",
-    state: "CheckBox",
-  },
-  disabled: true,
+export const Default: Story = {
+  render: BasicTemplate,
 };
-
-DisabledWithChecked.args = {
-  CheckBox: {
-    title: "Disable CheckBox",
-    state: "CheckBox",
-  },
-  disabled: true,
-  checked: true,
+export const Required: Story = {
+  render: BasicTemplate,
 };
-
-WithLabel.arg = {
-  CheckBox: {
-    title: "WithLabel CheckBox",
-    state: "CheckBox",
+export const Disabled: Story = {
+  render: BasicTemplate,
+};
+export const DisabledWithChecked: Story = {
+  render: BasicTemplate,
+};
+export const WithLabel: Story = {
+  args: {
+    label: "label",
   },
-  disabled: false,
-  required: false,
-  labelPlacement: "right",
+  render: LabelTemplate,
 };

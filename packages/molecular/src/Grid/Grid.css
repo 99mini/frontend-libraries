@@ -10,11 +10,11 @@
       display: grid;
     }
 
-    &-Item {
+    .YnI-Grid-Item {
       transition: transform 200ms;
     }
 
-    &-Item-Irregular {
+    .YnI-Grid-Item-Irregular {
       position: absolute;
     }
   }

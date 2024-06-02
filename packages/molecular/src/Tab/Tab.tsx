@@ -9,7 +9,7 @@ import React, {
 import classNames from "classnames";
 import { Button } from "@99mini/atom";
 
-import "./Tab.scss";
+import "./Tab.css";
 
 export type TabProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,

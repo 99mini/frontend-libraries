@@ -4,8 +4,6 @@ import { userEvent, within } from "@storybook/test";
 import React from "react";
 
 import Tab, { TabsProps, Tabs } from "./Tab";
-import classNames from "classnames/bind";
-import styles from "./Tab.scss";
 
 const meta = {
   component: Tabs,
@@ -16,8 +14,6 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof Tabs>;
-
-const cx = classNames.bind(styles);
 
 const Template = (args: TabsProps) => {
   const handleClick1 = () => console.log("button 1");

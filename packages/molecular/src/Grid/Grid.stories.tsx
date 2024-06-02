@@ -4,7 +4,6 @@ import React, { CSSProperties } from "react";
 
 import Grid, { GridItem, GridProps } from "./Grid";
 import classNames from "classnames/bind";
-import styles from "./Grid.scss";
 
 const meta = {
   component: Grid,
@@ -16,7 +15,6 @@ export default meta;
 
 type Story = StoryObj<typeof Grid>;
 
-const cx = classNames.bind(styles);
 /**
  *
  * @description generate random width(range: 200px ~ 600px), height(range:300px ~ 500px)
@@ -44,11 +42,9 @@ const Box = () => {
   );
 };
 
-type metaType = { meta: { title: string } };
-
-const Template = (args: GridProps & metaType) => (
+const Template = ({ ...args }) => (
   <div>
-    <h1>{args.meta.title} Grid</h1>
+    <h1>Grid</h1>
     <div style={{ padding: "0 16px", maxWidth: "800px", margin: "0 auto" }}>
       <Grid {...args}>
         {Array.from({ length: 10 }, (_, i) => (
@@ -64,29 +60,29 @@ const Template = (args: GridProps & metaType) => (
 /**
  * Grid component is a layout component that arranges child components in a grid layout.
  */
-export const Default = Template.bind({});
-
-Default.args = {
-  meta: { title: "default" },
-  regular: true,
+export const Default: Story = {
+  args: {
+    regular: true,
+  },
+  render: Template,
 };
 
 /**
  * Grid component is a layout component that arranges child components in a grid layout.
  */
-export const Regular = Template.bind({});
-
-Regular.args = {
-  meta: { title: "regular" },
-  regular: true,
+export const Regular: Story = {
+  args: {
+    regular: true,
+  },
+  render: Template,
 };
 
 /**
  * Grid component is a layout component that arranges child components in a irregular grid layout.
  */
-export const Irregular = Template.bind({});
-
-Irregular.args = {
-  meta: { title: "irregular" },
-  regular: false,
+export const Irregular: Story = {
+  args: {
+    regular: false,
+  },
+  render: Template,
 };

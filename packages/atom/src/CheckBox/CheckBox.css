@@ -21,21 +21,19 @@
     }
   }
 
-  &.YnI-Label-layout {
-    &--top {
-      flex-direction: column-reverse;
-    }
+  &.YnI-Label-layout--top {
+    flex-direction: column-reverse;
+  }
 
-    &--bottom {
-      flex-direction: column;
-    }
+  &.YnI-Label-layout--bottom {
+    flex-direction: column;
+  }
 
-    &--right {
-      flex-direction: row;
-    }
-    &--left {
-      flex-direction: row-reverse;
-    }
+  &.YnI-Label-layout--right {
+    flex-direction: row;
+  }
+  &.YnI-Label-layout--left {
+    flex-direction: row-reverse;
   }
 
   .YnI-Label-text {
