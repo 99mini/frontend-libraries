@@ -93,7 +93,7 @@ export const Rounded: Story = {
 
 export const Color: Story = {
   args: {
-    color: "red.500",
+    color: "red",
   },
   render: Template,
 };

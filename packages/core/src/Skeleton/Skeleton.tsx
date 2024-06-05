@@ -29,7 +29,7 @@ type SkeletonPropsType = {
   height?: string | number;
   /**
    * The color of the skeleton.
-   * @example "red.500"
+   * @example "red"
    */
   color?: string;
   /**
