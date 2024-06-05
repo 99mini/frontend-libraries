@@ -29,23 +29,24 @@
 
 - node v18
 - ubuntu v20
+- yarn
 
 ### install dependency
-
-```bash
-$ npm install
-```
-
-`or`
 
 ```bash
 $ yarn
 ```
 
-### 로컬
+### 스토리북
 
 ```bash
-$ npm run storybook
+$ yarn storybook
+```
+
+### 테스트
+
+```bash
+$ yarn test
 ```
 
 ### directory dependency
@@ -81,6 +82,16 @@ $ scripts/gcb.sh <package-name> <FileName>
 ### 배포
 
 ```bash
-$ npm login
-$ yarn publish --access public
+packages/<package-name>$ yarn ci
+packages/<package-name>$ yarn deploy:only
 ```
+
+or
+
+```bash
+packages/<package-name>$ yarn deploy
+```
+
+
+
+
