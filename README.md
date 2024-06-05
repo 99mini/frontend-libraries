@@ -12,7 +12,7 @@
 
 # 프로젝트 소개
 
-`React`, `Typescript`, `Scss`, `Jest`, `Storybook`을 이용한 프론트엔드 UI 라이브러리 + 유틸 라이브러리입니다.
+`React`, `Typescript`, `Jest`, `Storybook`을 이용한 프론트엔드 UI 라이브러리 + 유틸 라이브러리입니다.
 
 ## 설치 및 사용
 
