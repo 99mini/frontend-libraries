@@ -34,7 +34,7 @@
     background-image: linear-gradient(
       90deg,
       var(--skeleton-color),
-      #e0e0e0,
+      rgb(224, 224, 224),
       var(--skeleton-color)
     );
     background-size: 200% 100%;
