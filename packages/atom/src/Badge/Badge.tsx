@@ -27,7 +27,7 @@ export const Badge = ({
 }: BadgeProps) => {
   const { className, children, ...rest } = props;
   return (
-    <span {...rest} className={classNames("YnI-Badge-root", className)}>
+    <span {...rest} className={classNames("YnI-Badge-Root", className)}>
       {children}
       <span
         style={{ backgroundColor: color }}
