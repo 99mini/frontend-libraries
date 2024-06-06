@@ -13,10 +13,22 @@ $ yarn add @99mini/utils
 
 # Usage
 
+## import
+
+import from `@99mini/utils` or `@99mini/utils/<lib>`.
+
+```tsx
+import { MONTHS } from "@99mini/utils";
+import { isMouseEvent } from "@99mini/utils/Event";
+```
+
 ## Table of Contents
 
-- [Evnet](#Evnet)
+- [Event](#Event)
+- [Date](#Date)
 
-## Evnet
+## Event
+
+## Date
 
 # Dependency
