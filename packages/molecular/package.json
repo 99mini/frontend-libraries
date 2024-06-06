@@ -1,6 +1,6 @@
 {
   "name": "@99mini/molecular",
-  "version": "0.1.4-alpha.2",
+  "version": "0.2.0",
   "sideEffects": false,
   "main": "./src/index.ts",
   "files": [
