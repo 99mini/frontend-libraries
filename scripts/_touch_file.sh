@@ -80,9 +80,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import React from "react";
 
-import $filename, { ${filename}Props } from "./$filename";
-import styles from "./$filename.css";
-import classNames from "classnames";
+import $filename from "./$filename";
 
 const meta = {
   component: $filename,
@@ -94,15 +92,16 @@ export default meta;
 
 type Story = StoryObj<typeof $filename>;
 
-const cx = classNames.bind(styles);
-
-const Template = (args: ${filename}Props) => { 
+const Template = ({ ...args }) => { 
   return (
     <$filename {...args} ></$filename>
   )
 };
 
-export const Default: Story = Template.bind({});
+export const Default: Story = {
+  args: {},
+  render: Template,
+};
 EOF
 fi
 
