@@ -6,6 +6,8 @@ import { Button } from "@99mini/atom";
 
 import { TabContext, incrementTabId } from "../TabContext/TabContext";
 
+import "./Tab.css";
+
 export type TabProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement

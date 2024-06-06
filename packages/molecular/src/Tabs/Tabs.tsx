@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 import { TabContext, tabId } from "../TabContext/TabContext";
 
-import "./Tab.css";
+import "./Tabs.css";
 
 export type TabsProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
