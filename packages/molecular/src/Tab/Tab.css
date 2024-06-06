@@ -1,37 +1,9 @@
-.YnI-Tabs {
-  display: flex;
-  width: fit-content;
+.YnI-Tabs .YnI-Tab {
+  box-sizing: border-box;
 
-  border-bottom: 1px solid gray;
-
-  &.animation {
-    position: relative;
-
-    .YnI-Tabs-Indicator {
-      display: block;
-      position: absolute;
-      bottom: 0;
-      height: 2px;
-      background-color: black;
-      transition:
-        width 150ms,
-        left 150ms;
-    }
-  }
-
-  &:not(.animation) {
-    .YnI-Tab.active {
-      border-bottom: 2px solid black;
-    }
-  }
-
-  .YnI-Tab {
-    box-sizing: border-box;
-
-    .YnI-Tab-Button {
-      border: none;
-      border-radius: unset;
-      box-sizing: unset;
-    }
+  .YnI-Tab-Button {
+    border: none;
+    border-radius: unset;
+    box-sizing: unset;
   }
 }
