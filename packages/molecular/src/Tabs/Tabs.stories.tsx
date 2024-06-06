@@ -3,11 +3,12 @@ import { userEvent, within } from "@storybook/test";
 
 import React from "react";
 
-import Tab, { TabsProps, Tabs } from "./Tab";
+import Tabs, { TabsProps } from "./Tabs";
+import Tab from "../Tab";
 
 const meta = {
   component: Tabs,
-  title: "molecular/Tab",
+  title: "molecular/Tabs",
   tags: ["autodocs"],
 } satisfies Meta<typeof Tabs>;
 
