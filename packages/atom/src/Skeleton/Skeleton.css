@@ -1,0 +1,73 @@
+@keyframes skeleton-wave {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes skeleton-pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.YnI-Skeleton-Root {
+  --skeleton-color: rgb(240, 240, 240);
+  --skeleton-animation-duration: 1.5s;
+  --skeleton-animation-timing-function: ease-in-out;
+  --skeleton-animation-iteration-count: infinite;
+
+  --skelton-width: 100%;
+  --skelton-height: 24px;
+
+  background-color: var(--skeleton-color);
+
+  &.YnI-Skeleton--wave {
+    background-image: linear-gradient(
+      90deg,
+      var(--skeleton-color),
+      rgb(224, 224, 224),
+      var(--skeleton-color)
+    );
+    background-size: 200% 100%;
+    animation: skeleton-wave var(--skeleton-animation-duration)
+      var(--skeleton-animation-timing-function)
+      var(--skeleton-animation-iteration-count);
+  }
+
+  &.YnI-Skeleton--pulse {
+    animation: skeleton-pulse var(--skeleton-animation-duration)
+      var(--skeleton-animation-timing-function)
+      var(--skeleton-animation-iteration-count);
+  }
+
+  &.YnI-Skeleton--rect {
+    width: var(--skelton-width);
+    height: var(--skelton-height);
+  }
+
+  &.YnI-Skeleton--circle {
+    width: var(--skelton-height);
+    height: var(--skelton-height);
+
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+  }
+  &.YnI-Skeleton--text {
+    width: var(--skelton-width);
+    height: 1em;
+  }
+
+  &.YnI-Skeleton--rounded {
+    border-radius: 8px;
+  }
+}

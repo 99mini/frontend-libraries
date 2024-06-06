@@ -8,4 +8,10 @@ describe("Button", () => {
     const result = render(<Button></Button>);
     expect(result).toBeTruthy();
   });
+
+  it("should render href correctly", () => {
+    const result = render(<Button href="https://www.google.com"></Button>);
+    const href = result.getByRole("link");
+    expect(href).toBeTruthy();
+  });
 });
