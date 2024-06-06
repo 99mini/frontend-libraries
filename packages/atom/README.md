@@ -15,7 +15,7 @@ $ yarn add @99mini/atom
 
 ## import
 
-import from `atom` or `atom/<component>`. You can do a default import using `atom/<component>`.
+import from `@99mini/atom` or `@99mini/atom/<component>`. You can do a default import using `atom/<component>`.
 
 ```tsx
 import { Button } from "@99mini/atom";
