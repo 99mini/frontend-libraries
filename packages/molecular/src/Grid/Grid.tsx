@@ -40,7 +40,7 @@ type GridPropsType = {
   gap?: number;
 };
 
-const Grid = ({
+export const Grid = ({
   regular = true,
   column = 4,
   columnGap = 8,

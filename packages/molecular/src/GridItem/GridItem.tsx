@@ -11,7 +11,7 @@ export type GridItemProps = React.DetailedHTMLProps<
   HTMLDivElement
 >;
 
-const GridItem = ({ ...props }: GridItemProps) => {
+export const GridItem = ({ ...props }: GridItemProps) => {
   const context = useContext(GridContext);
 
   if (!context) {
