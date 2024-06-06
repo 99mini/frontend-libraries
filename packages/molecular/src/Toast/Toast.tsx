@@ -31,21 +31,19 @@ type ToastPropsType = {
 } & ToastType;
 
 const ToastIcon = ({ iconType }: { iconType: ToastType["type"] }) => {
-  switch (iconType) {
-    case "success":
-      return <></>;
-    case "info":
-      return <></>;
-    case "error":
-      return <></>;
-    case "warning":
-      return <></>;
-
-    case undefined || "default":
-      return <></>;
-    default:
-      return <></>;
+  if (iconType === "success") {
+    return <></>;
   }
+  if (iconType === "info") {
+    return <></>;
+  }
+  if (iconType === "error") {
+    return <></>;
+  }
+  if (iconType === "warning") {
+    return <></>;
+  }
+  return <></>;
 };
 
 export const Toast = ({ ...props }: ToastProps) => {
