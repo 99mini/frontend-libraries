@@ -1,6 +1,6 @@
 {
   "name": "@99mini/molecular",
-  "version": "0.1.4-alpha.0",
+  "version": "0.1.4-alpha.1",
   "sideEffects": false,
   "main": "./src/index.ts",
   "files": [
@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@99mini/jest-config": "workspace:^0.1.0",
-    "@99mini/rollup-config": "workspace:^0.1.0",
+    "@99mini/rollup-config": "workspace:^0.2.0",
     "@testing-library/react": "^15.0.7",
     "@types/jest": "^26.0.15",
     "@types/react-test-renderer": "^18",

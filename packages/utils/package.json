@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@99mini/jest-config": "workspace:^0.1.0",
-    "@99mini/rollup-config": "workspace:^0.1.0",
+    "@99mini/rollup-config": "workspace:^0.2.0",
     "@babel/core": "^7.24.5",
     "@babel/preset-env": "^7.24.5",
     "@babel/preset-typescript": "^7.24.1",

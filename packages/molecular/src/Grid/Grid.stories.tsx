@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import React, { CSSProperties } from "react";
 
-import Grid, { GridItem, GridProps } from "./Grid";
-import classNames from "classnames/bind";
+import Grid from "./Grid";
+import GridItem from "../GridItem";
 
 const meta = {
   component: Grid,
@@ -45,7 +45,7 @@ const Box = () => {
 const Template = ({ ...args }) => (
   <div>
     <h1>Grid</h1>
-    <div style={{ padding: "0 16px", maxWidth: "800px", margin: "0 auto" }}>
+    <div style={{ padding: "0 16px", margin: "0 auto" }}>
       <Grid {...args}>
         {Array.from({ length: 10 }, (_, i) => (
           <GridItem key={i}>

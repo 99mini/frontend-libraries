@@ -77,7 +77,7 @@ export const Toast = ({ ...props }: ToastProps) => {
   return (
     <div
       className={classNames(
-        "YnI-Toast-root",
+        "YnI-Toast-Root",
         open ? "open" : isAnimated ? "close" : "fade-out",
       )}
     >

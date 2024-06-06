@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 /**
- * @param {{packageDir: string, react?: boolean}} option
+ * @param {{packageDir: string, react?: boolean, ignorePackages?: string[]}} option
  */
 exports.generateRollupConfig = function generateRollupConfig(option) {
   function generateIndexConfig(subPackageDir) {
@@ -52,6 +52,7 @@ exports.generateRollupConfig = function generateRollupConfig(option) {
       withFileTypes: true,
     })
     .filter((dirent) => dirent.isDirectory())
+    .filter((dirent) => !option.ignorePackages?.includes(dirent.name))
     .map((dirent) => dirent.name);
 
   const subDirecotoryConfigs = subDirectories

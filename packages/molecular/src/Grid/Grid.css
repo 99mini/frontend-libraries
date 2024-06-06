@@ -1,4 +1,4 @@
-.YnI-Grid-root {
+.YnI-Grid-Root {
   width: 100%;
 
   .YnI-Grid {
@@ -8,14 +8,6 @@
 
     &[data-regular="true"] {
       display: grid;
-    }
-
-    .YnI-Grid-Item {
-      transition: transform 200ms;
-    }
-
-    .YnI-Grid-Item-Irregular {
-      position: absolute;
     }
   }
 }
