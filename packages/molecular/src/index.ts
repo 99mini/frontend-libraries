@@ -1,3 +1,5 @@
-export * from "./Toast";
-export * from "./Tab";
 export * from "./Grid";
+export * from "./GridItem";
+export * from "./Tab";
+export * from "./Tabs";
+export * from "./Toast";

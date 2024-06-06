@@ -1,13 +1,10 @@
-import React, {
-  Dispatch,
-  createContext,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+
 import classNames from "classnames";
+
 import { Button } from "@99mini/atom";
+
+import { TabContext, incrementTabId } from "../TabContext/TabContext";
 
 import "./Tab.css";
 
@@ -17,12 +14,6 @@ export type TabProps = React.DetailedHTMLProps<
 > &
   TabPropsType;
 
-export type TabsProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
-> &
-  TabsPropsType;
-
 type TabPropsType = {
   href?: string;
   onClick?: (
@@ -31,88 +22,10 @@ type TabPropsType = {
       | React.MouseEvent<HTMLAnchorElement>,
   ) => void;
 };
-type TabsPropsType = {
-  animation?: boolean;
-};
-
-let tabId = 0;
-
-type TabContextType = {
-  activeTab: number;
-  setActiveTab: Dispatch<React.SetStateAction<number>>;
-  animation: boolean;
-  tabsLeft: number;
-  setTabWidth: Dispatch<React.SetStateAction<number>>;
-  setTabLeft: Dispatch<React.SetStateAction<number>>;
-};
-
-const TabContext = createContext<TabContextType>({
-  activeTab: tabId,
-  setActiveTab: () => {},
-  animation: true,
-  tabsLeft: 0,
-  setTabWidth: () => {},
-  setTabLeft: () => {},
-});
-
-export const Tabs = ({ animation = true, ...props }: TabsProps) => {
-  const { className, children, ...rest } = props;
-
-  const [activeTab, setActiveTab] = useState(tabId);
-  const [tabWidth, setTabWidth] = useState(0);
-  const [tabLeft, setTabLeft] = useState(0);
-
-  const tabsRef = useRef<HTMLDivElement>(null);
-  const [tabsLeft, setTabsLeft] = useState(0);
-
-  useEffect(() => {
-    if (tabsRef.current) {
-      setTabsLeft(tabsRef.current.getBoundingClientRect().left);
-    }
-  }, []);
-
-  return (
-    <TabContext.Provider
-      value={{
-        activeTab,
-        setActiveTab,
-        tabsLeft,
-        animation,
-        setTabWidth,
-        setTabLeft,
-      }}
-    >
-      <div
-        {...rest}
-        className={classNames(
-          "YnI-Tabs",
-          className,
-          animation ? "animation" : "",
-        )}
-        ref={tabsRef}
-      >
-        {children}
-        {animation && (
-          <div
-            className={classNames("YnI-Tabs-Indicator")}
-            style={{
-              width: tabWidth,
-              left: tabLeft,
-            }}
-          />
-        )}
-      </div>
-    </TabContext.Provider>
-  );
-};
 
 export const Tab = ({ ...props }: TabProps) => {
   const { href, className, onClick, ...divProps } = props;
   const context = useContext(TabContext);
-
-  if (!context) {
-    throw new Error("Tab must be used within a Tabs component");
-  }
 
   const {
     activeTab,
@@ -123,7 +36,7 @@ export const Tab = ({ ...props }: TabProps) => {
     setTabWidth,
   } = context;
 
-  const [id] = useState(() => tabId++);
+  const [id] = useState(() => incrementTabId());
   const tabRef = useRef<HTMLDivElement>(null);
 
   const isActive = activeTab === id;

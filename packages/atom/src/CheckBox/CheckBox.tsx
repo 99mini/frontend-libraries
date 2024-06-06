@@ -24,7 +24,7 @@ const CheckBoxRoot = ({
   return (
     <label>
       <span
-        className={classNames("YnI-CheckBox-root", className)}
+        className={classNames("YnI-CheckBox-Root", className)}
         aria-disabled={disabled}
         aria-required={required}
         ref={checkboxRef}
@@ -49,7 +49,7 @@ export const CheckBox = ({ ...props }: CheckBoxProps) => {
     return (
       <label
         className={classNames(
-          "YnI-Label-root",
+          "YnI-Label-Root",
           `YnI-Label-layout--${labelPlacement}`,
         )}
         aria-disabled={inputProps.disabled}

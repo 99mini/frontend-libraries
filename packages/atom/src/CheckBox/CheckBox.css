@@ -1,4 +1,4 @@
-.YnI-Label-root {
+.YnI-Label-Root {
   display: flex;
   align-items: center;
 
@@ -44,7 +44,7 @@
   }
 }
 
-.YnI-CheckBox-root {
+.YnI-CheckBox-Root {
   position: relative;
 
   display: inline-flex;
