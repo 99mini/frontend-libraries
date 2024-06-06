@@ -45,8 +45,20 @@ $ yarn storybook
 
 ### 테스트
 
+1. jest
+
 ```bash
 $ yarn test
+$ yarn test --ci --watch
+$ yarn test --ci --coverage
+```
+
+2. storybook
+
+```bash
+$ yarn storybook
+$ yarn test-storybook --watch
+$ yarn test-storybook --coverage
 ```
 
 ### directory dependency
@@ -54,7 +66,6 @@ $ yarn test
 ```mermaid
 graph LR
     classDef toBeUpdated fill:#EBEBE445, color: #C6C6C6
-
 
     atom[📁atom] ----> molecular[📁molecular]
 
@@ -67,16 +78,23 @@ graph LR
     atom & molecular ----> organism[📁organism - to be update]:::toBeUpdated
 
     utils & atom & molecular & core ----> calendar[📁calendar]
-
-
 ```
 
 ### generate component boilerplate
 
 `gcb` is an abbreviation for generate component boilerplate
 
+- first arg: package-name (ex. `core`). Use lowercase
+- second arg: FileName (ex. `ClickOutsideLinstener`). Use PascalCase
+
 ```bash
 $ scripts/gcb.sh <package-name> <FileName>
+```
+
+#### Example
+
+```bash
+$ scripts/gcb.sh core ClickOutsideLinstener
 ```
 
 ### 배포
@@ -91,7 +109,3 @@ or
 ```bash
 packages/<package-name>$ yarn deploy
 ```
-
-
-
-
