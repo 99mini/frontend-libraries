@@ -13,14 +13,50 @@ $ yarn add @99mini/atom
 
 # Usage
 
+## import
+
+import from `atom` or `atom/<component>`. You can do a default import using `atom/<component>`.
+
+```tsx
+import { Button } from "@99mini/atom";
+import Badge from "@99mini/atom/Badge";
+```
+
 ## Table of Contents
 
 - [Button](#Button)
 - [CheckBox](#CheckBox)
+- [Skeleton](#Skeleton)
 
 ## Button
 
+### Default Button
+
+```tsx
+import { Button } from "@99mini/atom";
+
+const App = () => {
+  return <Button>Hello @99mini/atom/Button</Button>;
+};
+```
+
+### Anchor Button
+
+```tsx
+import { Button } from "@99mini/atom";
+
+const App = () => {
+  return (
+    <Button href={"https://github.com/99mini/frontend-libraries"}>
+      {"Let use @99mini/<libraries>"}
+    </Button>
+  );
+};
+```
+
 ## CheckBox
+
+## Skeleton
 
 # Dependency
 
