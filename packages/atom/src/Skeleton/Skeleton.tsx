@@ -80,8 +80,8 @@ export const Skeleton = ({
     <div
       {...props}
       className={classNames("YnI-Skeleton-Root", props.className, {
-        [`YnI-Skeleton--${variant}`]: variant,
         [`YnI-Skeleton--rect`]: variant === "rounded",
+        [`YnI-Skeleton--${variant}`]: variant,
         [`YnI-Skeleton--${animation}`]: animation,
       })}
       style={{ width, height, ...props.style }}
