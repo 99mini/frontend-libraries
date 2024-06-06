@@ -74,12 +74,6 @@ export const Skeleton = ({
     if (color && skeletonRef.current) {
       skeletonRef.current.style.setProperty("--skeleton-color", color);
     }
-
-    return () => {
-      if (skeletonRef.current) {
-        skeletonRef.current.style.removeProperty("--skeleton-color");
-      }
-    };
   }, []);
 
   return (
