@@ -32,6 +32,7 @@ __metadata:
     jest: "npm:^29.7.0"
     jest-coverage-badges: "npm:^1.1.2"
     react-test-renderer: "npm:^18.3.1"
+    rollup: "npm:^4.17.2"
   languageName: unknown
   linkType: soft
 
