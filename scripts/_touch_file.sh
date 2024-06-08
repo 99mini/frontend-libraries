@@ -73,6 +73,21 @@ export const $filename = ({...props}: ${filename}Props) => {
 export default $filename;
 EOF
 
+# Create test.tsx file
+elif [ "$extension" = "test.tsx" ]; then
+  cat <<EOF >"$file_path"
+import React from "react";
+import { render } from "@testing-library/react";
+import $filename from "./$filename";
+
+describe("$filename", () => {
+  it("renders", () => {
+    const { getByText } = render(<$filename />);
+    expect(getByText("$filename")).toBeTruthy();
+  });
+});
+EOF
+
 # Create stories.tsx file
 elif [ "$extension" = "stories.tsx" ]; then
   cat <<EOF >"$file_path"
