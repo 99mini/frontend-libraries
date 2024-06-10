@@ -47,7 +47,25 @@ export const LinearProgress = ({
         props.className,
       )}
     >
-      {props.children ?? "LinearProgress"}
+      <div className={classNames("YnI-LinearProgress-Bar")}>
+        {varient === "buffer" && (
+          <div
+            className="YnI-LinearProgress-Buffer"
+            style={{
+              width: `${valueBuffer}%`,
+            }}
+          />
+        )}
+        <div
+          className={classNames("YnI-LinearProgress-Indicator", {
+            "YnI-LinearProgress-Indeterminate": varient === "indeterminate",
+          })}
+          style={{
+            width: varient !== "indeterminate" ? `${value}%` : undefined,
+            backgroundColor: color,
+          }}
+        />
+      </div>
     </div>
   );
 };
