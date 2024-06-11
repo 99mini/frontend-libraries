@@ -20,7 +20,8 @@
       overflow: hidden;
 
       .YnI-LinearProgress-Indicator {
-        background-color: #2196f3;
+        background-color: var(--linear-progress-color);
+
         height: inherit;
         position: absolute;
         top: 0;
@@ -39,7 +40,9 @@
       }
 
       .YnI-LinearProgress-Buffer {
-        background-color: #afdbff;
+        background-color: var(--linear-progress-color);
+        opacity: 0.24;
+
         height: inherit;
         position: absolute;
         top: 0;

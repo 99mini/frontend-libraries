@@ -39,7 +39,7 @@ export const LinearProgress = ({
   /**
    * The color of the progress.
    */
-  color,
+  color = "rgb(87, 87, 233)",
   /**
    * The height of the progress.
    */
@@ -49,10 +49,14 @@ export const LinearProgress = ({
   const linearProgressElementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    linearProgressElementRef.current?.style.setProperty(
-      "--linear-progress-height",
-      formatUnit(height),
-    );
+    const styleProperties = [
+      ["--linear-progress-height", formatUnit(height)],
+      ["--linear-progress-color", color],
+    ];
+
+    styleProperties.forEach(([property, value]) => {
+      linearProgressElementRef.current?.style.setProperty(property, value);
+    });
   }, []);
 
   return (

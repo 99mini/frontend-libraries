@@ -95,3 +95,11 @@ export const Color: Story = {
   },
   render: Template,
 };
+
+export const ColorBuffer: Story = {
+  args: {
+    color: "red",
+    varient: "buffer",
+  },
+  render: BufferTemplate,
+};
