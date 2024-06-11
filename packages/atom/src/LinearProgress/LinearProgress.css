@@ -7,44 +7,49 @@
   }
 }
 
-.YnI-Progress-Root.YnI-LinearProgress {
-  .YnI-LinearProgress-Bar {
-    position: relative;
-    width: 100%;
-    height: inherit;
-    background-color: #f5f5f5;
+.YnI-Progress-Root {
+  --linear-progress-height: 4px;
 
-    overflow: hidden;
+  height: var(--linear-progress-height);
 
-    --linear-progress-height: 4px;
-
-    .YnI-LinearProgress-Indicator {
-      background-color: #2196f3;
-      height: var(--linear-progress-height);
-      position: absolute;
-      top: 0;
-      left: 0;
+  &.YnI-LinearProgress {
+    .YnI-LinearProgress-Bar {
+      position: relative;
       width: 100%;
+      height: inherit;
+      background-color: #f5f5f5;
 
-      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
 
-      &.YnI-LinearProgress-Indeterminate {
-        width: inherit;
+      .YnI-LinearProgress-Indicator {
+        background-color: #2196f3;
         height: inherit;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
 
-        animation: YnI-LinearProgress-infinite-Animation 2s infinite ease-in-out;
+        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &.YnI-LinearProgress-Indeterminate {
+          width: inherit;
+          height: inherit;
+
+          animation: YnI-LinearProgress-infinite-Animation 2s infinite
+            ease-in-out;
+        }
       }
-    }
 
-    .YnI-LinearProgress-Buffer {
-      background-color: #afdbff;
-      height: var(--linear-progress-height);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
+      .YnI-LinearProgress-Buffer {
+        background-color: #afdbff;
+        height: inherit;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
 
-      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
     }
   }
 }

@@ -3,6 +3,8 @@ import classNames from "classnames";
 
 import { ProgressProps } from "../Progress/Progress";
 
+import { formatUnit } from "@99mini/utils";
+
 import "../Progress/Progress.css";
 import "./LinearProgress.css";
 
@@ -51,7 +53,7 @@ export const LinearProgress = ({
     if (linearProgressElement && height !== 4) {
       linearProgressElement.style.setProperty(
         "--linear-progress-height",
-        `${height}px`,
+        formatUnit(height),
       );
     }
   }, []);
@@ -64,13 +66,14 @@ export const LinearProgress = ({
         "YnI-LinearProgress",
         props.className,
       )}
+      ref={linearProgressElementRef}
     >
       <div className={classNames("YnI-LinearProgress-Bar")}>
         {varient === "buffer" && (
           <div
             className="YnI-LinearProgress-Buffer"
             style={{
-              width: `${Math.min(valueBuffer, 100)}%`,
+              width: formatUnit(Math.min(valueBuffer, 100), "%"),
             }}
           />
         )}
@@ -81,7 +84,7 @@ export const LinearProgress = ({
           style={{
             width:
               varient !== "indeterminate"
-                ? `${Math.min(value, 100)}%`
+                ? formatUnit(Math.min(value, 100), "%")
                 : undefined,
             backgroundColor: color,
           }}
