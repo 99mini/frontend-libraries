@@ -8,8 +8,6 @@
 }
 
 .YnI-Progress-Root {
-  --linear-progress-height: 4px;
-
   height: var(--linear-progress-height);
 
   &.YnI-LinearProgress {

@@ -1,5 +1,7 @@
 import React from "react";
-import { render, waitFor } from "@testing-library/react";
+
+import { render } from "@testing-library/react";
+
 import LinearProgress from "./LinearProgress";
 
 describe("LinearProgress", () => {
@@ -11,7 +13,7 @@ describe("LinearProgress", () => {
     const container = result.getByTestId("test-linear-progress");
     const style = getComputedStyle(container);
 
-    expect(style.getPropertyValue("--linear-progress-height")).toBeFalsy();
+    expect(style.getPropertyValue("--linear-progress-height")).toBe("4px");
 
     expect(result).toBeTruthy();
   });

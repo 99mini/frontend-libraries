@@ -49,13 +49,10 @@ export const LinearProgress = ({
   const linearProgressElementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const linearProgressElement = linearProgressElementRef.current;
-    if (linearProgressElement && height !== 4) {
-      linearProgressElement.style.setProperty(
-        "--linear-progress-height",
-        formatUnit(height),
-      );
-    }
+    linearProgressElementRef.current?.style.setProperty(
+      "--linear-progress-height",
+      formatUnit(height),
+    );
   }, []);
 
   return (
