@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import classNames from "classnames";
 
 import { ProgressProps } from "../Progress/Progress";
@@ -8,7 +8,9 @@ import "./LinearProgress.css";
 
 export type LinearProgressProps = ProgressProps & LinearProgressPropsType;
 
-type LinearProgressPropsType = {};
+type LinearProgressPropsType = {
+  height?: number | string;
+};
 
 export const LinearProgress = ({
   /**
@@ -36,8 +38,24 @@ export const LinearProgress = ({
    * The color of the progress.
    */
   color,
+  /**
+   * The height of the progress.
+   */
+  height = 4,
   ...props
 }: LinearProgressProps) => {
+  const linearProgressElementRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const linearProgressElement = linearProgressElementRef.current;
+    if (linearProgressElement && height !== 4) {
+      linearProgressElement.style.setProperty(
+        "--linear-progress-height",
+        `${height}px`,
+      );
+    }
+  }, []);
+
   return (
     <div
       {...props}
@@ -52,7 +70,7 @@ export const LinearProgress = ({
           <div
             className="YnI-LinearProgress-Buffer"
             style={{
-              width: `${valueBuffer}%`,
+              width: `${Math.min(valueBuffer, 100)}%`,
             }}
           />
         )}
@@ -61,7 +79,10 @@ export const LinearProgress = ({
             "YnI-LinearProgress-Indeterminate": varient === "indeterminate",
           })}
           style={{
-            width: varient !== "indeterminate" ? `${value}%` : undefined,
+            width:
+              varient !== "indeterminate"
+                ? `${Math.min(value, 100)}%`
+                : undefined,
             backgroundColor: color,
           }}
         />
