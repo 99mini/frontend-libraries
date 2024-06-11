@@ -8,9 +8,9 @@
 }
 
 .YnI-Progress-Root {
-  height: var(--linear-progress-height);
-
   &.YnI-LinearProgress {
+    height: var(--linear-progress-height);
+
     .YnI-LinearProgress-Bar {
       position: relative;
       width: 100%;
