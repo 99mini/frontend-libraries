@@ -56,7 +56,7 @@ __metadata:
     "@99mini/jest-config": "workspace:^0.1.0"
     "@99mini/molecular": "npm:0.2.0"
     "@99mini/rollup-config": "workspace:^0.2.0"
-    "@99mini/utils": "npm:0.3.0"
+    "@99mini/utils": "npm:^0.4.0"
     "@testing-library/react": "npm:^15.0.7"
     "@types/jest": "npm:^26.0.15"
     "@types/react-test-renderer": "npm:^18"
@@ -82,7 +82,7 @@ __metadata:
   dependencies:
     "@99mini/jest-config": "workspace:^0.1.0"
     "@99mini/rollup-config": "workspace:^0.2.0"
-    "@99mini/utils": "npm:^0.2.0"
+    "@99mini/utils": "npm:^0.4.0"
     "@testing-library/react": "npm:^15.0.7"
     "@testing-library/react-hooks": "npm:^8.0.1"
     "@types/jest": "npm:^26.0.15"
@@ -142,7 +142,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@99mini/utils@npm:0.3.0, @99mini/utils@workspace:packages/utils":
+"@99mini/utils@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@99mini/utils@npm:0.1.1"
+  checksum: 10c0/4bda5b0a53165878d5e89a4f3f942f24f50c6a9914ceffc6751ac207d2cda0dd8d91abbbce7820a309ef5a24295c3ac895b2f10a491ce601472177e58b47f3a2
+  languageName: node
+  linkType: hard
+
+"@99mini/utils@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@99mini/utils@npm:0.2.0"
+  checksum: 10c0/87216c38ad8823c96643ef0abf53e89b5c5eb68417290a8f44426444dd73e2fd58aa45e693bfda5351a9158fab24471147ba7bae85cff80e01d840380582c5db
+  languageName: node
+  linkType: hard
+
+"@99mini/utils@npm:^0.4.0, @99mini/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@99mini/utils@workspace:packages/utils"
   dependencies:
@@ -161,20 +175,6 @@ __metadata:
     typescript: "npm:^5.4.2"
   languageName: unknown
   linkType: soft
-
-"@99mini/utils@npm:^0.1.1":
-  version: 0.1.1
-  resolution: "@99mini/utils@npm:0.1.1"
-  checksum: 10c0/4bda5b0a53165878d5e89a4f3f942f24f50c6a9914ceffc6751ac207d2cda0dd8d91abbbce7820a309ef5a24295c3ac895b2f10a491ce601472177e58b47f3a2
-  languageName: node
-  linkType: hard
-
-"@99mini/utils@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "@99mini/utils@npm:0.2.0"
-  checksum: 10c0/87216c38ad8823c96643ef0abf53e89b5c5eb68417290a8f44426444dd73e2fd58aa45e693bfda5351a9158fab24471147ba7bae85cff80e01d840380582c5db
-  languageName: node
-  linkType: hard
 
 "@99mini/yni-ui@workspace:packages/yni-ui":
   version: 0.0.0-use.local
