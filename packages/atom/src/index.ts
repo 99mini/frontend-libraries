@@ -4,4 +4,3 @@ export * from "./Badge";
 export * from "./Skeleton";
 export * from "./Progress";
 export * from "./LinearProgress";
-export * from "./CircularProgress";

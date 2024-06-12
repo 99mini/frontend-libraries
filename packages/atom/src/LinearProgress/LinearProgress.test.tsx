@@ -20,13 +20,13 @@ describe("LinearProgress", () => {
 
   it("renders buffer", async () => {
     const { container } = render(<LinearProgress varient="buffer" />);
-    expect(container.querySelector(".YnI-LinearProgress-Buffer")).toBeTruthy();
+    expect(container.querySelector(".YnI-LinearProgress-buffer")).toBeTruthy();
   });
 
   it("renders indeterminate", () => {
     const { container } = render(<LinearProgress varient="indeterminate" />);
     expect(
-      container.querySelector(".YnI-LinearProgress-Indeterminate"),
+      container.querySelector(".YnI-LinearProgress-indeterminate"),
     ).toBeTruthy();
   });
 
