@@ -1,2 +1,57 @@
-.YnI-Progress-Root.YnI-LinearProgress {
+@keyframes linear-grogress-infinite-animation {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.YnI-Progress-Root {
+  &.YnI-LinearProgress {
+    height: var(--linear-progress-height);
+
+    .YnI-LinearProgress-Bar {
+      position: relative;
+
+      width: 100%;
+      height: inherit;
+
+      overflow: hidden;
+
+      background-color: rgb(240, 240, 240);
+
+      .YnI-LinearProgress-Indicator {
+        background-color: var(--linear-progress-color);
+
+        height: inherit;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+
+        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &.YnI-LinearProgress-indeterminate {
+          width: inherit;
+          height: inherit;
+
+          animation: linear-grogress-infinite-animation 2s infinite ease-in-out;
+        }
+      }
+
+      .YnI-LinearProgress-buffer {
+        background-color: var(--linear-progress-color);
+        opacity: 0.24;
+
+        height: inherit;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+
+        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    }
+  }
 }

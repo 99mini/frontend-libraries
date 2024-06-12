@@ -18,7 +18,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@99mini/atom@workspace:packages/atom":
+"@99mini/atom@npm:0.4.0, @99mini/atom@workspace:packages/atom":
   version: 0.0.0-use.local
   resolution: "@99mini/atom@workspace:packages/atom"
   dependencies:
@@ -51,7 +51,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@99mini/calendar@workspace:packages/calendar"
   dependencies:
-    "@99mini/atom": "npm:0.1.1"
+    "@99mini/atom": "npm:0.4.0"
     "@99mini/core": "npm:0.1.1"
     "@99mini/jest-config": "workspace:^0.1.0"
     "@99mini/molecular": "npm:0.2.0"
@@ -173,7 +173,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@99mini/yni-ui@workspace:packages/yni-ui"
   dependencies:
-    "@99mini/atom": "npm:0.1.1"
+    "@99mini/atom": "npm:0.4.0"
     "@99mini/core": "npm:0.1.1"
     "@99mini/molecular": "npm:0.2.0"
     rollup: "npm:^4.17.2"
