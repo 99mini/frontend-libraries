@@ -38,6 +38,7 @@ export const LinearProgress = ({
   valueBuffer = 0,
   /**
    * The color of the progress.
+   * @default `rgb(87, 87, 233)`
    */
   color = "rgb(87, 87, 233)",
   /**
@@ -72,7 +73,7 @@ export const LinearProgress = ({
       <div className={classNames("YnI-LinearProgress-Bar")}>
         {varient === "buffer" && (
           <div
-            className="YnI-LinearProgress-Buffer"
+            className="YnI-LinearProgress-buffer"
             style={{
               width: formatUnit(Math.min(valueBuffer, 100), "%"),
             }}
@@ -80,7 +81,7 @@ export const LinearProgress = ({
         )}
         <div
           className={classNames("YnI-LinearProgress-Indicator", {
-            "YnI-LinearProgress-Indeterminate": varient === "indeterminate",
+            "YnI-LinearProgress-indeterminate": varient === "indeterminate",
           })}
           style={{
             width:

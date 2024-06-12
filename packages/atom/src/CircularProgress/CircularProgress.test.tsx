@@ -4,7 +4,14 @@ import CircularProgress from "./CircularProgress";
 
 describe("CircularProgress", () => {
   it("renders", () => {
-    const { getByText } = render(<CircularProgress />);
-    expect(getByText("CircularProgress")).toBeTruthy();
+    const result = render(
+      <CircularProgress data-testid="test-circular-progress" />,
+    );
+    const container = result.getByTestId("test-circular-progress");
+    const style = getComputedStyle(container);
+
+    expect(style.getPropertyValue("--circular-progress-size")).toBe("40px");
+
+    expect(result).toBeTruthy();
   });
 });

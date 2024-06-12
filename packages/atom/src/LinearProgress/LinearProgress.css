@@ -1,4 +1,4 @@
-@keyframes YnI-LinearProgress-infinite-Animation {
+@keyframes linear-grogress-infinite-animation {
   0% {
     transform: translateX(-100%);
   }
@@ -13,11 +13,13 @@
 
     .YnI-LinearProgress-Bar {
       position: relative;
+
       width: 100%;
       height: inherit;
-      background-color: #f5f5f5;
 
       overflow: hidden;
+
+      background-color: rgb(240, 240, 240);
 
       .YnI-LinearProgress-Indicator {
         background-color: var(--linear-progress-color);
@@ -30,16 +32,15 @@
 
         transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-        &.YnI-LinearProgress-Indeterminate {
+        &.YnI-LinearProgress-indeterminate {
           width: inherit;
           height: inherit;
 
-          animation: YnI-LinearProgress-infinite-Animation 2s infinite
-            ease-in-out;
+          animation: linear-grogress-infinite-animation 2s infinite ease-in-out;
         }
       }
 
-      .YnI-LinearProgress-Buffer {
+      .YnI-LinearProgress-buffer {
         background-color: var(--linear-progress-color);
         opacity: 0.24;
 
