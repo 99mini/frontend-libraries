@@ -1,6 +1,6 @@
 import { describe, expect, test } from "@jest/globals";
 
-import { inferedObjectKeys, isObjectKey } from "./object";
+import { inferedObjectKeys, isObjectKey, omit, pick } from "./object";
 
 describe("isObjectKey", () => {
   const obj = { key: "value" } as const;
@@ -30,5 +30,26 @@ describe("inferObjectKeys", () => {
     let keys = inferedObjectKeys(emptyObj);
 
     expect(keys).toEqual([]);
+  });
+});
+
+describe("omit", () => {
+  const obj = { a: 1, b: 2, c: 3 } as const;
+
+  test("should omit the key from the object", () => {
+    const result = omit(obj, ["a"]);
+    expect(result).toHaveProperty("b");
+    expect(result).not.toHaveProperty("a");
+  });
+});
+
+describe("pick", () => {
+  const obj = { a: 1, b: 2, c: 3 } as const;
+
+  test("should pick the key from the object", () => {
+    const result = pick(obj, ["a"]);
+    expect(result).toHaveProperty("a");
+    expect(result).not.toHaveProperty("b");
+    expect(result).not.toHaveProperty("c");
   });
 });

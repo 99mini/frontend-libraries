@@ -49,3 +49,49 @@ export const isObjectKey = <T extends Object>(
 export const inferedObjectKeys = <T extends Object>(object: T): (keyof T)[] => {
   return Object.keys(object) as (keyof T)[];
 };
+
+/**
+ * Omit a key from an object.
+ * @param object - The object to omit the key from.
+ * @param keys - The keys to omit from the object.
+ * @returns A new object with the key omitted.
+ * @example
+ * ```ts
+ * const obj = { a: 1, b: 2, c: 3 } as const;
+ * const result = omit(obj, ["a"]);
+ * console.log(result); //=> { b: 2, c: 3 }
+ * ```
+ */
+export const omit = <T extends Record<string, any>, K extends keyof T>(
+  object: T,
+  keys: K[],
+): Omit<T, K> => {
+  const result = { ...object };
+  keys.forEach((key) => {
+    delete result[key];
+  });
+  return result;
+};
+
+/**
+ * Pick a key from an object.
+ * @param object - The object to pick the key from.
+ * @param keys - The keys to pick from the object.
+ * @returns A new object with the key picked.
+ * @example
+ * ```ts
+ * const obj = { a: 1, b: 2, c: 3 } as const;
+ * const result = pick(obj, ["a"]);
+ * console.log(result); //=> { a: 1 }
+ * ```
+ */
+export const pick = <T extends Record<string, any>, K extends keyof T>(
+  object: T,
+  keys: K[],
+): Pick<T, K> => {
+  const result = {} as Pick<T, K>;
+  keys.forEach((key) => {
+    result[key] = object[key];
+  });
+  return result;
+};
