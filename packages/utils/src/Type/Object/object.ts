@@ -9,8 +9,7 @@
  * const obj = { key: "value" } as const;
  * let key = "key";
  * if (isObjectKey(obj, key)) {
- *  const value = obj[key];
- *  console.log(value); //=> "value"
+ *  const value = obj[key]; // "value"
  * }
  * ```
  *
@@ -36,7 +35,7 @@ export const isObjectKey = <T extends Object>(
  * ```ts
  * const obj = { key: "value" } as const;
  * let keys = inferedObjectKeys(obj);
- * obj[keys[0]]; //=> "value"
+ * obj[keys[0]]; // "value"
  * ```
  *
  * **invalid typescript code**
@@ -58,8 +57,7 @@ export const inferedObjectKeys = <T extends Object>(object: T): (keyof T)[] => {
  * @example
  * ```ts
  * const obj = { a: 1, b: 2, c: 3 } as const;
- * const result = omit(obj, ["a"]);
- * console.log(result); //=> { b: 2, c: 3 }
+ * const result = omit(obj, ["a"]); // { b: 2, c: 3 }
  * ```
  */
 export const omit = <T extends Record<string, any>, K extends keyof T>(
@@ -81,8 +79,7 @@ export const omit = <T extends Record<string, any>, K extends keyof T>(
  * @example
  * ```ts
  * const obj = { a: 1, b: 2, c: 3 } as const;
- * const result = pick(obj, ["a"]);
- * console.log(result); //=> { a: 1 }
+ * const result = pick(obj, ["a"]); // { a: 1 }
  * ```
  */
 export const pick = <T extends Record<string, any>, K extends keyof T>(
