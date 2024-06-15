@@ -54,18 +54,22 @@ export type WeekdayNameKorType = (typeof WEEKDAYS_KOR)[number];
 export type LocaleType = "en" | "kor";
 
 /**
- * @description get end of number of days in the month
- * @override endOfYaerMonth: (date: Date) => number
+ * @description is leap year
  * @param year
- * @param month
- * @returns {number} end of number of days in the month
+ * @returns
  */
-export const endOfYaerMonth = (year: number, month: MonthType): number => {
-  if (month === 2) {
-    return year % 4 === 0 ? 29 : 28;
-  }
+export const isLeapYear = (year: number): boolean => {
+  return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+};
 
-  return [4, 6, 9, 11].includes(month) ? 30 : 31;
+/**
+ * @description end of year month
+ * @param date - Date
+ * @returns end of year month
+ * @example
+ */
+export const endOfDay = (date: Date): number => {
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 };
 
 /**
@@ -93,7 +97,7 @@ export const getWeekdayIndex = (
     return undefined;
   }
 
-  if (endOfYaerMonth(year, month) < day || day < 1) {
+  if (endOfDay(new Date(year, month)) < day || day < 1) {
     return undefined;
   }
 
