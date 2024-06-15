@@ -102,10 +102,6 @@ export const SingleCalendar = ({
   const startWeekdayIndex = getWeekdayIndex(date);
   const endOfMonth = endOfDay(date);
 
-  if (startWeekdayIndex === undefined) {
-    throw new Error("invalid date");
-  }
-
   const weeksCount = Math.ceil((startWeekdayIndex + endOfMonth) / 7);
 
   const isSelectedRange =
