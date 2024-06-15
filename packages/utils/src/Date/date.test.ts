@@ -1,33 +1,56 @@
 import { describe, expect, test } from "@jest/globals";
 import {
-  endOfYaerMonth,
-  getMonthName,
-  getWeekdayIndex,
-  getWeekdayName,
-  diffDays,
   addDays,
   aliasBeforeDate,
   compareDate,
+  diffDays,
+  endOfDay,
+  getMonthName,
+  getWeekdayIndex,
+  getWeekdayName,
+  isWeekend,
+  isLeapYear,
 } from "./date";
 
-describe("endOfYaerMonth", () => {
+describe("isWeekend", () => {
+  test("주말 여부", () => {
+    expect(isWeekend(new Date(2024, 4, 12))).toBeTruthy();
+    expect(isWeekend(new Date(2024, 4, 13))).toBeFalsy();
+    expect(isWeekend(new Date(2024, 4, 14))).toBeFalsy();
+    expect(isWeekend(new Date(2024, 4, 15))).toBeFalsy();
+    expect(isWeekend(new Date(2024, 4, 16))).toBeFalsy();
+    expect(isWeekend(new Date(2024, 4, 17))).toBeFalsy();
+    expect(isWeekend(new Date(2024, 4, 18))).toBeTruthy();
+  });
+});
+
+describe("isLeapYear", () => {
+  test("윤년 계산", () => {
+    expect(isLeapYear(2000)).toBeTruthy();
+    expect(isLeapYear(2024)).toBeTruthy();
+    expect(isLeapYear(2100)).toBeFalsy();
+    expect(isLeapYear(2025)).toBeFalsy();
+  });
+});
+
+describe("endOfDay", () => {
   test("윤달 계산", () => {
-    expect(endOfYaerMonth(2024, 2)).toBe(29);
-    expect(endOfYaerMonth(2025, 2)).toBe(28);
+    expect(endOfDay(new Date(2024, 1))).toBe(29);
+    expect(endOfDay(new Date(2025, 1))).toBe(28);
   });
   test("31일 달 계산", () => {
-    expect(endOfYaerMonth(2024, 1)).toBe(31);
-    expect(endOfYaerMonth(2024, 3)).toBe(31);
-    expect(endOfYaerMonth(2024, 5)).toBe(31);
-    expect(endOfYaerMonth(2024, 7)).toBe(31);
-    expect(endOfYaerMonth(2024, 8)).toBe(31);
-    expect(endOfYaerMonth(2024, 12)).toBe(31);
+    expect(endOfDay(new Date(2024, 0))).toBe(31);
+    expect(endOfDay(new Date(2024, 2))).toBe(31);
+    expect(endOfDay(new Date(2024, 4))).toBe(31);
+    expect(endOfDay(new Date(2024, 6))).toBe(31);
+    expect(endOfDay(new Date(2024, 7))).toBe(31);
+    expect(endOfDay(new Date(2024, 11))).toBe(31);
   });
   test("30일 달 계산", () => {
-    expect(endOfYaerMonth(2024, 4)).toBe(30);
-    expect(endOfYaerMonth(2024, 6)).toBe(30);
-    expect(endOfYaerMonth(2024, 9)).toBe(30);
-    expect(endOfYaerMonth(2024, 11)).toBe(30);
+    expect(endOfDay(new Date(2024, 3))).toBe(30);
+    expect(endOfDay(new Date(2024, 5))).toBe(30);
+    expect(endOfDay(new Date(2024, 8))).toBe(30);
+    expect(endOfDay(new Date(2024, 10))).toBe(30);
   });
 });
 
@@ -65,18 +88,13 @@ describe("getMonthName", () => {
 
 describe("getWeekdayIndex", () => {
   test("요일 인덱스", () => {
-    expect(getWeekdayIndex(2024, 5, 12)).toBe(0);
-    expect(getWeekdayIndex(2024, 5, 13)).toBe(1);
-    expect(getWeekdayIndex(2024, 5, 14)).toBe(2);
-    expect(getWeekdayIndex(2024, 5, 1)).toBe(3);
-    expect(getWeekdayIndex(2024, 5, 16)).toBe(4);
-    expect(getWeekdayIndex(2024, 5, 17)).toBe(5);
-    expect(getWeekdayIndex(2024, 5, 18)).toBe(6);
-  });
-  test("invalid date", () => {
-    expect(getWeekdayIndex(2024, 5, 0)).toBe(undefined);
-    expect(getWeekdayIndex(2024, 5, 32)).toBe(undefined);
-    expect(getWeekdayIndex(-1, 1, 1)).toBe(undefined);
+    expect(getWeekdayIndex(new Date(2024, 4, 12))).toBe(0);
+    expect(getWeekdayIndex(new Date(2024, 4, 13))).toBe(1);
+    expect(getWeekdayIndex(new Date(2024, 4, 14))).toBe(2);
+    expect(getWeekdayIndex(new Date(2024, 4, 1))).toBe(3);
+    expect(getWeekdayIndex(new Date(2024, 4, 16))).toBe(4);
+    expect(getWeekdayIndex(new Date(2024, 4, 17))).toBe(5);
+    expect(getWeekdayIndex(new Date(2024, 4, 18))).toBe(6);
   });
 });
 
