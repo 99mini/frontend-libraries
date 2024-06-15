@@ -75,18 +75,13 @@ describe("getMonthName", () => {
 
 describe("getWeekdayIndex", () => {
   test("요일 인덱스", () => {
-    expect(getWeekdayIndex(2024, 5, 12)).toBe(0);
-    expect(getWeekdayIndex(2024, 5, 13)).toBe(1);
-    expect(getWeekdayIndex(2024, 5, 14)).toBe(2);
-    expect(getWeekdayIndex(2024, 5, 1)).toBe(3);
-    expect(getWeekdayIndex(2024, 5, 16)).toBe(4);
-    expect(getWeekdayIndex(2024, 5, 17)).toBe(5);
-    expect(getWeekdayIndex(2024, 5, 18)).toBe(6);
-  });
-  test("invalid date", () => {
-    expect(getWeekdayIndex(2024, 5, 0)).toBe(undefined);
-    expect(getWeekdayIndex(2024, 5, 32)).toBe(undefined);
-    expect(getWeekdayIndex(-1, 1, 1)).toBe(undefined);
+    expect(getWeekdayIndex(new Date(2024, 4, 12))).toBe(0);
+    expect(getWeekdayIndex(new Date(2024, 4, 13))).toBe(1);
+    expect(getWeekdayIndex(new Date(2024, 4, 14))).toBe(2);
+    expect(getWeekdayIndex(new Date(2024, 4, 1))).toBe(3);
+    expect(getWeekdayIndex(new Date(2024, 4, 16))).toBe(4);
+    expect(getWeekdayIndex(new Date(2024, 4, 17))).toBe(5);
+    expect(getWeekdayIndex(new Date(2024, 4, 18))).toBe(6);
   });
 });
 

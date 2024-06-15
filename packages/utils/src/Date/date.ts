@@ -88,20 +88,8 @@ export const getMonthName = (month: MonthType, locale: LocaleType = "kor") => {
  * @param month
  * @returns
  */
-export const getWeekdayIndex = (
-  year: number,
-  month: MonthType,
-  day: number,
-): WeekdayType | undefined => {
-  if (year < 0) {
-    return undefined;
-  }
-
-  if (endOfDay(new Date(year, month)) < day || day < 1) {
-    return undefined;
-  }
-
-  return new Date(year, month - 1, day).getDay() as WeekdayType;
+export const getWeekdayIndex = (date: Date): WeekdayType => {
+  return date.getDay() as WeekdayType;
 };
 
 /**
