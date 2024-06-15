@@ -1,15 +1,28 @@
 import { describe, expect, test } from "@jest/globals";
 import {
-  isLeapYear,
+  addDays,
+  aliasBeforeDate,
+  compareDate,
+  diffDays,
   endOfDay,
   getMonthName,
   getWeekdayIndex,
   getWeekdayName,
-  diffDays,
-  addDays,
-  aliasBeforeDate,
-  compareDate,
+  isWeekend,
+  isLeapYear,
 } from "./date";
+
+describe("isWeekend", () => {
+  test("주말 여부", () => {
+    expect(isWeekend(new Date(2024, 4, 12))).toBeTruthy();
+    expect(isWeekend(new Date(2024, 4, 13))).toBeFalsy();
+    expect(isWeekend(new Date(2024, 4, 14))).toBeFalsy();
+    expect(isWeekend(new Date(2024, 4, 15))).toBeFalsy();
+    expect(isWeekend(new Date(2024, 4, 16))).toBeFalsy();
+    expect(isWeekend(new Date(2024, 4, 17))).toBeFalsy();
+    expect(isWeekend(new Date(2024, 4, 18))).toBeTruthy();
+  });
+});
 
 describe("isLeapYear", () => {
   test("윤년 계산", () => {

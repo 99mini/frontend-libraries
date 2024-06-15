@@ -93,6 +93,15 @@ export const getWeekdayIndex = (date: Date): WeekdayType => {
 };
 
 /**
+ * @description weekend check
+ * @param date
+ * @returns Returns true if the date is a weekend, otherwise false.
+ */
+export const isWeekend = (date: Date): boolean => {
+  return [0, 6].includes(date.getDay());
+};
+
+/**
  * @description get weekday name
  * @param weekday
  * @param locale default "kor"
