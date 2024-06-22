@@ -138,7 +138,17 @@ export const addDays = (date: Date, days: number): Date => {
 };
 
 /**
+ * @private
+ * @description alias before time english
+ */
+const _aliasBeforeEng = (unit: string, count: number) =>
+  `${unit}${count > 1 ? "s" : ""} ago`;
+
+/**
  * @description get alias before time
+ * @param before
+ * @param current
+ * @param locale default "kor"
  * @example
  * ```typescript
  * aliasBeforeDate(new Date(2024, 5, 12, 2, 59, 30), new Date(2024, 5, 12, 3)) // "방금 전"
@@ -149,8 +159,6 @@ export const addDays = (date: Date, days: number): Date => {
  * aliasBeforeDate(new Date(2024, 5, 12), new Date(2024, 6, 14)) // "1달 전"
  * aliasBeforeDate(new Date(2024, 5, 12), new Date(2025, 6, 14)) // "1년 전"
  * ```
- * @param year
- * @returns
  */
 export const aliasBeforeDate = (
   before: Date,
@@ -159,35 +167,32 @@ export const aliasBeforeDate = (
 ): string => {
   const isKor = locale === "kor";
 
-  const aliasEng = (unit: string, count: number) =>
-    `${unit}${count > 1 ? "s" : ""} ago`;
-
   const diff = diffDays(before, current);
 
   if (diff >= 365) {
     const year = Math.floor(diff / 365);
-    return `${year}${isKor ? "년 전" : aliasEng("year", year)}`;
+    return `${year}${isKor ? "년 전" : _aliasBeforeEng("year", year)}`;
   }
 
-  if (diff < 365 && diff >= 30) {
+  if (diff >= 30) {
     const month = Math.floor(diff / 30);
-    return `${month}${isKor ? "달 전" : aliasEng("month", month)}`;
+    return `${month}${isKor ? "달 전" : _aliasBeforeEng("month", month)}`;
   }
 
-  if (diff < 30 && diff >= 1) {
+  if (diff >= 1) {
     const day = Math.floor(diff);
-    return `${day}${isKor ? "일 전" : aliasEng("day", day)}`;
+    return `${day}${isKor ? "일 전" : _aliasBeforeEng("day", day)}`;
   }
 
   const minute = Math.floor((current.getTime() - before.getTime()) / 1000 / 60);
 
   if (minute >= 60) {
     const hour = Math.floor(minute / 60);
-    return `${hour}${isKor ? "시간 전" : aliasEng("hour", hour)}`;
+    return `${hour}${isKor ? "시간 전" : _aliasBeforeEng("hour", hour)}`;
   }
 
   if (minute >= 1) {
-    return `${minute}${isKor ? "분 전" : aliasEng("minute", minute)}`;
+    return `${minute}${isKor ? "분 전" : _aliasBeforeEng("minute", minute)}`;
   }
 
   return isKor ? "방금 전" : "just now";
