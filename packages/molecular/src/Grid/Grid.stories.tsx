@@ -21,7 +21,6 @@ type Story = StoryObj<typeof Grid>;
  */
 const Box = () => {
   const style: CSSProperties = {
-    height: Math.floor(Math.random() * 200) + 300,
     backgroundColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
 
     borderRadius: "10px",
@@ -35,8 +34,8 @@ const Box = () => {
 
   return (
     <div style={style}>
-      {Object.entries(style).map(([key, value], i) => (
-        <div key={i}>{`${key}: ${value}`}</div>
+      {Array.from({ length: Math.random() * 10 + 1 }, (_, i) => (
+        <div key={i}>{i}</div>
       ))}
     </div>
   );
@@ -61,9 +60,7 @@ const Template = ({ ...args }) => (
  * Grid component is a layout component that arranges child components in a grid layout.
  */
 export const Default: Story = {
-  args: {
-    regular: true,
-  },
+  args: {},
   render: Template,
 };
 
@@ -71,9 +68,7 @@ export const Default: Story = {
  * Grid component is a layout component that arranges child components in a grid layout.
  */
 export const Regular: Story = {
-  args: {
-    regular: true,
-  },
+  args: {},
   render: Template,
 };
 
@@ -82,7 +77,7 @@ export const Regular: Story = {
  */
 export const Irregular: Story = {
   args: {
-    regular: false,
+    irregular: true,
   },
   render: Template,
 };

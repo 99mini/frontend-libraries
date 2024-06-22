@@ -6,7 +6,7 @@ export type GridItemMetaDataType = {
 };
 
 export type GirdContextType = {
-  regular: boolean;
+  irregular: boolean;
   width: number;
   setHeight: React.Dispatch<React.SetStateAction<number>>;
   column: number;

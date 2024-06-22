@@ -18,10 +18,11 @@ export type GridProps = React.DetailedHTMLProps<
 
 type GridPropsType = {
   /**
-   * If true, the grid will be `regular`, otherwise it will be `irregular`.
+   * @default false
+   * If true, the grid will be `irregular`, otherwise it will be `regular`.
    * `Irrgular` grid is `masnory` layout.
    */
-  regular?: boolean;
+  irregular?: boolean;
   /**
    * count of column
    */
@@ -41,7 +42,7 @@ type GridPropsType = {
 };
 
 export const Grid = ({
-  regular = true,
+  irregular = false,
   column = 4,
   columnGap = 8,
   rowGap = 8,
@@ -58,7 +59,7 @@ export const Grid = ({
   const rootRef = useRef<HTMLDivElement>(null);
 
   const rootContext: GirdContextType = {
-    regular,
+    irregular,
     gridItemMetaData,
     setGridItemMetaData,
     width,
@@ -88,7 +89,7 @@ export const Grid = ({
             ...{
               width,
               height,
-              ...(regular
+              ...(!irregular
                 ? {
                     height: "auto",
                     rowGap,
@@ -99,7 +100,7 @@ export const Grid = ({
             },
           }}
           className={classNames("YnI-Grid", className)}
-          data-regular={regular}
+          data-regular={!irregular}
         >
           {children ?? "Grid"}
         </div>

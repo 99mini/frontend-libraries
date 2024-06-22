@@ -18,13 +18,12 @@ export const GridItem = ({ ...props }: GridItemProps) => {
     throw new Error("GridItem must be used within a Grid");
   }
 
-  const { regular } = context;
+  const { irregular } = context;
 
-  if (regular) {
-    return <GirdItemRegular context={context} {...props} />;
+  if (irregular) {
+    return <GridItemIrregular context={context} {...props} />;
   }
-
-  return <GridItemIrregular context={context} {...props} />;
+  return <GirdItemRegular context={context} {...props} />;
 };
 
 const GirdItemRegular = ({
