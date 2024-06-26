@@ -76,14 +76,8 @@ export const Grid = ({
   };
 
   useEffect(() => {
-    if (!rootRef || !rootRef.current) {
-      return;
-    }
-
-    const element = rootRef.current;
-
-    setWidth(element.offsetWidth);
-  }, [rootRef, rootRef.current]);
+    setWidth(rootRef?.current?.offsetWidth ?? 0);
+  }, []);
 
   return (
     <GridContext.Provider value={rootContext}>

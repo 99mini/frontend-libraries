@@ -105,15 +105,9 @@ const GridItemIrregular = ({
   );
 
   useEffect(() => {
-    if (!ref || !ref.current) {
-      return;
-    }
-
-    const element = ref.current;
-
     const currentRootStyle = {
       width: width / column - columnGap * (1 - 1 / column),
-      height: element.offsetHeight,
+      height: ref?.current?.offsetHeight ?? 0,
     };
 
     setIrregularGridItemStyle(currentRootStyle);
@@ -228,15 +222,9 @@ const GridItemIrregularNotGuaranteeOrder = ({
   const translateY = useMemo(() => Math.min(...stackValue), [stackValue]);
 
   useEffect(() => {
-    if (!ref || !ref.current) {
-      return;
-    }
-
-    const element = ref.current;
-
     const currentRootStyle = {
       width: width / column - columnGap * (1 - 1 / column),
-      height: element.offsetHeight,
+      height: ref?.current?.offsetHeight ?? 0,
     };
 
     setIrregularGridItemStyle(currentRootStyle);
