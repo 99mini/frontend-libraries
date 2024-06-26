@@ -11,6 +11,8 @@ export type GridItemProps = React.DetailedHTMLProps<
   HTMLDivElement
 >;
 
+const generateUUID = () => Math.random().toString(36).substring(16);
+
 export const GridItem = ({ ...props }: GridItemProps) => {
   const context = useContext(GridContext);
 
@@ -68,7 +70,7 @@ const GridItemIrregular = ({
 
   const ref = useRef<HTMLDivElement>(null);
 
-  const [uuid] = useState(() => Math.random().toString(36).substring(7));
+  const [uuid] = useState(() => generateUUID());
 
   const [irregularGridItemStyle, setIrregularGridItemStyle] = useState<{
     width: number;
@@ -178,7 +180,7 @@ const GridItemIrregularNotGuaranteeOrder = ({
 
   const ref = useRef<HTMLDivElement>(null);
 
-  const [uuid] = useState(() => Math.random().toString(36).substring(7));
+  const [uuid] = useState(() => generateUUID());
 
   const [irregularGridItemStyle, setIrregularGridItemStyle] = useState<{
     width: number;
