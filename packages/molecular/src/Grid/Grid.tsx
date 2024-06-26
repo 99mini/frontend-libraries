@@ -18,7 +18,6 @@ export type GridProps = React.DetailedHTMLProps<
 
 type GridPropsType = {
   /**
-   * @default false
    * If true, the grid will be `irregular`, otherwise it will be `regular`.
    * `Irrgular` grid is `masnory` layout.
    */
@@ -39,6 +38,11 @@ type GridPropsType = {
    * force `columnGap` and `rowGap` to be the same value
    */
   gap?: number;
+  /**
+   * If `irregualr` is false, this props will be ignored.
+   * Otherwise If `irregular` is true and `notGuaranteeOrder` is true, the order of the children will be not maintained.
+   */
+  notGuaranteeOrder?: boolean;
 };
 
 export const Grid = ({
@@ -46,6 +50,7 @@ export const Grid = ({
   column = 4,
   columnGap = 8,
   rowGap = 8,
+  notGuaranteeOrder = false,
   ...props
 }: GridProps) => {
   const { gap, className, style, children, ...divProps } = props;
@@ -67,6 +72,7 @@ export const Grid = ({
     column,
     rowGap: gap ?? rowGap,
     columnGap: gap ?? columnGap,
+    notGuaranteeOrder,
   };
 
   useEffect(() => {
@@ -85,10 +91,9 @@ export const Grid = ({
         <div
           {...divProps}
           style={{
-            ...style,
+            width,
+            height,
             ...{
-              width,
-              height,
               ...(!irregular
                 ? {
                     height: "auto",
@@ -98,11 +103,12 @@ export const Grid = ({
                   }
                 : {}),
             },
+            ...style,
           }}
           className={classNames("YnI-Grid", className)}
           data-regular={!irregular}
         >
-          {children ?? "Grid"}
+          {children}
         </div>
       </div>
     </GridContext.Provider>

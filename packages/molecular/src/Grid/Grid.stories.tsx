@@ -19,7 +19,7 @@ type Story = StoryObj<typeof Grid>;
  *
  * @description generate random width(range: 200px ~ 600px), height(range:300px ~ 500px)
  */
-const Box = () => {
+const Box = ({ number }: { number: number }) => {
   const style: CSSProperties = {
     backgroundColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
 
@@ -34,8 +34,9 @@ const Box = () => {
 
   return (
     <div style={style}>
+      <strong>{number}</strong>
       {Array.from({ length: Math.random() * 10 + 1 }, (_, i) => (
-        <div key={i}>{i}</div>
+        <div key={i}>{`${i}: content`}</div>
       ))}
     </div>
   );
@@ -43,12 +44,12 @@ const Box = () => {
 
 const Template = ({ ...args }) => (
   <div>
-    <h1>Grid</h1>
+    <h1>{`${args.irregular ? "irregular" : "regular"} ${args.notGuaranteeOrder ? "not guarantee order" : ""} Grid`}</h1>
     <div style={{ padding: "0 16px", margin: "0 auto" }}>
       <Grid {...args}>
-        {Array.from({ length: 10 }, (_, i) => (
+        {Array.from({ length: 11 }, (_, i) => (
           <GridItem key={i}>
-            <Box />
+            <Box number={i} />
           </GridItem>
         ))}
       </Grid>
@@ -77,6 +78,14 @@ export const Regular: Story = {
  */
 export const Irregular: Story = {
   args: {
+    irregular: true,
+  },
+  render: Template,
+};
+
+export const notGuaranteeOrder: Story = {
+  args: {
+    notGuaranteeOrder: true,
     irregular: true,
   },
   render: Template,

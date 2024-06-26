@@ -2,6 +2,7 @@ import { createContext } from "react";
 
 export type GridItemMetaDataType = {
   uuid: string;
+  order: number;
   size: { width: number; height: number };
 };
 
@@ -16,6 +17,7 @@ export type GirdContextType = {
   setGridItemMetaData: React.Dispatch<
     React.SetStateAction<GridItemMetaDataType[]>
   >;
+  notGuaranteeOrder: boolean;
 };
 
 const GridContext = createContext<GirdContextType | null>(null);
