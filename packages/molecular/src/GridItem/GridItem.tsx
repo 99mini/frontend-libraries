@@ -18,18 +18,20 @@ export const GridItem = ({ ...props }: GridItemProps) => {
     throw new Error("GridItem must be used within a Grid");
   }
 
-  const { irregular } = context;
+  const { irregular, notGuaranteeOrder } = context;
 
-  if (irregular) {
-    return <GridItemIrregular context={context} {...props} />;
+  if (!irregular) {
+    return <GirdItemRegular {...props} />;
   }
-  return <GirdItemRegular context={context} {...props} />;
+
+  if (notGuaranteeOrder) {
+    return <GridItemIrregularNotGuaranteeOrder context={context} {...props} />;
+  }
+
+  return <GridItemIrregular context={context} {...props} />;
 };
 
-const GirdItemRegular = ({
-  context,
-  ...props
-}: GridItemProps & { context: GirdContextType }) => {
+const GirdItemRegular = ({ ...props }: GridItemProps) => {
   const { className, children, ...divProps } = props;
 
   return (
@@ -49,7 +51,9 @@ const GirdItemRegular = ({
 const GridItemIrregular = ({
   context,
   ...props
-}: GridItemProps & { context: GirdContextType }) => {
+}: GridItemProps & {
+  context: Omit<GirdContextType, "irregular" | "notGuaranteeOrder">;
+}) => {
   const { className = {}, style, children, ...divProps } = props;
 
   const {
@@ -60,7 +64,116 @@ const GridItemIrregular = ({
     column,
     rowGap,
     columnGap,
-    notGuaranteeOrder,
+  } = context;
+
+  const ref = useRef<HTMLDivElement>(null);
+
+  const [uuid] = useState(() => Math.random().toString(36).substring(7));
+
+  const [irregularGridItemStyle, setIrregularGridItemStyle] = useState<{
+    width: number;
+    height: number;
+  } | null>(null);
+
+  const orderIndex = useMemo(
+    () => gridItemMetaData.findIndex((meta) => meta.uuid === uuid),
+    [gridItemMetaData, uuid],
+  );
+
+  const translateX = useMemo(() => {
+    const start = Math.max(
+      column * Math.floor(orderIndex / column) - column,
+      0,
+    );
+    const end = start + (orderIndex % column);
+    return gridItemMetaData
+      .slice(start, end)
+      .reduce((acc, meta) => acc + meta.size.width + columnGap, 0);
+  }, [gridItemMetaData, column, columnGap, orderIndex]);
+
+  const translateY = useMemo(
+    () =>
+      gridItemMetaData.slice(0, orderIndex).reduce((acc, meta, index) => {
+        if (index % column === orderIndex % column) {
+          return acc + meta.size.height + rowGap;
+        }
+        return acc;
+      }, 0),
+    [gridItemMetaData, orderIndex, column, rowGap],
+  );
+
+  useEffect(() => {
+    if (!ref || !ref.current) {
+      return;
+    }
+
+    const element = ref.current;
+
+    const currentRootStyle = {
+      width: width / column - columnGap * (1 - 1 / column),
+      height: element.offsetHeight,
+    };
+
+    setIrregularGridItemStyle(currentRootStyle);
+
+    setGridItemMetaData((prev) => [
+      ...prev,
+      { uuid, order: orderIndex, size: currentRootStyle },
+    ]);
+
+    return () => {
+      setGridItemMetaData((prev) => prev.filter((item) => item.uuid !== uuid));
+    };
+  }, [uuid, width, column, columnGap, setGridItemMetaData, orderIndex]);
+
+  useEffect(() => {
+    setHeight((prevHeight) =>
+      Math.max(prevHeight, translateY + (irregularGridItemStyle?.height || 0)),
+    );
+  }, [translateY, irregularGridItemStyle?.height]);
+
+  return (
+    <div
+      {...divProps}
+      className={classNames(
+        "YnI-Grid-Item",
+        "YnI-Grid-Item-Irregular",
+        className,
+      )}
+      style={{
+        ...{
+          top: 0,
+          left: 0,
+          width: irregularGridItemStyle?.width || "auto",
+          transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+        },
+        ...style,
+      }}
+      data-uuid={uuid}
+      data-order={orderIndex}
+      ref={ref}
+    >
+      {children}
+    </div>
+  );
+};
+
+const GridItemIrregularNotGuaranteeOrder = ({
+  context,
+  ...props
+}: GridItemProps & {
+  context: Omit<GirdContextType, "irregular" | "notGuaranteeOrder">;
+}) => {
+  const { className = {}, style, children, ...divProps } = props;
+
+  const {
+    gridItemMetaData,
+    setGridItemMetaData,
+    width,
+    setHeight,
+    column,
+    rowGap,
+    columnGap,
   } = context;
 
   const ref = useRef<HTMLDivElement>(null);
@@ -93,19 +206,11 @@ const GridItemIrregular = ({
     [gridItemMetaData, targetIndex, column, rowGap],
   );
 
-  const minIndex = useMemo(() => {
+  const orderIndex = useMemo(() => {
     const targetRow = Math.floor(targetIndex / column);
 
-    const ret =
-      stackValue.indexOf(Math.min(...stackValue)) + targetRow * column;
-
-    return ret;
+    return stackValue.indexOf(Math.min(...stackValue)) + targetRow * column;
   }, [stackValue, targetIndex, column]);
-
-  const orderIndex = useMemo(
-    () => (!notGuaranteeOrder || targetIndex < column ? targetIndex : minIndex),
-    [notGuaranteeOrder, targetIndex, column, minIndex],
-  );
 
   const translateX = useMemo(() => {
     const start = Math.max(
@@ -118,25 +223,7 @@ const GridItemIrregular = ({
       .reduce((acc, meta) => acc + meta.size.width + columnGap, 0);
   }, [gridItemMetaData, column, columnGap, orderIndex]);
 
-  const translateY = useMemo(() => {
-    if (notGuaranteeOrder) {
-      return Math.min(...stackValue);
-    }
-
-    return gridItemMetaData.slice(0, targetIndex).reduce((acc, meta, index) => {
-      if (index % column === targetIndex % column) {
-        return acc + meta.size.height + rowGap;
-      }
-      return acc;
-    }, 0);
-  }, [
-    gridItemMetaData,
-    targetIndex,
-    column,
-    rowGap,
-    stackValue,
-    notGuaranteeOrder,
-  ]);
+  const translateY = useMemo(() => Math.min(...stackValue), [stackValue]);
 
   useEffect(() => {
     if (!ref || !ref.current) {
