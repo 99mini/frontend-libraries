@@ -76,7 +76,9 @@ export const Grid = ({
   };
 
   useEffect(() => {
-    setWidth(rootRef?.current?.offsetWidth ?? 0);
+    const rootEl = rootRef.current;
+
+    setWidth(rootEl?.offsetWidth ?? 0);
   }, []);
 
   return (

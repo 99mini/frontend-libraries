@@ -1,4 +1,4 @@
-import { act, render, waitFor } from "@testing-library/react";
+import { render } from "@testing-library/react";
 
 import React from "react";
 import Grid from "../Grid";
@@ -27,6 +27,18 @@ describe("Irregular grid", () => {
   it("should render irregular grid", async () => {
     const result = render(
       <Grid irregular>
+        <GridItem></GridItem>
+      </Grid>,
+    );
+    expect(result).toBeTruthy();
+  });
+
+  it("should render irregular grid with column", async () => {
+    const result = render(
+      <Grid irregular column={2}>
+        <GridItem></GridItem>
+        <GridItem></GridItem>
+        <GridItem></GridItem>
         <GridItem></GridItem>
       </Grid>,
     );
