@@ -11,7 +11,7 @@ export type GridItemProps = React.DetailedHTMLProps<
   HTMLDivElement
 >;
 
-const generateUUID = () => Math.random().toString(36).substring(16);
+const generateUUID = () => Math.random().toString(36).substring(2, 16);
 
 export const GridItem = ({ ...props }: GridItemProps) => {
   const context = useContext(GridContext);
@@ -71,6 +71,7 @@ const GridItemIrregular = ({
   const ref = useRef<HTMLDivElement>(null);
 
   const [uuid] = useState(() => generateUUID());
+  console.log(generateUUID());
 
   const [irregularGridItemStyle, setIrregularGridItemStyle] = useState<{
     width: number;
