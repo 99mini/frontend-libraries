@@ -26,9 +26,15 @@ import { isMouseEvent } from "@99mini/utils/Event";
 
 - [Event](#Event)
 - [Date](#Date)
+- [Styled](#Styled)
+- [Type](#Type)
 
 ## Event
 
 ## Date
+
+## Styled
+
+## Type
 
 # Dependency

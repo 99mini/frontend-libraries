@@ -7,7 +7,7 @@ import {
   MonthType,
   WEEKDAYS_ENG,
   WEEKDAYS_KOR,
-  endOfYaerMonth,
+  endOfDay,
   getMonthName,
   getWeekdayIndex,
   compareDate,
@@ -93,16 +93,14 @@ export const SingleCalendar = ({
     undefined,
   );
 
+  const date = new Date(year, month - 1);
+
   const isKor = locale === "kor";
   const monthName = getMonthName(month, locale);
   const weekdays = isKor ? WEEKDAYS_KOR : WEEKDAYS_ENG;
 
-  const startWeekdayIndex = getWeekdayIndex(year, month, 1);
-  const endOfMonth = endOfYaerMonth(year, month);
-
-  if (startWeekdayIndex === undefined) {
-    throw new Error("invalid date");
-  }
+  const startWeekdayIndex = getWeekdayIndex(date);
+  const endOfMonth = endOfDay(date);
 
   const weeksCount = Math.ceil((startWeekdayIndex + endOfMonth) / 7);
 
