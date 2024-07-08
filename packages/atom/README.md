@@ -58,6 +58,21 @@ const App = () => {
 
 ## CheckBox
 
+```tsx
+import { CheckBox } from "@99mini/atom";
+
+const App = () => {
+  return (
+    <div>
+      <CheckBox label="default" />
+      <CheckBox checked label="checked" />
+      <CheckBox disabled label="disabled" />
+      <CheckBox required label="required" />
+    </div>
+  );
+};
+```
+
 ## Skeleton
 
 ## Progress
