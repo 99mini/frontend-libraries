@@ -1,7 +1,7 @@
 ---
 name: New Feature request
 about: Suggest an idea for this project
-title: 'feat:'
+title: '[Feature]: '
 labels: new feature
 assignees: ''
 
@@ -14,3 +14,4 @@ No response
 No response
 
 ### etc.
+No response
