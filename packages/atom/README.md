@@ -27,6 +27,8 @@ import Badge from "@99mini/atom/Badge";
 - [Button](#Button)
 - [CheckBox](#CheckBox)
 - [Skeleton](#Skeleton)
+- [Progress](#Progress)
+  - [LinearProgress](#LinearProgress)
 
 ## Button
 
@@ -56,7 +58,26 @@ const App = () => {
 
 ## CheckBox
 
+```tsx
+import { CheckBox } from "@99mini/atom";
+
+const App = () => {
+  return (
+    <div>
+      <CheckBox label="default" />
+      <CheckBox checked label="checked" />
+      <CheckBox disabled label="disabled" />
+      <CheckBox required label="required" />
+    </div>
+  );
+};
+```
+
 ## Skeleton
+
+## Progress
+
+### LinearProgress
 
 # Dependency
 
