@@ -42,6 +42,22 @@ export const LinearProgress = ({
    */
   color = "rgb(87, 87, 233)",
   /**
+   * The label of the progress.
+   * @default `undefined` - show the value of the progress.
+   * `string` - show the string as the label.
+   */
+  label,
+  /**
+   * The label placement of the progress.
+   * @default `left`
+   */
+  labelPlacement = "left",
+  /**
+   * Show the label of the progress.
+   * @default `false`
+   */
+  showLabel = false,
+  /**
    * The height of the progress.
    */
   height = 4,
@@ -66,10 +82,19 @@ export const LinearProgress = ({
       className={classNames(
         "YnI-Progress-Root",
         "YnI-LinearProgress",
+        { [`YnI-Progress-Label--${labelPlacement}`]: labelPlacement },
         props.className,
       )}
       ref={linearProgressElementRef}
     >
+      {showLabel && (
+        <span className={classNames("YnI-Progress-Label")}>
+          {label}
+          {!label &&
+            (varient === "determinate" || varient === "buffer") &&
+            `${Math.min(value, 100).toFixed(0)}%`}
+        </span>
+      )}
       <div className={classNames("YnI-LinearProgress-Bar")}>
         {varient === "buffer" && (
           <div

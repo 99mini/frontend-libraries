@@ -103,3 +103,21 @@ export const ColorBuffer: Story = {
   },
   render: BufferTemplate,
 };
+
+export const DeterminateWithLabel: Story = {
+  args: {
+    showLabel: true,
+    labelPlacement: "right",
+    varient: "determinate",
+  },
+  render: DeterminateTemplate,
+};
+
+export const BufferWithLabel: Story = {
+  args: {
+    showLabel: true,
+    labelPlacement: "right",
+    varient: "buffer",
+  },
+  render: BufferTemplate,
+};
