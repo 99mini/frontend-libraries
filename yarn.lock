@@ -18,7 +18,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@99mini/atom@npm:0.4.0, @99mini/atom@workspace:packages/atom":
+"@99mini/atom@npm:0.4.0":
+  version: 0.4.0
+  resolution: "@99mini/atom@npm:0.4.0"
+  dependencies:
+    "@99mini/core": "npm:^0.1.1"
+    "@99mini/utils": "npm:^0.4.0"
+  checksum: 10c0/fbeb738022ca8d112a5ff175651a25da944ba980323e86a46c13c3527669ea89b0c1c83a78a820bb59102d15fe38f2ab3f97f6c93d34da2c0acf9076126196ae
+  languageName: node
+  linkType: hard
+
+"@99mini/atom@workspace:packages/atom":
   version: 0.0.0-use.local
   resolution: "@99mini/atom@workspace:packages/atom"
   dependencies:
@@ -146,6 +156,13 @@ __metadata:
   version: 0.1.1
   resolution: "@99mini/utils@npm:0.1.1"
   checksum: 10c0/4bda5b0a53165878d5e89a4f3f942f24f50c6a9914ceffc6751ac207d2cda0dd8d91abbbce7820a309ef5a24295c3ac895b2f10a491ce601472177e58b47f3a2
+  languageName: node
+  linkType: hard
+
+"@99mini/utils@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "@99mini/utils@npm:0.4.0"
+  checksum: 10c0/c42699a761eecdff2d716bd25fc5e2768002113a53bc3237cbe935c3d2c912a775f4529cf67e8d4738c9791de16c47b9eba757878f0f874ea643450289b0a2cd
   languageName: node
   linkType: hard
 
