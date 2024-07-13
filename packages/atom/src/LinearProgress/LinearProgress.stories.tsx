@@ -104,6 +104,16 @@ export const ColorBuffer: Story = {
   render: BufferTemplate,
 };
 
+export const IndeterminateWithLabel: Story = {
+  args: {
+    showLabel: true,
+    label: "Loading...",
+    labelPlacement: "right",
+    varient: "indeterminate",
+  },
+  render: Template,
+};
+
 export const DeterminateWithLabel: Story = {
   args: {
     showLabel: true,
