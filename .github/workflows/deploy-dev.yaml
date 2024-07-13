@@ -28,7 +28,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - run: yarn ci
+      - run: yarn
       - name: Run Chromatic
         uses: chromaui/action@v1 # Update to the latest version of Chromatic action
         with:
