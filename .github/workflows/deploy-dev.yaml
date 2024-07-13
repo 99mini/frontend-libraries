@@ -5,11 +5,11 @@ name: "Chromatic Dev Deployment"
 on:
   push:
     branches:
-      - dev
+      - dev/*
 
 # List of jobs
 jobs:
-  test:
+  deploy-chromatic-dev:
     # Operating System
     runs-on: ubuntu-latest
     # Job steps
