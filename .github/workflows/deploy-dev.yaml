@@ -32,5 +32,5 @@ jobs:
       - name: Run Chromatic
         uses: chromaui/action@v1 # Update to the latest version of Chromatic action
         with:
-          projectToken: ${{ secrets.CHROMATIC.CHROMATIC_PROJECT_TOKEN_DEV }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_DEV }}
           token: ${{ secrets.GITHUB_TOKEN }}
