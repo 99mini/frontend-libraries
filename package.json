@@ -3,7 +3,7 @@
   "description": "frontend-libraries",
   "packageManager": "yarn@4.2.2",
   "workspaces": [
-    "configs/*",
+    "configs/**",
     "packages/**"
   ],
   "repository": {
