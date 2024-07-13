@@ -1,24 +1,21 @@
-# Workflow name
 name: "Chromatic Dev Deployment"
 
-# Event for the workflow
 on:
   push:
     branches:
       - dev/*
 
-# List of jobs
 jobs:
-  deploy-chromatic-dev:
-    # Operating System
+  deploy-chromatic:
     runs-on: ubuntu-latest
-    # Job steps
+    outputs:
+      status: ${{ job.status }}
     steps:
-      - uses: actions/checkout@v2 # Update to the latest version of checkout action
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Setup Node.js
-        uses: actions/setup-node@v2 # Example of using a different action
+        uses: actions/setup-node@v4
         with:
           node-version: 18
       - name: Cache Dependencies
@@ -30,7 +27,14 @@ jobs:
             ${{ runner.os }}-node-
       - run: yarn
       - name: Run Chromatic
-        uses: chromaui/action@v1 # Update to the latest version of Chromatic action
+        uses: chromaui/action@latest
+        id: chromatic
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_DEV }}
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: comment PR
+        uses: thollander/actions-comment-pull-request@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          message: "🚀storybook: ${{ steps.chromatic.outputs.storybookUrl }}"
