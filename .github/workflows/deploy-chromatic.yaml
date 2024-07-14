@@ -30,13 +30,14 @@ jobs:
       - run: yarn
       - name: Set Chromatic Project Token
         id: set-chromatic-token
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          CHROMATIC_PROJECT_TOKEN_DEV: ${{ secrets.CHROMATIC_PROJECT_TOKEN_DEV }}
         run: |
           if [ "${{ inputs.env }}" == "dev" ]; then
-            CHROMATIC_PROJECT_TOKEN_BASE64=`echo -n ${{ secrets.CHROMATIC_PROJECT_TOKEN_DEV }} | base64 -w 0`
-            echo "CHROMATIC_PROJECT_TOKEN=$CHROMATIC_PROJECT_TOKEN_BASE64" >> "$GITHUB_OUTPUT"
+            echo "CHROMATIC_PROJECT_TOKEN=1" >> "$GITHUB_OUPUT"
           elif [ "${{ inputs.env }}" == "main" ]; then
-            CHROMATIC_PROJECT_TOKEN_BASE64=`echo -n ${{ secrets.CHROMATIC_PROJECT_TOKEN }} | base64 -w 0`
-            echo "CHROMATIC_PROJECT_TOKEN=$CHROMATIC_PROJECT_TOKEN_BASE64" >> "$GITHUB_OUTPUT"
+            echo "CHROMATIC_PROJECT_TOKEN=2" >> "$GITHUB_OUPUT"
           else
             echo "Error: Invalid environment"
             exit 1
@@ -44,12 +45,9 @@ jobs:
       - name: Run Chromatic
         uses: chromaui/action@latest
         id: chromatic
-        env:
-          CHROMATIC_PROJECT_TOKEN: echo -n ${{ steps.set-chromatic-token.outputs.CHROMATIC_PROJECT_TOKEN }} | base64 --decode
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          projectToken: ${{ env.CHROMATIC_PROJECT_TOKEN}}
-          token: ${{ env.GITHUB_TOKEN }}
+          projectToken: ${{ steps.set-chromatic-token.outputs.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: comment PR
         uses: actions/github-script@v6
         env:
