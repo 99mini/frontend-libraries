@@ -30,15 +30,18 @@ jobs:
       - run: yarn
       - name: Set Chromatic Project Token
         id: set-chromatic-token
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          CHROMATIC_PROJECT_TOKEN_DEV: ${{ secrets.CHROMATIC_PROJECT_TOKEN_DEV }}
         run: |
           if [ "${{ inputs.env }}" == "dev" ]; then
-            chromatic_project_token=${{ secrets.CHROMATIC_PROJECT_TOKEN_DEV }}
+            chromatic_project_token=$CHROMATIC_PROJECT_TOKEN_DEV
             echo "::add-mask::$chromatic_project_token"
-            echo "CHROMATIC_PROJECT_TOKEN=$chromatic_project_token" >> "$GITHUB_OUPUT"
+            echo "CHROMATIC_PROJECT_TOKEN=$chromatic_project_token" >> "$GITHUB_OUTPUT"
           elif [ "${{ inputs.env }}" == "main" ]; then
-            chromatic_project_token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+            chromatic_project_token=$CHROMATIC_PROJECT_TOKEN
             echo "::add-mask::$chromatic_project_token"
-            echo "CHROMATIC_PROJECT_TOKEN=$chromatic_project_token" >> "$GITHUB_OUPUT"
+            echo "CHROMATIC_PROJECT_TOKEN=$chromatic_project_token" >> "$GITHUB_OUTPUT"
           else
             echo "Error: Invalid environment"
             exit 1
