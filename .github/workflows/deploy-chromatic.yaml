@@ -1,4 +1,5 @@
 name: Chromatic Deployment
+
 on:
   workflow_call:
     inputs:
@@ -7,6 +8,7 @@ on:
         required: true
 jobs:
   deploy-chromatic:
+    environment: ${{ inputs.env }}
     runs-on: ubuntu-latest
     outputs:
       status: ${{ job.status }}
