@@ -34,9 +34,9 @@ jobs:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           CHROMATIC_PROJECT_TOKEN_DEV: ${{ secrets.CHROMATIC_PROJECT_TOKEN_DEV }}
         run: |
-          if ${{ inputs.env }} == 'dev'; then
+          if "${{ inputs.env }}" == "dev"; then
             echo "CHROMATIC_PROJECT_TOKEN=$CHROMATIC_PROJECT_TOKEN_DEV" >> "$GITHUB_OUPUT"
-          elif ${{ inputs.env }} == 'main'; then
+          elif "${{ inputs.env }}" == "main"; then
             echo "CHROMATIC_PROJECT_TOKEN=$CHROMATIC_PROJECT_TOKEN" >> "$GITHUB_OUPUT"
           else
             echo "Error: Invalid environment"
