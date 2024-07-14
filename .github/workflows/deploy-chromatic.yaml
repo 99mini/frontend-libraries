@@ -1,0 +1,84 @@
+name: Chromatic Deployment
+
+on:
+  workflow_call:
+    inputs:
+      env:
+        type: string
+        required: true
+jobs:
+  deploy-chromatic:
+    environment: ${{ inputs.env }}
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ job.status }}
+    steps:
+      - name: Check environment
+        run: echo "Deploying to ${{ inputs.env }}"
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: yarn
+      - name: Run Chromatic
+        uses: chromaui/action@latest
+        id: chromatic
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: comment PR
+        uses: actions/github-script@v6
+        if: inputs.env == 'dev' && always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          script: |
+            const issues = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              head: `${context.repo.owner}:${context.ref.replace('refs/heads/', '')}`
+            });
+
+            const prNumber = context.issue.number || issues.data[0].number;
+
+            const statusCode = `${{ steps.chromatic.outputs.code }}`;
+            const statusMarkdown = `${statusCode === "0" ? "✅ Sucessed" : "❌ Failed"}`;
+            const storybookUrlMarkdown = `<a href="${{ steps.chromatic.outputs.storybookUrl }}" target="_blank">View Storybook</a>`;
+            const chromaticUrlMarkdown = `<a href="${{ steps.chromatic.outputs.buildUrl }}" target="_blank">View Chromatic</a>`;
+
+            const bodyStatus = `## 🚀 Chromatic Deployment\n\n
+            ### Status\n
+            | Environment | Status | Storybook URL | Chromatic URL |
+            | :---: | :---: | :---: | :---: |
+            | ${{ inputs.env }} | ${statusMarkdown} | ${storybookUrlMarkdown} | ${chromaticUrlMarkdown} |
+            `;
+
+            const componentCountMarkdown = `**${{ steps.chromatic.outputs.componentCount }}**`;
+            const changeCountMarkdown = `**${{ steps.chromatic.outputs.changeCount }}**`;
+            const errorCountMarkdown = `**${{ steps.chromatic.outputs.errorCount }}**`;
+
+            const bodyDetail = `### Detail\n
+            | component | change | error |
+            | :---: | :---: | :---: |
+            | ${componentCountMarkdown} | ${changeCountMarkdown} | ${errorCountMarkdown} |
+            `;
+
+            const body = `${bodyStatus}\n${bodyDetail}`;
+
+            await github.rest.issues.createComment({
+              issue_number: prNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body
+            })

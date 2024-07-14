@@ -3,7 +3,7 @@
   "description": "frontend-libraries",
   "packageManager": "yarn@4.2.2",
   "workspaces": [
-    "configs/*",
+    "configs/**",
     "packages/**"
   ],
   "repository": {
@@ -82,6 +82,7 @@
     "all-packages": "sh ./scripts/script_all_packages.sh",
     "test": "jest",
     "test:badges": "yarn test --ci --coverage && jest-coverage-badges --output './.badges'",
-    "ci": "yarn && yarn test:badges"
+    "ci": "yarn && yarn test:badges",
+    "preinstall": "yarn all-packages cp:postinstall"
   }
 }

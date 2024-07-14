@@ -1,36 +1,17 @@
-# Workflow name
-name: "Chromatic Deployment"
+name: "Chromatic Real Deployment"
 
-# Event for the workflow
 on:
   push:
     branches:
       - main
 
-# List of jobs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  deploy-chromatic:
-    # Operating System
-    runs-on: ubuntu-latest
-    # Job steps
-    steps:
-      - uses: actions/checkout@v2 # Update to the latest version of checkout action
-        with:
-          fetch-depth: 0
-      - name: Setup Node.js
-        uses: actions/setup-node@v2 # Example of using a different action
-        with:
-          node-version: 18
-      - name: Cache Dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - run: yarn
-      - name: Run Chromatic
-        uses: chromaui/action@v1 # Update to the latest version of Chromatic action
-        with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+  deploy-dev-chromatic:
+    uses: ./.github/workflows/deploy-chromatic.yaml
+    secrets: inherit
+    with:
+      env: main

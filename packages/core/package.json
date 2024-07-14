@@ -1,6 +1,6 @@
 {
   "name": "@99mini/core",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "sideEffects": false,
   "main": "./src/index.ts",
   "files": [
@@ -36,6 +36,6 @@
     "rollup": "^4.17.2"
   },
   "dependencies": {
-    "@99mini/utils": "^0.6.2"
+    "@99mini/utils": "^0.6.3"
   }
 }
