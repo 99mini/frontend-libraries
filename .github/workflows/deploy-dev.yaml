@@ -10,50 +10,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy-chromatic:
+  deploy-dev-chromatic:
     runs-on: ubuntu-latest
-    outputs:
-      status: ${{ job.status }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: deploy-dev-chromatic
+        uses: ./.github/workflows/deploy-chromatic.yaml
         with:
-          node-version: 18
-      - name: Cache Dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - run: yarn
-      - name: Run Chromatic
-        uses: chromaui/action@latest
-        id: chromatic
-        with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_DEV }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: comment PR
-        uses: actions/github-script@v6
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          script: |
-            const issues = await github.rest.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              head: `${context.repo.owner}:${context.ref.replace('refs/heads/', '')}`
-            })
-
-            const prNumber = context.issue.number || issues.data[0].number
-
-            await github.rest.issues.createComment({
-              issue_number: prNumber,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '🚀storybook: ${{ steps.chromatic.outputs.storybookUrl }}'
-            })
+          chromaticToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_DEV }}
