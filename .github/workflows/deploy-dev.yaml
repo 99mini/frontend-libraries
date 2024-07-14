@@ -12,5 +12,6 @@ concurrency:
 jobs:
   deploy-dev-chromatic:
     uses: ./.github/workflows/deploy-chromatic.yaml
+    secrets: inherit
     with:
       env: dev
