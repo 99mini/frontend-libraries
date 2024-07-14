@@ -2,8 +2,6 @@ name: "Chromatic Dev Deployment"
 
 on:
   push:
-  pull_request_target:
-    types: [opened]
     branches:
       - dev/*
 
@@ -38,8 +36,17 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
+            const issues = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              head: `${context.repo.owner}:${context.ref.replace('refs/heads/', '')}`
+            })
+
+            const prNumber = context.issue.number || issues.data[0].number
+
+            await github.rest.issues.createComment({
+              issue_number: prNumber,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: '🚀storybook: ${{ steps.chromatic.outputs.storybookUrl }}'
