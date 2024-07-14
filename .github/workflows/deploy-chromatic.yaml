@@ -52,8 +52,8 @@ jobs:
             const prNumber = context.issue.number || issues.data[0].number;
 
             const statusMarkdown = `${${{ steps.chromatic.outputs.code }} === "OK" ? "✅ Sucessed" : "❌ Failed"}`;
-            const storybookUrlMarkdown = `[View Storybook](${{ steps.chromatic.outputs.storybookUrl }}){:target="_blank"}`;
-            const chromaticUrlMarkdown = `[View Chromatic](${{ steps.chromatic.outputs.buildUrl }}){:target="_blank"}`;
+            const storybookUrlMarkdown = `<a href="${{ steps.chromatic.outputs.storybookUrl }}" target="_blank">View Storybook</a>`;
+            const chromaticUrlMarkdown = `<a href="${{ steps.chromatic.outputs.buildUrl }}" target="_blank">View Chromatic</a>`;
 
             const bodyStatus = `## 🚀 Chromatic Deployment\n\n
             ### Status\n
