@@ -51,17 +51,25 @@ jobs:
 
             const prNumber = context.issue.number || issues.data[0].number;
 
+            const statusMarkdown = `${${{ steps.chromatic.outputs.code }} === "OK" ? "✅ Sucessed" : "❌ Failed"}`;
+            const storybookUrlMarkdown = `[View Storybook](${{ steps.chromatic.outputs.storybookUrl }}){:target="_blank"}`;
+            const chromaticUrlMarkdown = `[View Chromatic](${{ steps.chromatic.outputs.buildUrl }}){:target="_blank"}`;
+
             const bodyStatus = `## 🚀 Chromatic Deployment\n\n
             ### Status\n
-            | Environment | Status | Storybook URL | Chromatic URL |\n
-            | --- | --- | --- | --- |\n
-            | ${{ inputs.env }} | ${${{ steps.chromatic.outputs.code }} === "0" ? "✅ Sucessed" : "❌ Failed"} | [View Storybook](${{ steps.chromatic.outputs.storybookUrl }}) | [View Chromatic](${{ steps.chromatic.outputs.buildUrl }}) |\n
+            | Environment | Status | Storybook URL | Chromatic URL |
+            | --- | --- | --- | --- |
+            | ${{ inputs.env }} | ${statusMarkdown} | ${storybookUrlMarkdown} | ${chromaticUrlMarkdown} |
             `;
+
+            const componentCountMarkdown = `<span style="color: #080808">**${{ steps.chromatic.outputs.componentCount }}**</span>`;
+            const changeCountMarkdown = `<span style="color: #EED202">**${{ steps.chromatic.outputs.changeCount }}**</span>`;
+            const errorCountMarkdown = `<span style="color: #F03A17">**${{ steps.chromatic.outputs.errorCount }}**</span>`;
 
             const bodyDetail = `### Detail\n
             | component | change | error |
-            | --- | --- | --- |
-            | ${{ steps.chromatic.outputs.componentCount }} | ${{ steps.chromatic.outputs.changeCount }} | ${{ steps.chromatic.outputs.errorCount }} |
+            | ---: | ---: | ---: |
+            | ${componentCountMarkdown} | ${changeCountMarkdown} | ${errorCountMarkdown} |
             `;
 
             const body = `${bodyStatus}\n${bodyDetail}`;
