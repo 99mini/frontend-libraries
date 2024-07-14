@@ -52,8 +52,8 @@ jobs:
 
             const prNumber = context.issue.number || issues.data[0].number;
 
-            // const statusMarkdown = `${${{ steps.chromatic.outputs.code }} === "OK" ? "✅ Sucessed" : "❌ Failed"}`;
-            const statusMarkdown = `${{ steps.chromatic.outputs.code }}`;
+            const statusCode = `${{ steps.chromatic.outputs.code }}`;
+            // const statusMarkdown = `${statusCode === "0" ? "✅ Sucessed" : "❌ Failed"}`;
             const storybookUrlMarkdown = `<a href="${{ steps.chromatic.outputs.storybookUrl }}" target="_blank">View Storybook</a>`;
             const chromaticUrlMarkdown = `<a href="${{ steps.chromatic.outputs.buildUrl }}" target="_blank">View Chromatic</a>`;
 
@@ -64,9 +64,9 @@ jobs:
             | ${{ inputs.env }} | ${statusMarkdown} | ${storybookUrlMarkdown} | ${chromaticUrlMarkdown} |
             `;
 
-            const componentCountMarkdown = `<span style="color: #080808">**${{ steps.chromatic.outputs.componentCount }}**</span>`;
-            const changeCountMarkdown = `<span style="color: #EED202">**${{ steps.chromatic.outputs.changeCount }}**</span>`;
-            const errorCountMarkdown = `<span style="color: #F03A17">**${{ steps.chromatic.outputs.errorCount }}**</span>`;
+            const componentCountMarkdown = `**${{ steps.chromatic.outputs.componentCount }}**`;
+            const changeCountMarkdown = `**${{ steps.chromatic.outputs.changeCount }}**`;
+            const errorCountMarkdown = `**${{ steps.chromatic.outputs.errorCount }}**`;
 
             const bodyDetail = `### Detail\n
             | component | change | error |
