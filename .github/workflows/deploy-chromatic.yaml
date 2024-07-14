@@ -47,13 +47,28 @@ jobs:
               repo: context.repo.repo,
               state: 'open',
               head: `${context.repo.owner}:${context.ref.replace('refs/heads/', '')}`
-            })
+            });
 
-            const prNumber = context.issue.number || issues.data[0].number
+            const prNumber = context.issue.number || issues.data[0].number;
+
+            const bodyStatus = `## 🚀 Chromatic Deployment\n\n
+            ### Status\n
+            | Environment | Status | Storybook URL | Chromatic URL |\n
+            | --- | --- | --- | --- |\n
+            | ${{ inputs.env }} | ${${{ steps.chromatic.outputs.code }} === "0" ? "✅ Sucessed" : "❌ Failed"} | [View Storybook](${{ steps.chromatic.outputs.storybookUrl }}) | [View Chromatic](${{ steps.chromatic.outputs.buildUrl }}) |\n
+            `;
+
+            const bodyDetail = `### Detail\n
+            | component | change | error |
+            | --- | --- | --- |
+            | ${{ steps.chromatic.outputs.componentCount }} | ${{ steps.chromatic.outputs.changeCount }} | ${{ steps.chromatic.outputs.errorCount }} |
+            `;
+
+            const body = `${bodyStatus}\n${bodyDetail}`;
 
             await github.rest.issues.createComment({
               issue_number: prNumber,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '🚀storybook: ${{ steps.chromatic.outputs.storybookUrl }}'
+              body
             })
