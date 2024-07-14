@@ -2,6 +2,8 @@ name: "Chromatic Dev Deployment"
 
 on:
   push:
+  pull_request_target:
+    types: [opened]
     branches:
       - dev/*
 
