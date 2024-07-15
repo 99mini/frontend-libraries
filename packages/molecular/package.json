@@ -35,6 +35,6 @@
     "rollup": "^4.17.2"
   },
   "dependencies": {
-    "@99mini/atom": "^0.4.2"
+    "@99mini/atom": "^0.4.3"
   }
 }
