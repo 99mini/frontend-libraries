@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy-dev-chromatic:
+  deploy-stage-chromatic:
     uses: ./.github/workflows/deploy-chromatic.yaml
     secrets: inherit
     with:
