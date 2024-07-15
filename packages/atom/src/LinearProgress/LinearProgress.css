@@ -7,51 +7,92 @@
   }
 }
 
-.YnI-Progress-Root {
-  &.YnI-LinearProgress {
+.YnI-Progress-Root.YnI-LinearProgress {
+  display: flex;
+  gap: 8px;
+
+  &.YnI-Progress-Label--top-left,
+  &.YnI-Progress-Label--top-right,
+  &.YnI-Progress-Label--top-center {
+    flex-direction: column;
+  }
+
+  &.YnI-Progress-Label--bottom-left,
+  &.YnI-Progress-Label--bottom-right,
+  &.YnI-Progress-Label--bottom-center {
+    flex-direction: column-reverse;
+  }
+
+  &.YnI-Progress-Label--top-left,
+  &.YnI-Progress-Label--bottom-left {
+    align-items: flex-start;
+  }
+  &.YnI-Progress-Label--top-right,
+  &.YnI-Progress-Label--bottom-right {
+    align-items: flex-end;
+  }
+  &.YnI-Progress-Label--top-center,
+  &.YnI-Progress-Label--bottom-center {
+    align-items: center;
+  }
+
+  &.YnI-Progress-Label--left,
+  &.YnI-Progress-Label--right {
+    align-items: center;
+  }
+
+  &.YnI-Progress-Label--left {
+    flex-direction: row;
+  }
+  &.YnI-Progress-Label--right {
+    flex-direction: row-reverse;
+  }
+  .YnI-Progress-Label {
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .YnI-LinearProgress-Bar {
+    position: relative;
+
+    width: 100%;
     height: var(--linear-progress-height);
 
-    .YnI-LinearProgress-Bar {
-      position: relative;
+    overflow: hidden;
 
-      width: 100%;
+    background-color: rgb(240, 240, 240);
+
+    .YnI-LinearProgress-Indicator {
+      background-color: var(--linear-progress-color);
+
       height: inherit;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
 
-      overflow: hidden;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-      background-color: rgb(240, 240, 240);
-
-      .YnI-LinearProgress-Indicator {
-        background-color: var(--linear-progress-color);
-
+      &.YnI-LinearProgress-indeterminate {
+        width: inherit;
         height: inherit;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
 
-        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-        &.YnI-LinearProgress-indeterminate {
-          width: inherit;
-          height: inherit;
-
-          animation: linear-grogress-infinite-animation 2s infinite ease-in-out;
-        }
+        animation: linear-grogress-infinite-animation 2s infinite ease-in-out;
       }
+    }
 
-      .YnI-LinearProgress-buffer {
-        background-color: var(--linear-progress-color);
-        opacity: 0.24;
+    .YnI-LinearProgress-buffer {
+      background-color: var(--linear-progress-color);
+      opacity: 0.24;
 
-        height: inherit;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
+      height: inherit;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
 
-        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
 }

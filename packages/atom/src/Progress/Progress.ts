@@ -11,4 +11,15 @@ type ProgressPropsType = {
   value?: number;
   valueBuffer?: number;
   color?: string;
+  label?: string;
+  labelPlacement?:
+    | "top-right"
+    | "top-center"
+    | "top-left"
+    | "right"
+    | "left"
+    | "bottom-right"
+    | "bottom-center"
+    | "bottom-left";
+  showLabel?: boolean;
 };
