@@ -1,0 +1,17 @@
+name: "Chromatic Stage Deployment"
+
+on:
+  push:
+    branches:
+      - release/*
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-stage-chromatic:
+    uses: ./.github/workflows/deploy-chromatic.yaml
+    secrets: inherit
+    with:
+      env: stage
