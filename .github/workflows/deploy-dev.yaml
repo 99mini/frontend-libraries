@@ -1,0 +1,17 @@
+name: "Chromatic Dev Deployment"
+
+on:
+  push:
+    branches:
+      - dev/*
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-dev-chromatic:
+    uses: ./.github/workflows/deploy-chromatic.yaml
+    secrets: inherit
+    with:
+      env: dev

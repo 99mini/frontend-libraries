@@ -1,6 +1,6 @@
 {
   "name": "@99mini/atom",
-  "version": "0.4.1",
+  "version": "0.4.3",
   "sideEffects": false,
   "main": "./src/index.ts",
   "files": [
@@ -35,7 +35,7 @@
     "rollup": "^4.17.2"
   },
   "dependencies": {
-    "@99mini/core": "^0.1.1",
-    "@99mini/utils": "^0.6.2"
+    "@99mini/core": "^0.2.2",
+    "@99mini/utils": "^0.6.3"
   }
 }

@@ -3,13 +3,17 @@
   "description": "frontend-libraries",
   "packageManager": "yarn@4.2.2",
   "workspaces": [
-    "configs/*",
+    "configs/**",
     "packages/**"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/99mini/frontend-libraries"
+    "url": "git+https://github.com/99mini/frontend-libraries.git"
   },
+  "bugs": {
+    "url": "https://github.com/99mini/frontend-libraries/issues"
+  },
+  "homepage": "https://github.com/99mini/frontend-libraries#readme",
   "license": "MIT",
   "devDependencies": {
     "@99mini/babel-config": "workspace:^0.1.0",
@@ -37,6 +41,7 @@
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "babel-jest": "^29.7.0",
+    "chromatic": "^11.5.5",
     "classnames": "^2.5.1",
     "css-loader": "^7.1.2",
     "eslint": "^8.57.0",
@@ -77,6 +82,7 @@
     "all-packages": "sh ./scripts/script_all_packages.sh",
     "test": "jest",
     "test:badges": "yarn test --ci --coverage && jest-coverage-badges --output './.badges'",
-    "ci": "yarn && yarn test:badges"
+    "ci": "yarn && yarn test:badges",
+    "preinstall": "yarn all-packages cp:postinstall"
   }
 }
