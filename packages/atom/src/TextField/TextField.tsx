@@ -2,44 +2,34 @@ import React from "react";
 import classNames from "classnames";
 import "./TextField.css";
 
-export type TextFieldProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
-> &
-  React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLTextAreaElement>,
-    HTMLTextAreaElement
-  > &
-  TextFieldPropsType;
-
-type MultiLineTextFieldProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLTextAreaElement>,
-  HTMLTextAreaElement
-> &
-  MuiltilineTextFieldPropsType;
-
 type TextInputProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLInputElement>,
+  React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 > &
   TextInputPropsType;
 
 type TextInputPropsType = {};
 
-type TextFieldPropsType = {
-  muiltiline?: boolean;
-};
-
-type MuiltilineTextFieldPropsType = {};
-
-const TextInput = ({ ...props }: TextInputProps) => {
+const TextInput = ({ type = "text", ...props }: TextInputProps) => {
   return (
     <input
+      type={type}
       {...props}
       className={classNames("YnI-TextField", props.className)}
     />
   );
 };
+
+type MultiLineTextFieldProps = React.DetailedHTMLProps<
+  React.DetailedHTMLProps<
+    React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+    HTMLTextAreaElement
+  >,
+  HTMLTextAreaElement
+> &
+  MuiltilineTextFieldPropsType;
+
+type MuiltilineTextFieldPropsType = {};
 
 const MultiLineTextField = ({ ...props }: MultiLineTextFieldProps) => {
   return (
@@ -48,6 +38,22 @@ const MultiLineTextField = ({ ...props }: MultiLineTextFieldProps) => {
       className={classNames("YnI-TextField", props.className)}
     />
   );
+};
+export type TextFieldProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> &
+  React.DetailedHTMLProps<
+    React.DetailedHTMLProps<
+      React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+      HTMLTextAreaElement
+    >,
+    HTMLTextAreaElement
+  > &
+  TextFieldPropsType;
+
+type TextFieldPropsType = {
+  muiltiline?: boolean;
 };
 
 export const TextField = ({ muiltiline, ...props }: TextFieldProps) => {
