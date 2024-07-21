@@ -10,6 +10,10 @@
     <img src="./.badges/badge-lines.svg" />
 </div>
 
+[![Chromatic Real Deployment](https://github.com/99mini/frontend-libraries/actions/workflows/deploy-real.yaml/badge.svg)](https://github.com/99mini/frontend-libraries/actions/workflows/deploy-real.yaml)
+[![Chromatic Stage Deployment](https://github.com/99mini/frontend-libraries/actions/workflows/deploy-stage.yaml/badge.svg)](https://github.com/99mini/frontend-libraries/actions/workflows/deploy-stage.yaml)
+[![Chromatic Dev Deployment](https://github.com/99mini/frontend-libraries/actions/workflows/deploy-dev.yaml/badge.svg)](https://github.com/99mini/frontend-libraries/actions/workflows/deploy-dev.yaml)
+
 # 프로젝트 소개
 
 `React`, `Typescript`, `Jest`, `Storybook`을 이용한 프론트엔드 UI 라이브러리 + 유틸 라이브러리입니다.
