@@ -56,9 +56,6 @@ type TextFieldPropsType = {
   multiLineTextFieldProps?: MultiLineTextFieldProps;
 };
 
-/**
- * @description A text field is a component that allows users to input text.
- */
 export const TextField = ({
   muiltiline = false,
   inputProps = {},
