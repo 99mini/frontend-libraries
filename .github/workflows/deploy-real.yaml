@@ -6,7 +6,6 @@ on:
       - "packages/**/src/**"
     branches:
       - main
-      - "!dependabot/**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
