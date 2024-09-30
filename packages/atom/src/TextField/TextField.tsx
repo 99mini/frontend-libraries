@@ -35,37 +35,45 @@ const MultiLineTextField = ({ ...props }: MultiLineTextFieldProps) => {
   return (
     <textarea
       {...props}
-      className={classNames("YnI-TextField", props.className)}
+      className={classNames(
+        "YnI-TextField",
+        "YnI-TextField-Multi",
+        props.className,
+      )}
     />
   );
 };
+
 export type TextFieldProps = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
 > &
-  React.DetailedHTMLProps<
-    React.DetailedHTMLProps<
-      React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-      HTMLTextAreaElement
-    >,
-    HTMLTextAreaElement
-  > &
   TextFieldPropsType;
 
 type TextFieldPropsType = {
   muiltiline?: boolean;
+  inputProps?: TextInputProps;
+  multiLineTextFieldProps?: MultiLineTextFieldProps;
 };
 
-export const TextField = ({ muiltiline, ...props }: TextFieldProps) => {
+/**
+ * @description A text field is a component that allows users to input text.
+ */
+export const TextField = ({
+  muiltiline = false,
+  inputProps = {},
+  multiLineTextFieldProps = {},
+  ...props
+}: TextFieldProps) => {
   return (
     <div
       {...props}
       className={classNames("YnI-TextField-Root", props.className)}
     >
       {muiltiline ? (
-        <MultiLineTextField {...props} />
+        <MultiLineTextField {...multiLineTextFieldProps} />
       ) : (
-        <TextInput {...props} />
+        <TextInput {...inputProps} />
       )}
     </div>
   );

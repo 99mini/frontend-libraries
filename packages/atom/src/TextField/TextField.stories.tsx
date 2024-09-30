@@ -26,6 +26,10 @@ const TextInputTemplate = ({ ...args }) => {
   return <TextField {...args}></TextField>;
 };
 
+const NumberInputTemplate = ({ ...args }) => {
+  return <TextField {...args}></TextField>;
+};
+
 export const Default: Story = {
   args: {},
   render: Template,
@@ -34,6 +38,11 @@ export const Default: Story = {
 export const TextInput: Story = {
   args: {},
   render: TextInputTemplate,
+};
+
+export const NumberInput: Story = {
+  args: { inputProps: { type: "number" } },
+  render: NumberInputTemplate,
 };
 
 export const MultiLine: Story = {

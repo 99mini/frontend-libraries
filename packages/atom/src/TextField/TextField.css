@@ -1,3 +1,36 @@
-.YnI-TextField {
+.YnI-TextField-Root {
+  position: relative;
+  width: 100%;
 
+  .YnI-TextField {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    line-height: 1.5;
+
+    &:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+
+    /* Remove spinners from number input */
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    &[type="number"] {
+      -moz-appearance: textfield;
+    }
+  }
+
+  /* textarea */
+  .YnI-TextField-Multi {
+    resize: none;
+  }
 }
