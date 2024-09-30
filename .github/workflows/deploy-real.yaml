@@ -2,6 +2,8 @@ name: "Chromatic Real Deployment"
 
 on:
   push:
+    paths:
+      - "packages/**/src/**"
     branches:
       - main
 
