@@ -20,6 +20,8 @@
 
 ## 설치 및 사용
 
+[npm](https://www.npmjs.com/~99mini)
+
 1. [@99mini/utils](https://github.com/99mini/frontend-libraries/blob/main/packages/utils/README.md)
 2. [@99mini/core](https://github.com/99mini/frontend-libraries/blob/main/packages/core/README.md)
 3. [@99mini/atom](https://github.com/99mini/frontend-libraries/blob/main/packages/atom/README.md)
@@ -38,7 +40,7 @@
 ### install dependency
 
 ```bash
-$ yarn
+$ yarn install
 ```
 
 ### 스토리북
