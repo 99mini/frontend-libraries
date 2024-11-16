@@ -16,7 +16,7 @@
 
 # 프로젝트 소개
 
-`React`, `Typescript`, `Jest`, `Storybook`을 이용한 프론트엔드 UI 라이브러리 + 유틸 라이브러리입니다.
+`React`, `Typescript`, `Jest`, `Storybook`을 이용한 프론트엔드 UI 라이브러리 + 유틸 라이브러리입니다. [Storybook에서 확인하기](https://6691ed4a2d6cdadb9b6afb22-zpuvjwosue.chromatic.com/?path=/docs/atom-badge--docs)
 
 ## 설치 및 사용
 
