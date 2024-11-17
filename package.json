@@ -70,6 +70,7 @@
     "typescript": "^5.4.2"
   },
   "dependencies": {
+    "@changesets/cli": "^2.27.7",
     "style-inject": "^0.3.0"
   },
   "peerDependencies": {
